@@ -4,8 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft, Heart, Users, MapPin, Shield, Calendar, Clock, DollarSign, Globe, Home, GraduationCap, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const MinistryPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -611,7 +616,7 @@ const MinistryPage = () => {
               </Button>
             </Link>
             <Link to="/pastor-biography">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button size="lg" variant="secondary">
                 Learn About Our Pastor
               </Button>
             </Link>

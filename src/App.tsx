@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Routes, Route } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -24,6 +24,7 @@ import {
   Cross,
   ArrowDown
 } from "lucide-react";
+import SermonsPage from './SermonsPage';
 
 export default function AgapeChurch() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -32,7 +33,8 @@ export default function AgapeChurch() {
     name: "AGAPE BIBLE CHURCH",
     address: "12 B Cross, Sonnappa Block, Pillanna Garden 3rd Stage",
     city: "Bangalore 560045, Karnataka, India",
-    phone: "+91 779 535 3391",
+    phone: "+91 9901613901",
+    altPhone: "+91 9900167714",
     email: "abcabfindia@gmail.com",
     website: "agapebangalore.org",
     established: "August 5th, 1990",
@@ -94,8 +96,8 @@ export default function AgapeChurch() {
               onClick={() => scrollToSection('hero')}
               className="flex items-center space-x-2 font-serif text-xl font-medium hover:text-primary transition-colors"
             >
-              <Cross className="h-6 w-6" />
-              <span>AGAPE</span>
+              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
+              <span>AGAPE BIBLE CHURCH</span>
             </button>
 
             {/* Desktop Navigation */}
@@ -103,7 +105,7 @@ export default function AgapeChurch() {
               <button onClick={() => scrollToSection('about')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">About</button>
               <button onClick={() => scrollToSection('vision')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Vision</button>
               <button onClick={() => scrollToSection('pastor')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Pastor</button>
-              <button onClick={() => scrollToSection('sermons')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Sermons</button>
+              <Link to="/sermons" className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Sermons</Link>
               <button onClick={() => scrollToSection('ministry')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Ministry</button>
               <button onClick={() => scrollToSection('contact')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Contact</button>
             </div>
@@ -124,7 +126,7 @@ export default function AgapeChurch() {
                 <button onClick={() => scrollToSection('about')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">About</button>
                 <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Vision</button>
                 <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Pastor</button>
-                <button onClick={() => scrollToSection('sermons')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Sermons</button>
+                <Link to="/sermons" className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Sermons</Link>
                 <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Ministry</button>
                 <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Contact</button>
               </div>
@@ -137,9 +139,9 @@ export default function AgapeChurch() {
       <section id="hero" className="min-h-screen flex items-center justify-center relative bg-background">
         <div className="hero-image-overlay" />
         <img 
-          src="/authentic-church-worship.png" 
-          alt="Agape Bible Church Congregation in Worship" 
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
+          src="/authentic-church-worship.png"
+          alt="Agape Bible Church Hero Banner - Authentic Worship"
+          className="absolute inset-0 w-full h-full object-cover opacity-70"
         />
         <div className="absolute inset-0 image-overlay-center opacity-0 hover:opacity-100">
           <div className="text-center text-white px-6">
@@ -172,9 +174,6 @@ export default function AgapeChurch() {
               <MapPin className="h-5 w-5 mr-2" />
               Visit Us
             </Button>
-          </div>
-          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-            <ArrowDown className="h-6 w-6 text-muted-foreground" />
           </div>
         </div>
       </section>
@@ -246,10 +245,10 @@ export default function AgapeChurch() {
                       <Calendar className="h-5 w-5 ml-2" />
                     </Button>
                     <Button 
-                      variant="outline" 
+                      variant="secondary" 
                       size="lg" 
                       onClick={() => scrollToSection('about')}
-                      className="flex-1 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary"
+                      className="flex-1"
                     >
                       Read More
                       <ChevronRight className="h-5 w-5 ml-2" />
@@ -299,7 +298,7 @@ export default function AgapeChurch() {
                 Manifesting Love Through Action
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-                At Agape Bible Church, we believe that love is most meaningful when it's put into action; it's about helping others discover Jesus in the tapestry of our daily lives.
+                At AGAPE BIBLE CHURCH, we believe that love is most meaningful when it's put into action; it's about helping others discover Jesus in the tapestry of our daily lives.
               </p>
               <p className="text-lg text-gray-600 leading-relaxed">
                 Our congregation is dedicated to showcasing God's love through tangible acts of kindness, making us a practical and living testament to His grace.
@@ -324,13 +323,13 @@ export default function AgapeChurch() {
             <div className="relative order-2 lg:order-1 group ministry-image-container">
               <img 
                 src="/children-ministry-authentic.png" 
-                alt="Children's Ministry and Community Outreach" 
+                alt="Reaching Out to Bangalore - Children's Ministry" 
                 className="w-full h-96 object-cover rounded-lg shadow-2xl image-hover-zoom"
               />
               <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
                 <div className="text-center text-white px-6">
-                  <h4 className="text-2xl font-bold mb-2">Children's Ministry</h4>
-                  <p className="text-lg opacity-90">Providing hope and care to marginalized children</p>
+                  <h4 className="text-2xl font-bold mb-2">Reaching Out to Bangalore</h4>
+                  <p className="text-lg opacity-90">Serving the children and communities of Bangalore with love and hope</p>
                 </div>
               </div>
               <div className="image-badge bg-primary text-primary-foreground">
@@ -371,6 +370,13 @@ export default function AgapeChurch() {
                 <CardDescription className="text-lg">Founding Senior Pastor - Established Agape Bible Fellowship 1990</CardDescription>
               </CardHeader>
               <CardContent className="space-y-8">
+                <div className="flex justify-center mb-8">
+                  <img 
+                    src="/pastor.png" 
+                    alt="Archbishop Dr. Reuben M. Sathiyaraj - Founding Pastor" 
+                    className="w-48 h-48 object-cover rounded-full shadow-lg border-4 border-primary"
+                  />
+                </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center">
                   <div className="space-y-3">
                     <div className="text-3xl font-bold text-primary">35+</div>
@@ -385,9 +391,7 @@ export default function AgapeChurch() {
                     <p className="text-sm text-muted-foreground">Churches Overseen</p>
                   </div>
                 </div>
-                
                 <Separator className="opacity-50" />
-                
                 <div className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-8">
                     <div className="space-y-4">
@@ -403,7 +407,6 @@ export default function AgapeChurch() {
                       </p>
                     </div>
                   </div>
-                  
                   <div className="bg-card/30 p-6 rounded-lg border-l-4 border-primary">
                     <p className="text-lg italic text-muted-foreground mb-2">
                       "For though I preach the gospel, I have nothing to glory of: for necessity is laid upon me; yea, woe is unto me, if I preach not the gospel!"
@@ -412,7 +415,6 @@ export default function AgapeChurch() {
                       - 1 Corinthians 9:16, Archbishop Sathiyaraj's life verse
                     </p>
                   </div>
-                  
                   <div className="text-center pt-6">
                     <Link to="/pastor-biography">
                       <Button size="lg" className="text-lg px-8 py-3">
@@ -481,7 +483,7 @@ export default function AgapeChurch() {
             <div className="grid md:grid-cols-3 gap-4 max-w-3xl mx-auto">
               <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
                 <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer">
-                  <Youtube className="h-4 w-4 mr-2" />
+                  <Youtube className="h-4 w-4 mr-2" style={{ color: '#ff9800' }} />
                   YouTube
                 </a>
               </Button>
@@ -622,81 +624,104 @@ export default function AgapeChurch() {
             </p>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-16">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
-                  <MapPin className="h-6 w-6 text-blue-600" />
-                  Location
-                </h3>
-                <div className="space-y-2">
-                  <p className="text-lg font-medium text-gray-900">{churchInfo.name}</p>
-                  <p className="text-gray-600">{churchInfo.address}</p>
-                  <p className="text-gray-600">{churchInfo.city}</p>
-                </div>
-              </div>
-              
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
-                  <Clock className="h-6 w-6 text-blue-600" />
-                  Service Times
-                </h3>
-                <div className="space-y-2">
-                  <p className="text-lg text-gray-700">Sunday Worship: 9:00 AM & 11:00 AM</p>
-                  <p className="text-lg text-gray-700">Wednesday Bible Study: 7:00 PM</p>
-                  <p className="text-lg text-gray-700">Saturday Youth Fellowship: 6:00 PM</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="space-y-6">
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
-                  <Phone className="h-6 w-6 text-blue-600" />
-                  Get In Touch
-                </h3>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-lg">
-                    <Phone className="h-5 w-5 text-gray-500" />
-                    <span className="text-gray-700">{churchInfo.phone}</span>
+          {/* Enhanced Contact Card for better visibility */}
+          <div className="rounded-2xl bg-gray-50/80 border border-gray-200 shadow-lg p-8 mb-12">
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div className="space-y-8">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
+                    <MapPin className="h-6 w-6 text-blue-600" />
+                    Location
+                  </h3>
+                  <div className="space-y-2">
+                    <p className="text-lg font-medium text-gray-900">{churchInfo.name}</p>
+                    <p className="text-gray-600">{churchInfo.address}</p>
+                    <p className="text-gray-600">{churchInfo.city}</p>
                   </div>
-                  <div className="flex items-center gap-3 text-lg">
-                    <Mail className="h-5 w-5 text-gray-500" />
-                    <span className="text-gray-700">{churchInfo.email}</span>
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
+                    <Clock className="h-6 w-6 text-blue-600" />
+                    Service Times
+                  </h3>
+                  <div className="space-y-2">
+                    <p className="text-lg text-gray-700">Sunday Worship: 9:00 AM & 11:00 AM</p>
+                    <p className="text-lg text-gray-700">Wednesday Bible Study: 7:00 PM</p>
+                    <p className="text-lg text-gray-700">Saturday Youth Fellowship: 6:00 PM</p>
                   </div>
                 </div>
               </div>
               
-              <div className="space-y-4">
-                <h3 className="text-2xl font-semibold text-gray-900">Connect With Us</h3>
-                <div className="flex gap-4">
-                  <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
-                    <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer">
-                      <Facebook className="h-5 w-5" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
-                    <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener noreferrer">
-                      <Instagram className="h-5 w-5" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
-                    <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener noreferrer">
-                      <Twitter className="h-5 w-5" />
-                    </a>
-                  </Button>
-                  <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
-                    <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer">
-                      <Youtube className="h-5 w-5" />
-                    </a>
-                  </Button>
+              <div className="space-y-6">
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-gray-900 flex items-center gap-3">
+                    <Phone className="h-6 w-6 text-blue-600" />
+                    Get In Touch
+                  </h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-3 text-lg">
+                      <Phone className="h-5 w-5 text-gray-500" />
+                      <span className="text-gray-700">{churchInfo.altPhone}</span>
+                    </div>
+                    <div className="flex items-center gap-3 text-lg">
+                      <Phone className="h-5 w-5 text-gray-500" />
+                      <span className="text-gray-700">{churchInfo.phone}</span>
+                    </div>
+                  </div>
+                </div>
+                
+                <div className="space-y-4">
+                  <h3 className="text-2xl font-semibold text-gray-900">Connect With Us</h3>
+                  <div className="flex gap-4">
+                    <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
+                      <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer">
+                        <Facebook className="h-5 w-5" style={{ color: '#ff9800' }} />
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
+                      <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener noreferrer">
+                        <Instagram className="h-5 w-5" style={{ color: '#ff9800' }} />
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
+                      <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener noreferrer">
+                        <Twitter className="h-5 w-5" style={{ color: '#ff9800' }} />
+                      </a>
+                    </Button>
+                    <Button variant="outline" size="lg" className="text-black border-gray-300 hover:bg-gray-50" asChild>
+                      <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer">
+                        <Youtube className="h-5 w-5" style={{ color: '#ff9800' }} />
+                      </a>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-          
+
+          {/* Google Maps Embed - Larger */}
+          <div className="flex justify-center mb-12">
+            <div className="w-full max-w-4xl aspect-[3/2] rounded-2xl overflow-hidden border border-gray-300 shadow-xl">
+              <iframe
+                title="Agape Bible Church Location Map"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.241964073964!2d77.620333!3d13.0132357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16e2a094bf89%3A0xa0896909de2109f4!2sAgape%20Bible%20Church!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen={true}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+          </div>
+
           <div className="text-center">
-            <Button size="lg" className="text-lg px-8 py-3 bg-blue-600 hover:bg-blue-700" onClick={() => scrollToSection('hero')}>
+            <Button size="lg" className="text-lg px-8 py-3" style={{ backgroundColor: '#ff9800', color: '#000' }}
+              onClick={() => scrollToSection('hero')}
+              onMouseOver={e => e.currentTarget.style.backgroundColor = '#fb8c00'}
+              onMouseOut={e => e.currentTarget.style.backgroundColor = '#ff9800'}
+            >
               Plan Your Visit
               <ChevronRight className="h-5 w-5 ml-2" />
             </Button>
@@ -710,7 +735,7 @@ export default function AgapeChurch() {
           <div className="grid md:grid-cols-3 gap-12 mb-12">
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
-                <Cross className="h-6 w-6 text-primary" />
+                <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
                 <span className="font-serif text-xl font-medium">AGAPE BIBLE CHURCH</span>
               </div>
               <p className="text-muted-foreground leading-relaxed">
@@ -734,6 +759,7 @@ export default function AgapeChurch() {
               <div className="space-y-2 text-muted-foreground">
                 <p>{churchInfo.address}</p>
                 <p>{churchInfo.city}</p>
+                <p>{churchInfo.altPhone}</p>
                 <p>{churchInfo.phone}</p>
                 <p>{churchInfo.email}</p>
               </div>
@@ -752,6 +778,16 @@ export default function AgapeChurch() {
           </div>
         </div>
       </footer>
+
+      {/* Built by ELI */}
+      <div className="fixed bottom-4 right-4 z-50">
+        <span
+          className="inline-flex items-center px-4 py-2 rounded-full bg-black text-white text-xs font-semibold shadow-lg"
+          aria-label="Built by ELI"
+        >
+          ✨ Built by ELI
+        </span>
+      </div>
     </div>
   );
 }

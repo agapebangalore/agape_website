@@ -2,8 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, Heart, MapPin, Users, Calendar, BookOpen, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const PastorBiography = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -453,7 +458,7 @@ const PastorBiography = () => {
               </Button>
             </Link>
             <Link to="/#contact">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary">
+              <Button size="lg" variant="outline" className="border-primary-foreground text-black hover:bg-primary-foreground hover:text-black">
                 Contact Us
               </Button>
             </Link>
