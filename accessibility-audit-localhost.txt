@@ -1,0 +1,30 @@
+[1mRunning axe-core 4.10.3 in chrome-headless[22m
+[1m[22m
+[1mTesting [4m[34mhttp://localhost:5174[39m[24m[22m ... please wait, this may take a minute.
+
+[31m[1m  Violation of "color-contrast" with 14 occurrences![22m[39m
+[31m[1m[22m[39m    Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds. Correct invalid elements at:
+     - .pt-8 > .hover\:bg-primary\/90.px-8.py-3
+     - .text-large.leading-relaxed:nth-child(1)
+     - .text-large.leading-relaxed:nth-child(2)
+     - .border-primary-foreground\/20 > .mb-4.text-xl.font-semibold
+     - .text-foreground\/80.leading-relaxed
+     - .mb-4.text-primary-foreground.text-xl
+     - .text-primary-foreground\/80
+     - .p-4.space-y-2.rounded-lg:nth-child(1) > .text-2xl.font-bold
+     - .p-4.space-y-2.rounded-lg:nth-child(2) > .text-2xl.font-bold
+     - .p-4.space-y-2.rounded-lg:nth-child(3) > .text-2xl.font-bold
+     - .p-4.space-y-2.rounded-lg:nth-child(4) > .text-2xl.font-bold
+     - a[href$="pastor-biography"] > .hover\:bg-primary\/90.px-8.py-3
+     - .mt-4
+     - a[href$="ministry"] > .hover\:bg-primary\/90.px-8.py-3
+    For details, see: [4m[34mhttps://dequeuniversity.com/rules/axe/4.10/color-contrast[39m[24m
+
+[31m[1m  Violation of "heading-order" with 1 occurrences![22m[39m
+[31m[1m[22m[39m    Ensure the order of headings is semantically correct. Correct invalid elements at:
+     - .space-y-4:nth-child(1) > .mb-1.text-xl
+    For details, see: [4m[34mhttps://dequeuniversity.com/rules/axe/4.10/heading-order[39m[24m
+[31m[1m[22m[39m
+[31m[1m15 Accessibility issues detected.[22m[39m
+[1mTesting complete of 1 pages[22m
+[1m[22m

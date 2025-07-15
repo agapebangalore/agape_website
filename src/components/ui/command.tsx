@@ -22,6 +22,8 @@ function Command({
       data-slot="command"
       className={cn(
         "bg-popover text-popover-foreground flex h-full w-full flex-col overflow-hidden rounded-md",
+        // Strong focus indicator for accessibility
+        "focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus:outline-none",
         className
       )}
       {...props}

@@ -97,14 +97,14 @@ const PodcastEpisodes: React.FC = () => {
 
   return (
     <section className="mb-16 mt-12">
-      <h2 className="text-2xl md:text-3xl font-bold font-serif mb-8 text-primary flex items-center gap-2">
+      <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
         All Podcast Episodes
       </h2>
       <div className="grid md:grid-cols-2 gap-8">
         {episodes.map((ep) => (
           <div key={ep.id} className="bg-gray-50 border border-gray-200 rounded-xl p-6 flex flex-col shadow-md">
-            <h3 className="text-lg font-semibold mb-2">{ep.name}</h3>
-            <p className="text-sm text-gray-600 mb-2">
+            <h3 className="text-foreground text-lg font-semibold mb-2">{ep.name}</h3>
+            <p className="text-foreground text-sm text-[oklch(0.18_0_0)] mb-2">
               {ep.release_date} &bull; {Math.floor(ep.duration_ms / 60000)} min
             </p>
             <iframe
@@ -117,7 +117,7 @@ const PodcastEpisodes: React.FC = () => {
               className="rounded-lg mb-2"
               title={ep.name}
             ></iframe>
-            <p className="text-sm text-gray-700 line-clamp-3">{ep.description}</p>
+            <p className="text-foreground text-sm text-[oklch(0.18_0_0)] line-clamp-3">{ep.description}</p>
           </div>
         ))}
       </div>
@@ -216,14 +216,23 @@ const SermonsPage: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Skip to Content Link (for accessibility) */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-primary text-primary-foreground px-4 py-2 rounded shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        tabIndex={0}
+      >
+        Skip to main content
+      </a>
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <button
               onClick={() => goToSection('hero')}
               className="flex items-center space-x-2 font-serif text-xl font-medium hover:text-primary transition-colors"
+              aria-label="Go to home"
             >
               <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
               <span>AGAPE BIBLE CHURCH</span>
@@ -231,18 +240,19 @@ const SermonsPage: React.FC = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => goToSection('about')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">About</button>
-              <button onClick={() => goToSection('vision')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Vision</button>
-              <button onClick={() => goToSection('pastor')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Pastor</button>
-              <Link to="/sermons" className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Sermons</Link>
-              <button onClick={() => goToSection('ministry')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Ministry</button>
-              <button onClick={() => goToSection('contact')} className="text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Contact</button>
+              <button onClick={() => goToSection('about')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">About</button>
+              <button onClick={() => goToSection('vision')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Vision</button>
+              <button onClick={() => goToSection('pastor')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Pastor</button>
+              <Link to="/sermons" className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Sermons</Link>
+              <button onClick={() => goToSection('ministry')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Ministry</button>
+              <button onClick={() => goToSection('contact')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Contact</button>
             </div>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="md:hidden p-2"
+              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -252,12 +262,12 @@ const SermonsPage: React.FC = () => {
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-border/50 py-4">
               <div className="space-y-2">
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('about'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">About</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('vision'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Vision</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('pastor'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Pastor</button>
-                <Link to="/sermons" className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground" onClick={() => setMobileMenuOpen(false)}>Sermons</Link>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('ministry'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Ministry</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('contact'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-muted-foreground">Contact</button>
+                <button onClick={() => { setMobileMenuOpen(false); goToSection('about'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">About</button>
+                <button onClick={() => { setMobileMenuOpen(false); goToSection('vision'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Vision</button>
+                <button onClick={() => { setMobileMenuOpen(false); goToSection('pastor'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Pastor</button>
+                <Link to="/sermons" className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]" onClick={() => setMobileMenuOpen(false)}>Sermons</Link>
+                <button onClick={() => { setMobileMenuOpen(false); goToSection('ministry'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Ministry</button>
+                <button onClick={() => { setMobileMenuOpen(false); goToSection('contact'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Contact</button>
               </div>
             </div>
           )}
@@ -268,8 +278,9 @@ const SermonsPage: React.FC = () => {
       {/* Hero Section */}
       <section className="w-full bg-primary text-primary-foreground py-16 mb-12 shadow-md">
         <div className="container max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl md:text-5xl font-serif font-bold mb-2 tracking-tight">Sermons & Messages</h1>
-          <p className="text-lg md:text-xl font-light max-w-2xl mx-auto mb-4">
+          {/* Main Page Title */}
+          <h1 className="text-foreground text-4xl md:text-5xl font-serif font-bold mb-2 tracking-tight">Sermons & Messages</h1>
+          <p className="text-foreground text-lg md:text-xl font-light max-w-2xl mx-auto mb-4">
             Watch, learn, and grow in faith with our latest sermons and biblical messages. Stream directly or watch on YouTube. New messages are added regularly!
           </p>
           <div className="flex justify-center gap-4">
@@ -331,12 +342,13 @@ const SermonsPage: React.FC = () => {
               const paginated = groups[group].slice((page - 1) * PER_PAGE, page * PER_PAGE);
               return (
                 <section key={group} className="mb-16">
-                  <h2 className="text-2xl md:text-3xl font-bold font-serif mb-8 text-primary flex items-center gap-2">
+                  {/* Major Sections */}
+                  <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
                     {group}
                   </h2>
                   <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {paginated.map((video) => (
-                      <Card key={video.id} className="p-4 flex flex-col items-center">
+                      <Card key={video.id} className="bg-black/80 text-white p-4 flex flex-col items-center">
                         <div className="w-full aspect-video mb-4">
                           <iframe
                             width="100%"
@@ -349,13 +361,13 @@ const SermonsPage: React.FC = () => {
                             className="w-full h-full rounded-lg"
                           ></iframe>
                         </div>
-                        <h2 className="text-lg font-semibold mb-1 text-center group-hover:text-primary transition-colors">
+                        <h2 className="text-foreground text-lg font-semibold mb-1 text-center group-hover:text-primary transition-colors">
                           {video.title}
                         </h2>
-                        <p className="text-xs text-muted-foreground mb-2 text-center">
+                        <p className="text-foreground text-xs text-[oklch(0.18_0_0)] mb-2 text-center">
                           {video.publishedAt ? new Date(video.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
                         </p>
-                        <p className="text-sm text-gray-600 line-clamp-3 text-center mb-3">{video.description}</p>
+                        <p className="text-foreground text-sm text-[oklch(0.18_0_0)] line-clamp-3 text-center mb-3">{video.description}</p>
                         <a
                           href={`https://www.youtube.com/watch?v=${video.id}`}
                           target="_blank"
@@ -379,7 +391,7 @@ const SermonsPage: React.FC = () => {
                       >
                         Previous
                       </Button>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-sm text-[oklch(0.18_0_0)]">
                         Page {page} of {totalPages}
                       </span>
                       <Button
@@ -400,14 +412,15 @@ const SermonsPage: React.FC = () => {
 
         {/* Podcast Section */}
         <section className="mb-16 mt-24">
-          <h2 className="text-2xl md:text-3xl font-bold font-serif mb-8 text-primary flex items-center gap-2">
+          <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
             Podcasts
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow-md w-full col-span-2">
-              <img src="/public/icon-512x512.png" alt="Agape Bible Church Podcast" className="w-20 h-20 mb-4 rounded-full shadow" />
-              <h3 className="text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>
-              <p className="text-base text-gray-700 mb-4 text-center">
+              <img src="/icon-512x512.png" alt="Agape Bible Church Podcast" className="w-20 h-20 mb-4 rounded-full shadow" />
+              {/* Subsections */}
+              <h3 className="text-foreground text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>
+              <p className="text-foreground text-base text-[oklch(0.18_0_0)] mb-4 text-center">
                 Listen to all our latest sermons, Bible studies, and inspirational messages on Spotify. Scroll and play any episode below!
               </p>
               <iframe 

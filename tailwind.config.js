@@ -31,6 +31,7 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
+        orangeBrand: '#ff9800',
       },
       borderRadius: {
         lg: 'var(--radius)',

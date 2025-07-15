@@ -151,33 +151,43 @@ const PastorBiography = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <div className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border">
+      {/* Skip to Content Link (for accessibility) */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-primary text-primary-foreground px-4 py-2 rounded shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        tabIndex={0}
+      >
+        Skip to main content
+      </a>
+      {/* Header Navigation */}
+      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border" aria-label="Main Navigation">
         <div className="container-wide mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
-            <Link to="/#pastor">
-              <Button variant="ghost" className="flex items-center gap-2">
+            <Link to="/">
+              <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Main Site
               </Button>
             </Link>
             <h1 className="text-xl font-bold">Pastor Biography</h1>
-            <Button onClick={scrollToTop} variant="outline" size="sm">
+            <Button onClick={scrollToTop} variant="outline" size="sm" aria-label="Scroll to Top">
               Top
             </Button>
           </div>
         </div>
-      </div>
+      </nav>
 
+      {/* Main Content */}
+      <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/20 to-primary/5">
+        <section className="py-16 bg-gradient-to-br from-primary/60 to-card">
         <div className="container-wide mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
             <h1 className="text-hero font-bold mb-6">Archbishop Dr. Reuben M. Sathiyaraj</h1>
             <p className="text-section-title text-muted-foreground mb-8">
               Founding Senior Pastor of Agape Bible Fellowship and Churches
             </p>
-            <p className="text-large leading-relaxed mb-12">
+              <p className="text-large text-foreground leading-relaxed mb-12">
               A remarkable journey from rebellion to redemption, from the streets of Chennai to the tribal islands of Andaman, 
               from a broken young man to a transformational leader who has planted hundreds of churches and trained countless missionaries.
             </p>
@@ -187,7 +197,7 @@ const PastorBiography = () => {
               {ministryStats.map((stat, index) => (
                 <Card key={index} className="text-center p-4">
                   <CardContent className="p-0">
-                    <div className="text-2xl font-bold text-primary mb-1">{stat.number}</div>
+                      <div className="text-2xl font-bold text-foreground mb-1">{stat.number}</div>
                     <div className="text-sm text-muted-foreground">{stat.label}</div>
                   </CardContent>
                 </Card>
@@ -198,9 +208,9 @@ const PastorBiography = () => {
       </section>
 
       {/* Life Verse */}
-      <section className="py-16 bg-white text-black">
+        <section className="py-16 bg-card text-foreground">
         <div className="container-wide mx-auto px-6">
-          <Card className="max-w-4xl mx-auto p-8 text-center bg-gradient-to-r from-primary/10 to-primary/5">
+            <Card className="max-w-4xl mx-auto p-8 text-center bg-gradient-to-r from-primary/10 to-card">
             <CardContent className="p-0">
               <BookOpen className="w-12 h-12 mx-auto mb-6 text-primary" />
               <blockquote className="text-xl italic mb-4">
@@ -217,7 +227,7 @@ const PastorBiography = () => {
       {/* Timeline */}
       <section className="py-16">
         <div className="container-wide mx-auto px-6">
-          <h2 className="text-section-title font-bold text-center mb-12">Life Timeline: A Journey of Faith</h2>
+            <h2 className="text-3xl font-semibold text-center mb-12">Life Timeline: A Journey of Faith</h2>
           
           <div className="max-w-4xl mx-auto">
             {timelineEvents.map((event, index) => (
@@ -226,11 +236,11 @@ const PastorBiography = () => {
                 <div className="flex flex-col items-center">
                   <div className={`
                     w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold
-                    ${event.type === 'early' ? 'bg-blue-500' : 
-                      event.type === 'calling' ? 'bg-green-500' :
-                      event.type === 'struggle' ? 'bg-red-500' :
-                      event.type === 'training' ? 'bg-purple-500' :
-                      event.type === 'family' ? 'bg-pink-500' : 'bg-orange-500'}
+                      ${event.type === 'early' ? 'bg-primary' : 
+                        event.type === 'calling' ? 'bg-success' :
+                        event.type === 'struggle' ? 'bg-destructive' :
+                        event.type === 'training' ? 'bg-accent' :
+                        event.type === 'family' ? 'bg-secondary' : 'bg-warning'}
                   `}>
                     {event.icon}
                   </div>
@@ -240,14 +250,14 @@ const PastorBiography = () => {
                 </div>
 
                 {/* Content */}
-                <Card className="flex-1 group-hover:shadow-lg transition-shadow">
+                  <Card className="flex-1 group-hover:shadow-lg transition-shadow bg-card text-foreground">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-4 mb-3">
                       <span className="text-lg font-bold text-primary">{event.year}</span>
                       <span className="text-sm bg-muted px-2 py-1 rounded">{event.age}</span>
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{event.title}</h3>
-                    <p className="text-muted-foreground leading-relaxed">{event.description}</p>
+                      <h3 className="text-2xl text-foreground font-semibold mb-2">{event.title}</h3>
+                      <p className="text-foreground leading-relaxed">{event.description}</p>
                   </CardContent>
                 </Card>
               </div>
@@ -257,7 +267,7 @@ const PastorBiography = () => {
       </section>
 
       {/* Family Section */}
-      <section className="py-16 bg-white text-black">
+        <section className="py-16 bg-card text-foreground">
         <div className="container-wide mx-auto px-6">
           <h2 className="text-section-title font-bold text-center mb-12">The Sathiyaraj Family</h2>
           
@@ -268,7 +278,7 @@ const PastorBiography = () => {
             
             <div className="grid md:grid-cols-2 gap-6">
               {familyMembers.map((member, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow">
+                  <Card key={index} className="hover:shadow-lg transition-shadow bg-card text-foreground">
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
                     <p className="text-primary font-medium mb-3">{member.role}</p>
@@ -287,7 +297,7 @@ const PastorBiography = () => {
           <h2 className="text-section-title font-bold text-center mb-12">The Complete Story</h2>
           
           <div className="max-w-4xl mx-auto prose prose-lg dark:prose-invert">
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Early Life & Divine Calling</h3>
                 <p className="mb-4">
@@ -306,7 +316,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">The Prodigal Years</h3>
                 <p className="mb-4">
@@ -325,7 +335,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Divine Encounter</h3>
                 <p className="mb-4">
@@ -342,7 +352,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Reconciliation & Calling</h3>
                 <p className="mb-4">
@@ -359,7 +369,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Testing & Seminary</h3>
                 <p className="mb-4">
@@ -375,7 +385,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Pioneer Missionary Work</h3>
                 <p className="mb-4">
@@ -396,7 +406,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8 mb-8">
+              <Card className="p-8 mb-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Ministry in Bangalore</h3>
                 <p className="mb-4">
@@ -417,7 +427,7 @@ const PastorBiography = () => {
               </CardContent>
             </Card>
 
-            <Card className="p-8">
+              <Card className="p-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4">Legacy & Vision</h3>
                 <p className="mb-4">
@@ -433,7 +443,7 @@ const PastorBiography = () => {
                 <p className="italic text-center text-primary font-semibold">
                   "To God be all the Glory and honor!"
                 </p>
-                <p className="text-sm text-muted-foreground text-center mt-4">
+                  <p className="text-sm text-foreground text-center mt-4">
                   Biography compiled from the account by Mrs. Carole Edgecox from Isle of Man, 
                   who served as a voluntary nurse in Bangalore at the ACC ministry among street children and rag pickers.
                 </p>
@@ -446,7 +456,7 @@ const PastorBiography = () => {
       {/* Call to Action */}
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container-wide mx-auto px-6 text-center">
-          <h2 className="text-section-title font-bold mb-6">Continue the Mission</h2>
+            <h2 className="text-3xl font-semibold mb-6">Continue the Mission</h2>
           <p className="text-large mb-8 max-w-2xl mx-auto">
             Pastor Reuben's story continues through the lives he touches and the churches he plants. 
             Join us in supporting this ongoing ministry.
@@ -458,13 +468,15 @@ const PastorBiography = () => {
               </Button>
             </Link>
             <Link to="/#contact">
-              <Button size="lg" variant="outline" className="border-primary-foreground text-black hover:bg-primary-foreground hover:text-black">
+                <Button size="lg" variant="outline" className="border-primary-foreground text-primary hover:bg-accent">
                 Contact Us
               </Button>
             </Link>
           </div>
         </div>
       </section>
+      </main>
+      {/* If there is a footer, wrap it in <footer aria-label="Site Footer"> ... </footer> */}
     </div>
   );
 };

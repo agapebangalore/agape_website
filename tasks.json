@@ -1,0 +1,43 @@
+{
+  "phases": [
+    {
+      "name": "Visual Polish & Theming",
+      "tasks": [
+        "Fix all remaining color contrast issues using accessible theme tokens (no hardcoded hex values)",
+        "Polish light/dark mode support for all components and backgrounds",
+        "Audit and standardize all typography (font sizes, weights, line heights)",
+        "Ensure consistent spacing and layout using Tailwind and Material Design guidelines",
+        "Review and unify all shadcn UI components (buttons, cards, badges, alerts, etc.) for visual consistency",
+        "Standardize border radii, shadows, and elevation across all components",
+        "Polish hover, active, and disabled states for all interactive elements",
+        "Optimize and review all images and icons for clarity, cropping, and performance"
+      ]
+    },
+    {
+      "name": "Performance & SEO",
+      "tasks": [
+        "Optimize all images (compress, use AVIF/WebP where possible)",
+        "Add meta tags, Open Graph, and favicon for SEO/social sharing",
+        "Remove unused CSS/JS and dead code",
+        "Test on all major browsers and devices for responsiveness"
+      ]
+    },
+    {
+      "name": "Final QA & Accessibility",
+      "tasks": [
+        "Run Lighthouse and axe-core audits for accessibility and performance",
+        "Manual QA: keyboard navigation, screen reader, and color-blind checks",
+        "Check for any console errors or warnings in dev tools"
+      ]
+    },
+    {
+      "name": "Deployment",
+      "tasks": [
+        "Set up environment variables and production config (if needed)",
+        "Build and preview the production bundle",
+        "Deploy to preferred host (Vercel, Netlify, or server)",
+        "Verify live site and monitor for post-launch issues"
+      ]
+    }
+  ]
+} 
