@@ -2,9 +2,11 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { ArrowLeft, Heart, Users, MapPin, Shield, Calendar, Clock, DollarSign, Globe, Home, GraduationCap, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const MinistryPage = () => {
   useEffect(() => {

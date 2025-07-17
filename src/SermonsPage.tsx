@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import { motion } from 'framer-motion';
 import { Card } from './components/ui/card';
 import { Input } from './components/ui/input';
 import { Button } from './components/ui/button';
+import { AnimatedGradientText } from './components/ui/animated-gradient-text';
 import { Link, useNavigate } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 
@@ -275,36 +277,95 @@ const SermonsPage: React.FC = () => {
       </nav>
       <div className="h-16" /> {/* Spacer for fixed nav */}
 
-      {/* Hero Section */}
-      <section className="w-full bg-primary text-primary-foreground py-16 mb-12 shadow-md">
-        <div className="container max-w-4xl mx-auto text-center space-y-6">
-          {/* Main Page Title */}
-          <h1 className="text-foreground text-4xl md:text-5xl font-serif font-bold mb-2 tracking-tight">Sermons & Messages</h1>
-          <p className="text-foreground text-lg md:text-xl font-light max-w-2xl mx-auto mb-4">
+      {/* Enhanced Hero Section with Animations */}
+      <section className="w-full bg-primary text-primary-foreground py-16 mb-12 shadow-md relative overflow-hidden">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary opacity-90" />
+        
+        <div className="container max-w-4xl mx-auto text-center space-y-8 relative z-10">
+          {/* Animated Page Title */}
+          <motion.div
+            initial={{ opacity: 0, y: -30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, type: "spring" }}
+          >
+            <AnimatedGradientText className="text-4xl md:text-5xl font-serif font-bold mb-2 tracking-tight">
+              Sermons & Messages
+            </AnimatedGradientText>
+          </motion.div>
+          
+          {/* Animated Description */}
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-white text-lg md:text-xl font-light max-w-2xl mx-auto mb-4"
+          >
             Watch, learn, and grow in faith with our latest sermons and biblical messages. Stream directly or watch on YouTube. New messages are added regularly!
-          </p>
-          <div className="flex justify-center gap-4">
-            <a href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-6 py-2 rounded-full bg-primary-foreground text-primary font-semibold shadow hover:bg-primary-foreground/90 transition-colors">
+          </motion.p>
+          
+          {/* Animated CTA Button */}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex justify-center gap-4"
+          >
+            <motion.a 
+              href="https://www.youtube.com/@AgapeBangalore" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="inline-flex items-center px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" 
+              style={{ color: 'hsl(var(--primary))' }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.566A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.12C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.566a2.994 2.994 0 0 0 2.112-2.12C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
               Visit YouTube Channel
-            </a>
-          </div>
+            </motion.a>
+          </motion.div>
         </div>
       </section>
 
       <div className="container py-8">
-        <div className="max-w-md mx-auto mb-8">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+          className="max-w-md mx-auto mb-8"
+        >
           <Input
             type="text"
             placeholder="Search sermons by title or description..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="w-full px-4 py-2 rounded-lg border border-border focus:ring-2 focus:ring-primary"
+            className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-primary shadow-lg hover:shadow-xl transition-all duration-300"
             aria-label="Search sermons"
           />
-        </div>
-        {loading && <div className="text-center">Loading sermons…</div>}
-        {error && <div className="text-center text-red-500">{error}</div>}
+        </motion.div>
+        {loading && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center py-12"
+          >
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+              className="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4"
+            />
+            <p className="text-gray-600">Loading sermons…</p>
+          </motion.div>
+        )}
+        {error && (
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-center text-red-500 py-8 bg-red-50 rounded-lg border border-red-200 mx-4"
+          >
+            {error}
+          </motion.div>
+        )}
         {/* Grouped by theme/type */}
         {(() => {
           // Filter out private videos and apply search
@@ -336,19 +397,38 @@ const SermonsPage: React.FC = () => {
             'Other',
           ];
           return <>
-            {groupOrder.filter(g => groups[g] && groups[g].length).map(group => {
+            {groupOrder.filter(g => groups[g] && groups[g].length).map((group, index) => {
               // Pagination per group
               const totalPages = Math.ceil(groups[group].length / PER_PAGE) || 1;
               const paginated = groups[group].slice((page - 1) * PER_PAGE, page * PER_PAGE);
+              
+              // Strategic black backgrounds for key content
+              const shouldHaveBlackBg = [
+                'Revelation Bible Study',
+                "Dr. Jim Reuben Elliot's Sermon", 
+                'Testimonies & Miracles'
+              ].includes(group);
+              
+              const sectionClasses = shouldHaveBlackBg 
+                ? "mb-16 bg-black text-white py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16"
+                : "mb-16";
+                
               return (
-                <section key={group} className="mb-16">
-                  {/* Major Sections */}
-                  <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
-                    {group}
-                  </h2>
-                  <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                    {paginated.map((video) => (
-                      <Card key={video.id} className="bg-white/85 text-gray-700 p-4 flex flex-col items-center">
+                <motion.section 
+                  key={group} 
+                  className={sectionClasses}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                >
+                  <div className={shouldHaveBlackBg ? "container mx-auto" : ""}>
+                    {/* Major Sections */}
+                    <h2 className={`${shouldHaveBlackBg ? 'text-white' : 'text-foreground'} text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center justify-center gap-2`}>
+                      {group}
+                    </h2>
+                    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+                      {paginated.map((video) => (
+                        <Card key={video.id} className={shouldHaveBlackBg ? "bg-gray-900/80 text-white p-4 flex flex-col items-center border border-gray-700" : "bg-white/85 text-gray-700 p-4 flex flex-col items-center"}>
                         <div className="w-full aspect-video mb-4">
                           <iframe
                             width="100%"
@@ -361,66 +441,78 @@ const SermonsPage: React.FC = () => {
                             className="w-full h-full rounded-lg"
                           ></iframe>
                         </div>
-                        <h2 className="text-foreground text-lg font-semibold mb-1 text-center group-hover:text-primary transition-colors">
+                        <h2 className={`${shouldHaveBlackBg ? 'text-white' : 'text-foreground'} text-lg font-semibold mb-1 text-center group-hover:text-primary transition-colors`}>
                           {video.title}
                         </h2>
-                        <p className="text-foreground text-xs text-[oklch(0.18_0_0)] mb-2 text-center">
+                        <p className={`${shouldHaveBlackBg ? 'text-gray-300' : 'text-foreground'} text-xs mb-2 text-center`}>
                           {video.publishedAt ? new Date(video.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
                         </p>
-                        <p className="text-foreground text-sm text-[oklch(0.18_0_0)] line-clamp-3 text-center mb-3">{video.description}</p>
+                        <p className={`${shouldHaveBlackBg ? 'text-gray-200' : 'text-foreground'} text-sm line-clamp-3 text-center mb-3`}>{video.description}</p>
                         <a
                           href={`https://www.youtube.com/watch?v=${video.id}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary text-primary-foreground font-medium text-xs shadow hover:bg-primary/90 transition-colors"
+                          className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary text-primary-foreground font-medium text-xs shadow hover:bg-primary/90 transition-colors" style={{ color: '#ffffff' }}
                         >
                           <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.566A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.12C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.566a2.994 2.994 0 0 0 2.112-2.12C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                           Watch on YouTube
                         </a>
-                      </Card>
-                    ))}
-                  </div>
-                  {/* Pagination controls per group */}
-                  {totalPages > 1 && (
-                    <div className="flex justify-center items-center gap-4 mt-8">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPage(p => Math.max(1, p - 1))}
-                        disabled={page === 1}
-                      >
-                        Previous
-                      </Button>
-                      <span className="text-sm text-[oklch(0.18_0_0)]">
-                        Page {page} of {totalPages}
-                      </span>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                        disabled={page === totalPages}
-                      >
-                        Next
-                      </Button>
+                        </Card>
+                      ))}
                     </div>
-                  )}
-                </section>
+                    {/* Pagination controls per group */}
+                    {totalPages > 1 && (
+                      <div className="flex justify-center items-center gap-4 mt-8">
+                        <Button
+                          variant={shouldHaveBlackBg ? "secondary" : "outline"}
+                          size="sm"
+                          onClick={() => setPage(p => Math.max(1, p - 1))}
+                          disabled={page === 1}
+                        >
+                          Previous
+                        </Button>
+                        <span className={`text-sm ${shouldHaveBlackBg ? 'text-gray-300' : 'text-gray-600'}`}>
+                          Page {page} of {totalPages}
+                        </span>
+                        <Button
+                          variant={shouldHaveBlackBg ? "secondary" : "outline"}
+                          size="sm"
+                          onClick={() => setPage(p => Math.min(totalPages, p + 1))}
+                          disabled={page === totalPages}
+                        >
+                          Next
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                </motion.section>
               );
             })}
-          </>;
+          </>
         })()}
 
-        {/* Podcast Section */}
-        <section className="mb-16 mt-24">
-          <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
-            Podcasts
-          </h2>
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow-md w-full col-span-2">
+        {/* Podcast Section - Black Background for Prominence */}
+        <section className="mb-16 mt-24 bg-black text-white py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16">
+          <div className="container mx-auto">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white text-2xl md:text-3xl font-bold font-serif mb-8 text-center"
+            >
+              🎧 Podcasts
+            </motion.h2>
+            <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-gray-900/50 border border-gray-700 rounded-xl p-8 flex flex-col items-center shadow-xl backdrop-blur-sm"
+              >
               <img src="/icon-512x512.png" alt="Agape Bible Church Podcast" className="w-20 h-20 mb-4 rounded-full shadow" />
               {/* Subsections */}
-              <h3 className="text-foreground text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>
-              <p className="text-foreground text-base text-[oklch(0.18_0_0)] mb-4 text-center">
+              <h3 className="text-white text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>
+              <p className="text-gray-200 text-base mb-4 text-center">
                 Listen to all our latest sermons, Bible studies, and inspirational messages on Spotify. Scroll and play any episode below!
               </p>
               <iframe 
@@ -434,9 +526,10 @@ const SermonsPage: React.FC = () => {
                 className="rounded-lg mb-2"
                 title="Agape Bible Church Podcast on Spotify"
               ></iframe>
-              <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm shadow hover:bg-primary/90 transition-colors mt-2">
+              <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm shadow hover:bg-primary/90 transition-colors mt-2" style={{ color: '#ffffff' }}>
                 <span className="mr-2">🎧</span> Listen on Spotify
               </a>
+              </motion.div>
             </div>
           </div>
         </section>

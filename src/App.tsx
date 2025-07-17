@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { Link, Routes, Route } from "react-router-dom";
+import { useState, useEffect, useMemo } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import {
   Heart,
   MapPin,
@@ -15,16 +15,121 @@ import {
   Book,
   Menu,
   X,
+  Clock,
+  ChevronRight,
+  ArrowDown,
   Facebook,
   Instagram,
   Twitter,
-  Youtube,
-  Clock,
-  ChevronRight,
-  Cross,
-  ArrowDown
+  Youtube
 } from "lucide-react";
-import SermonsPage from './SermonsPage';
+
+function AnimatedVisionText() {
+  const [visionIndex, setVisionIndex] = useState(0);
+  const visionPhrases = useMemo(
+    () => [
+      { text: "reaching the unreached", color: "text-primary", bgColor: "bg-primary/10" },
+      { text: "teaching the reached", color: "text-gold-600", bgColor: "bg-gold-500/10" },
+      { text: "touching the untouched", color: "text-burgundy-600", bgColor: "bg-burgundy-500/10" }
+    ],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (visionIndex === visionPhrases.length - 1) {
+        setVisionIndex(0);
+      } else {
+        setVisionIndex(visionIndex + 1);
+      }
+    }, 3000);
+    return () => clearTimeout(timeoutId);
+  }, [visionIndex, visionPhrases]);
+
+  return (
+    <div className="w-full text-center space-y-8 px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, type: "spring" }}
+          className="space-y-6"
+        >
+          <div className="space-y-6">
+            {/* First part of the heading */}
+            <h1 className="!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+              <motion.span 
+                className="inline-block mr-4"
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.2, duration: 0.8 }}
+              >
+                An independent,
+              </motion.span>
+              <motion.span 
+                className="inline-block mr-4"
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4, duration: 0.8 }}
+              >
+                non-denominational
+              </motion.span>
+              <motion.span 
+                className="inline-block text-primary mr-4"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              >
+                Tamil church
+              </motion.span>
+              <motion.span 
+                className="inline-block mr-4"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8, duration: 0.8 }}
+              >
+                dedicated to
+              </motion.span>
+            </h1>
+            
+            {/* Animated vision text */}
+            <div className="relative h-24 md:h-32 lg:h-40 xl:h-48 flex items-center justify-center overflow-hidden my-8">
+              <div className="!text-5xl md:!text-6xl lg:!text-7xl xl:!text-8xl font-display font-black leading-none">
+                {visionPhrases.map((phrase, index) => (
+                  <motion.div
+                    key={index}
+                    className={`absolute inset-0 flex items-center justify-center ${phrase.color}`}
+                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                    animate={
+                      visionIndex === index
+                        ? { opacity: 1, y: 0, scale: 1 }
+                        : { opacity: 0, y: visionIndex > index ? -100 : 100, scale: 0.8 }
+                    }
+                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                  >
+                    <span className="text-center leading-none tracking-tight drop-shadow-lg">
+                      {phrase.text}
+                    </span>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Second part of the heading - same size as first part */}
+            <h1 className="!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+              <motion.span 
+                className="inline-block"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 1.2, duration: 1 }}
+              >
+                with the Gospel of Jesus Christ.
+              </motion.span>
+            </h1>
+          </div>
+        </motion.div>
+    </div>
+  );
+}
 
 export default function AgapeChurch() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -178,81 +283,102 @@ export default function AgapeChurch() {
         </div>
         
         {/* Content */}
-        <div className="container-wide relative z-10 text-center space-y-12 px-6">
-          <div className="space-y-8">
+        <div className="container-wide relative z-10 text-center px-6 py-20">
+          <div className="max-w-7xl mx-auto space-y-12">
             {/* Established Badge */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 shadow-lg">
+            <motion.div 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 shadow-lg"
+            >
               <Calendar className="h-5 w-5 text-primary" />
               <span className="text-sm font-semibold text-gray-700 tracking-wide">ESTABLISHED {churchInfo.established}</span>
-            </div>
+            </motion.div>
             
-            {/* Church Name */}
-            <div className="space-y-6">
-              <h1 className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-gray-900 leading-tight tracking-tight" id="site-title">
-                <span className="block text-primary">AGAPE</span>
-                <span className="block text-gray-800">BIBLE CHURCH</span>
-              </h1>
-              
-              {/* Subtitle */}
-              <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
-                {churchInfo.description}
-              </p>
+            {/* Animated Church Vision - Full Width */}
+            <div className="w-full">
+              <AnimatedVisionText />
             </div>
             
             {/* Church Type Badge */}
-            <div className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-primary/10 to-gold-500/10 rounded-full border border-primary/20 shadow-sm">
-              <span className="text-sm font-medium text-gray-700 text-center leading-relaxed">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="inline-flex items-center justify-center"
+            >
+              <AnimatedGradientText className="text-base font-medium text-center leading-relaxed">
                 {churchInfo.type}
-              </span>
-            </div>
-          </div>
-          
-          {/* Call to Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-            <Button 
-              size="lg" 
-              className="text-lg px-10 py-4 bg-primary hover:bg-primary/90 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1" 
-              onClick={() => scrollToSection('about')}
-              style={{ color: '#ffffff' }}
-            >
-              <span style={{ color: '#ffffff' }}>Discover Our Story</span>
-              <ChevronRight className="h-5 w-5 ml-2" style={{ color: '#ffffff' }} />
-            </Button>
+              </AnimatedGradientText>
+            </motion.div>
             
-            <Button 
-              variant="outline" 
-              size="lg" 
-              className="text-lg px-10 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" 
-              onClick={() => scrollToSection('contact')}
+            {/* Call to Action Buttons */}
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
             >
-              <MapPin className="h-5 w-5 mr-2" />
-              <span>Visit This Sunday</span>
-            </Button>
-          </div>
-          
-          {/* Quick Info */}
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-12 text-gray-600">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Bangalore, India</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Multi-Ethnic Community</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Heart className="h-4 w-4 text-primary" />
-              <span className="text-sm font-medium">Tamil Heritage</span>
-            </div>
+              <Button 
+                size="lg" 
+                className="text-xl px-10 py-6 bg-primary hover:bg-primary/90 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1" 
+                onClick={() => scrollToSection('about')}
+                style={{ color: '#ffffff' }}
+              >
+                <span style={{ color: '#ffffff' }}>Discover Our Story</span>
+                <ChevronRight className="h-5 w-5 ml-2" style={{ color: '#ffffff' }} />
+              </Button>
+              
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="text-xl px-10 py-6 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" 
+                onClick={() => scrollToSection('contact')}
+              >
+                <MapPin className="h-5 w-5 mr-2" />
+                <span>Visit This Sunday</span>
+              </Button>
+            </motion.div>
+            
+            {/* Quick Info */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-12 text-gray-600"
+            >
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-primary" />
+                <span className="text-base font-medium">Bangalore, India</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="h-4 w-4 text-primary" />
+                <span className="text-base font-medium">Multi-Ethnic Community</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Heart className="h-4 w-4 text-primary" />
+                <span className="text-base font-medium">Tamil Heritage</span>
+              </div>
+            </motion.div>
           </div>
         </div>
         
         {/* Scroll Down Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <div className="p-2 bg-white/80 rounded-full shadow-lg">
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.5 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        >
+          <motion.div 
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="p-2 bg-white/80 rounded-full shadow-lg"
+          >
             <ArrowDown className="h-5 w-5 text-primary" />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Welcome & Vision Section */}

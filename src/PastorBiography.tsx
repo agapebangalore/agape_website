@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { ArrowLeft, Heart, MapPin, Users, Calendar, BookOpen, Globe } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const PastorBiography = () => {
   useEffect(() => {

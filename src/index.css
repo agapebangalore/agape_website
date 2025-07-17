@@ -10,55 +10,67 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Crimson Text", ui-serif, Georgia, serif;
+  --animate-gradient: gradient 8s linear infinite;
+
+  @keyframes gradient {
+    to {
+      backgroundPosition: var(--bg-size) 0;
+    }
+  }
+  @keyframes gradient {
+  to {
+    backgroundPosition: var(--bg-size) 0;
+    }
+  }
 }
 
 :root {
   --radius: 0.5rem;
-  
+
   /* Base colors - Clean white foundation */
   --background: 0 0% 100%;  /* Pure white */
   --foreground: 222.2 84% 4.9%;  /* Deep navy text */
-  
+
   /* Card system */
   --card: 0 0% 100%;  /* White cards */
   --card-foreground: 222.2 84% 4.9%;  /* Navy text on cards */
-  
+
   /* Popover system */
   --popover: 0 0% 100%;  /* White popover */
   --popover-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   /* Primary - Navy blue */
   --primary: 221.2 83.2% 53.3%;  /* Deep navy */
   --primary-foreground: 0 0% 98%;  /* White text on navy */
-  
+
   /* Secondary - Gold accent */
   --secondary: 47.9 95.8% 53.1%;  /* Warm gold */
   --secondary-foreground: 222.2 84% 4.9%;  /* Navy text on gold */
-  
+
   /* Muted - Soft grays */
   --muted: 210 40% 98%;  /* Very light gray */
   --muted-foreground: 215.4 16.3% 46.9%;  /* Medium gray text */
-  
+
   /* Accent - Burgundy */
   --accent: 0 84.2% 60.2%;  /* Rich burgundy */
   --accent-foreground: 0 0% 98%;  /* White text on burgundy */
-  
+
   /* Destructive */
   --destructive: 0 84.2% 60.2%;  /* Red */
   --destructive-foreground: 0 0% 98%;  /* White text */
-  
+
   /* Borders and inputs */
   --border: 214.3 31.8% 91.4%;  /* Light gray border */
   --input: 214.3 31.8% 91.4%;  /* Light gray input */
   --ring: 221.2 83.2% 53.3%;  /* Navy focus ring */
-  
+
   /* Charts */
   --chart-1: 221.2 83.2% 53.3%;  /* Navy */
   --chart-2: 47.9 95.8% 53.1%;  /* Gold */
   --chart-3: 0 84.2% 60.2%;  /* Burgundy */
   --chart-4: 142.1 76.2% 36.3%;  /* Green */
   --chart-5: 262.1 83.3% 57.8%;  /* Purple */
-  
+
   /* Sidebar */
   --sidebar: 0 0% 100%;  /* White sidebar */
   --sidebar-foreground: 222.2 84% 4.9%;  /* Navy text */
@@ -74,25 +86,25 @@
   /* Light mode (reversed naming for consistency) */
   --background: 0 0% 98%;  /* Off-white */
   --foreground: 222.2 84% 4.9%;  /* Deep navy */
-  
+
   --card: 0 0% 97%;  /* Slightly off-white cards */
   --card-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --popover: 0 0% 97%;  /* Off-white popover */
   --popover-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --primary: 221.2 83.2% 53.3%;  /* Deep navy */
   --primary-foreground: 0 0% 98%;  /* White text */
-  
+
   --secondary: 47.9 95.8% 53.1%;  /* Gold */
   --secondary-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --muted: 210 40% 96%;  /* Light gray */
   --muted-foreground: 215.4 16.3% 46.9%;  /* Medium gray */
-  
+
   --accent: 0 84.2% 60.2%;  /* Burgundy */
   --accent-foreground: 0 0% 98%;  /* White text */
-  
+
   --destructive: 0 84.2% 60.2%;  /* Red */
   --border: 214.3 31.8% 91.4%;  /* Light border */
   --input: 214.3 31.8% 91.4%;  /* Light input */
@@ -103,36 +115,36 @@
   /* Explicit light mode (same as root) */
   --background: 0 0% 100%;  /* Pure white */
   --foreground: 222.2 84% 4.9%;  /* Deep navy */
-  
+
   --card: 0 0% 100%;  /* White cards */
   --card-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --popover: 0 0% 100%;  /* White popover */
   --popover-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --primary: 221.2 83.2% 53.3%;  /* Deep navy */
   --primary-foreground: 0 0% 98%;  /* White text */
-  
+
   --secondary: 47.9 95.8% 53.1%;  /* Gold */
   --secondary-foreground: 222.2 84% 4.9%;  /* Navy text */
-  
+
   --muted: 210 40% 98%;  /* Very light gray */
   --muted-foreground: 215.4 16.3% 46.9%;  /* Medium gray */
-  
+
   --accent: 0 84.2% 60.2%;  /* Burgundy */
   --accent-foreground: 0 0% 98%;  /* White text */
-  
+
   --destructive: 0 84.2% 60.2%;  /* Red */
   --border: 214.3 31.8% 91.4%;  /* Light border */
   --input: 214.3 31.8% 91.4%;  /* Light input */
   --ring: 221.2 83.2% 53.3%;  /* Navy ring */
-  
+
   --chart-1: 221.2 83.2% 53.3%;  /* Navy */
   --chart-2: 47.9 95.8% 53.1%;  /* Gold */
   --chart-3: 0 84.2% 60.2%;  /* Burgundy */
   --chart-4: 142.1 76.2% 36.3%;  /* Green */
   --chart-5: 262.1 83.3% 57.8%;  /* Purple */
-  
+
   --sidebar: 0 0% 100%;  /* White sidebar */
   --sidebar-foreground: 222.2 84% 4.9%;  /* Navy text */
   --sidebar-primary: 221.2 83.2% 53.3%;  /* Navy primary */
@@ -153,7 +165,7 @@
     color: hsl(var(--foreground));
     font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
   }
-  
+
   html {
     scroll-behavior: smooth;
     font-size: 16px;
@@ -527,4 +539,15 @@ nav .bg-primary:hover,
 nav .bg-primary *,
 nav .bg-primary:hover * {
   color: #ffffff !important;
+}
+
+@layer base {
+  * {
+    border-color: hsl(var(--border));
+    outline-color: hsl(var(--ring));
+  }
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
 }
