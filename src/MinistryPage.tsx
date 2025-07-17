@@ -2,8 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
-import { ArrowLeft, Heart, Users, MapPin, Shield, Calendar, Clock, DollarSign, Globe, Home, GraduationCap, Stethoscope } from "lucide-react";
+import { ArrowLeft, Heart, Users, Shield, Clock, DollarSign, Globe, Home, GraduationCap, Stethoscope } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
@@ -99,13 +98,13 @@ const MinistryPage = () => {
         <div className="container-wide mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/#ministry">
-              <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
+              <Button variant="ghost" className="flex items-center gap-2 text-foreground hover:text-primary" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
                 Back to Main Site
               </Button>
             </Link>
-            <h1 className="text-xl font-bold">Our Ministries</h1>
-            <Button onClick={scrollToTop} variant="outline" size="sm" aria-label="Scroll to Top">
+            <h1 className="text-xl font-bold text-foreground">Our Ministries</h1>
+            <Button onClick={scrollToTop} variant="outline" size="sm" className="text-foreground border-border hover:bg-muted" aria-label="Scroll to Top">
               Top
             </Button>
           </div>
@@ -118,24 +117,24 @@ const MinistryPage = () => {
       <div className="bg-muted/30 py-4">
         <div className="container-wide mx-auto px-6">
           <div className="flex flex-wrap gap-2 justify-center">
-              <Button variant="ghost" size="sm" onClick={() => scrollToSection('missions')} aria-label="Go to Church Missions section">Church Missions</Button>
-              <Button variant="ghost" size="sm" onClick={() => scrollToSection('planting')} aria-label="Go to Church Planting section">Church Planting</Button>
-              <Button variant="ghost" size="sm" onClick={() => scrollToSection('children')} aria-label="Go to Street Children section">Street Children</Button>
-              <Button variant="ghost" size="sm" onClick={() => scrollToSection('centre')} aria-label="Go to Children Centre section">Children Centre</Button>
-              <Button variant="ghost" size="sm" onClick={() => scrollToSection('approach')} aria-label="Go to Our Approach section">Our Approach</Button>
+              <Button variant="ghost" size="sm" onClick={() => scrollToSection('missions')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Church Missions section">Church Missions</Button>
+              <Button variant="ghost" size="sm" onClick={() => scrollToSection('planting')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Church Planting section">Church Planting</Button>
+              <Button variant="ghost" size="sm" onClick={() => scrollToSection('children')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Street Children section">Street Children</Button>
+              <Button variant="ghost" size="sm" onClick={() => scrollToSection('centre')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Children Centre section">Children Centre</Button>
+              <Button variant="ghost" size="sm" onClick={() => scrollToSection('approach')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Our Approach section">Our Approach</Button>
           </div>
         </div>
       </div>
 
       {/* Hero Section */}
-        <section className="py-16 bg-gradient-to-br from-primary/60 to-card">
+        <section className="py-16 bg-gradient-to-br from-primary/20 to-white">
         <div className="container-wide mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-hero font-bold mb-6">Transforming Lives Through Christ's Love</h1>
-              <p className="text-section-title text-foreground mb-8">
+            <h1 className="text-hero font-bold mb-6 text-gray-900">Transforming Lives Through Christ's Love</h1>
+              <p className="text-section-title text-gray-800 mb-8">
               Mission Work Among Street Children & Church Planting Across India
             </p>
-              <p className="text-large text-foreground leading-relaxed mb-12">
+              <p className="text-large text-gray-700 leading-relaxed mb-12">
               From the bustling streets of Bangalore to remote villages across Karnataka, we are committed to sharing the Gospel 
               and demonstrating God's love through practical action—especially to society's most vulnerable.
             </p>
@@ -143,11 +142,11 @@ const MinistryPage = () => {
             {/* Ministry Stats */}
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               {ministryStats.map((stat, index) => (
-                <Card key={index} className="text-center p-4 hover:shadow-lg transition-shadow">
+                <Card key={index} className="text-center p-4 hover:shadow-lg transition-shadow bg-white border border-gray-200">
                   <CardContent className="p-0">
                     <div className="flex justify-center mb-2 text-primary">{stat.icon}</div>
-                      <div className="text-2xl font-bold text-foreground mb-1">{stat.number}</div>
-                    <div className="text-sm text-muted-foreground">{stat.label}</div>
+                      <div className="text-2xl font-bold text-gray-900 mb-1">{stat.number}</div>
+                    <div className="text-sm text-gray-600">{stat.label}</div>
                   </CardContent>
                 </Card>
               ))}
@@ -157,11 +156,11 @@ const MinistryPage = () => {
       </section>
 
       {/* Church Missions Section */}
-        <section id="missions" className="py-16 bg-card text-foreground">
+        <section id="missions" className="py-16 bg-white border border-gray-200">
         <div className="container-wide mx-auto px-6">
           <div className="text-center mb-12">
-              <h2 className="text-foreground text-3xl font-semibold mb-6">Mission Work in India</h2>
-              <p className="text-large text-foreground max-w-3xl mx-auto">
+              <h2 className="text-gray-900 text-3xl font-semibold mb-6">Mission Work in India</h2>
+              <p className="text-large text-gray-700 max-w-3xl mx-auto">
               Our primary calling as a Church is to share the Gospel within our own communities. We send out native missionaries, 
               supporting them through prayer and financial aid.
             </p>
@@ -169,8 +168,8 @@ const MinistryPage = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
-                <h3 className="text-foreground text-2xl font-semibold">Sending Native Missionaries</h3>
-                <p className="text-lg text-foreground leading-relaxed">
+                <h3 className="text-gray-900 text-2xl font-semibold">Sending Native Missionaries</h3>
+                <p className="text-lg text-gray-900 leading-relaxed">
                 Over the years, we've commissioned hundreds of missionaries to plant churches across India. 
                 We continue to stand by them—especially when illness or emergencies strike.
               </p>
@@ -179,32 +178,32 @@ const MinistryPage = () => {
                   <Badge variant="secondary" className="w-8 h-8 rounded-full flex items-center justify-center p-0">
                     <Users className="w-4 h-4" />
                   </Badge>
-                  <span>Hundreds of missionaries trained and sent</span>
+                  <span className="text-gray-700">Hundreds of missionaries trained and sent</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Badge variant="secondary" className="w-8 h-8 rounded-full flex items-center justify-center p-0">
                     <DollarSign className="w-4 h-4" />
                   </Badge>
-                  <span>Ongoing financial and prayer support</span>
+                  <span className="text-gray-700">Ongoing financial and prayer support</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <Badge variant="secondary" className="w-8 h-8 rounded-full flex items-center justify-center p-0">
                     <Heart className="w-4 h-4" />
                   </Badge>
-                  <span>Emergency assistance when needed</span>
+                  <span className="text-gray-700">Emergency assistance when needed</span>
                 </div>
               </div>
             </div>
-            <Card className="p-6">
+            <Card className="p-6 bg-white border border-gray-200">
               <CardContent className="p-0">
-                  <h4 className="text-foreground text-xl font-semibold mb-4">Our Missionary Support</h4>
+                  <h4 className="text-gray-900 text-xl font-semibold mb-4">Our Missionary Support</h4>
                 <div className="space-y-3">
-                    <p className="text-foreground">
+                    <p className="text-gray-700">
                     We believe in empowering local leaders who understand their communities' languages, cultures, and needs. 
                     Our missionaries are equipped not just spiritually, but practically for sustainable ministry.
                   </p>
                   <Separator />
-                    <p className="text-sm text-foreground">
+                    <p className="text-sm text-gray-600">
                     "We send native missionaries because they can reach their own people most effectively, 
                     speaking their language and understanding their culture." - Archbishop Sathiyaraj
                   </p>
@@ -216,7 +215,7 @@ const MinistryPage = () => {
       </section>
 
       {/* Church Planting Section */}
-        <section id="planting" className="py-16 bg-background text-foreground">
+        <section id="planting" className="py-16 bg-background">
         <div className="container-wide mx-auto px-6">
           <div className="text-center mb-12">
               <h2 className="text-foreground text-3xl font-semibold mb-6">Church Planting Movement</h2>
@@ -227,39 +226,39 @@ const MinistryPage = () => {
           </div>
 
           <div className="grid lg:grid-cols-3 gap-8 mb-12">
-            <Card className="text-center p-6">
+            <Card className="text-center p-6 bg-white border border-gray-200">
               <CardHeader className="pb-3">
                 <Home className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <CardTitle className="text-foreground">Mother Church</CardTitle>
+                  <CardTitle className="text-gray-900">Mother Church</CardTitle>
               </CardHeader>
               <CardContent>
-                  <p className="text-foreground">
+                  <p className="text-gray-900">
                   Agape Bible Church in Bangalore serves as the mother church, 
                   providing training, resources, and oversight for all daughter churches.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6">
+            <Card className="text-center p-6 bg-white border border-gray-200">
               <CardHeader className="pb-3">
                 <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <CardTitle className="text-foreground">Leadership Training</CardTitle>
+                  <CardTitle className="text-gray-900">Leadership Training</CardTitle>
               </CardHeader>
               <CardContent>
-                  <p className="text-foreground">
+                  <p className="text-gray-900">
                   We train pastors and leaders in biblical foundations, local ministry, 
                   and practical skills needed for effective church leadership.
                 </p>
               </CardContent>
             </Card>
 
-            <Card className="text-center p-6">
+            <Card className="text-center p-6 bg-white border border-gray-200">
               <CardHeader className="pb-3">
                 <Globe className="w-12 h-12 mx-auto mb-4 text-primary" />
-                  <CardTitle className="text-foreground">Autonomous Growth</CardTitle>
+                  <CardTitle className="text-gray-900">Autonomous Growth</CardTitle>
               </CardHeader>
               <CardContent>
-                  <p className="text-foreground">
+                  <p className="text-gray-900">
                   After mentorship, churches operate autonomously while maintaining 
                   connection to leadership and oversight from the mother church.
                 </p>
@@ -267,12 +266,12 @@ const MinistryPage = () => {
             </Card>
           </div>
 
-            <Card className="bg-card/80 text-foreground">
+            <Card className="bg-white border border-gray-200">
             <CardContent className="p-8">
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div>
-                    <h3 className="text-foreground text-2xl font-bold mb-4">Our Church Planting Model</h3>
-                    <ul className="space-y-3 text-foreground">
+                    <h3 className="text-gray-900 text-2xl font-bold mb-4">Our Church Planting Model</h3>
+                    <ul className="space-y-3 text-gray-900">
                     <li className="flex items-start gap-3">
                       <Badge variant="secondary" className="mt-1">1</Badge>
                       <span>Identify and train local leaders with calling and commitment</span>
@@ -293,16 +292,16 @@ const MinistryPage = () => {
                 </div>
                 <div className="space-y-4">
                   <div className="text-center">
-                      <div className="text-3xl font-bold text-foreground">6</div>
-                    <p className="text-sm text-muted-foreground">Churches Directly Overseen</p>
+                      <div className="text-3xl font-bold text-gray-900">6</div>
+                    <p className="text-sm text-gray-600">Churches Directly Overseen</p>
                   </div>
                   <div className="text-center">
-                      <div className="text-3xl font-bold text-foreground">10</div>
-                    <p className="text-sm text-muted-foreground">Co-Pastors Trained</p>
+                      <div className="text-3xl font-bold text-gray-900">10</div>
+                    <p className="text-sm text-gray-600">Co-Pastors Trained</p>
                   </div>
                   <div className="text-center">
-                      <div className="text-3xl font-bold text-foreground">100+</div>
-                    <p className="text-sm text-muted-foreground">Leaders Developed</p>
+                      <div className="text-3xl font-bold text-gray-900">100+</div>
+                    <p className="text-sm text-gray-600">Leaders Developed</p>
                   </div>
                 </div>
               </div>
@@ -311,20 +310,32 @@ const MinistryPage = () => {
         </div>
       </section>
 
-      {/* Street Children Ministry Section */}
-        <section id="children" className="py-16 bg-card text-foreground">
+      {/* Street Children Ministry Section - Black Background for Impact */}
+        <section id="children" className="py-16 bg-black text-white">
         <div className="container-wide mx-auto px-6">
           <div className="text-center mb-12">
-              <h2 className="text-foreground text-3xl font-semibold mb-6">Mission Work Among Street Children</h2>
-              <p className="text-large text-foreground max-w-3xl mx-auto">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-white text-3xl font-semibold mb-6"
+            >
+              👶 Mission Work Among Street Children
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-large text-gray-200 max-w-3xl mx-auto"
+            >
               In Bangalore alone, there are 70,000 ragpickers (half minors) and 65,000 street children 
               living in abject poverty. We're called to be their hope.
-            </p>
+            </motion.p>
           </div>
 
           {/* Why Children Become Street Kids */}
           <div className="mb-16">
-              <h3 className="text-foreground text-3xl font-bold text-center mb-8">Why Children Become Ragpickers or Street Kids</h3>
+              <h3 className="text-white text-3xl font-bold text-center mb-8">Why Children Become Ragpickers or Street Kids</h3>
             
             {/* Add authentic image */}
             <div className="mb-8 relative group ministry-image-container max-w-2xl mx-auto">
@@ -333,42 +344,42 @@ const MinistryPage = () => {
                 alt="Children receiving hope through ministry outreach" 
                 className="w-full h-64 object-cover rounded-lg shadow-lg image-hover-zoom"
               />
-                <div className="ministry-overlay bg-card/80 image-overlay-center opacity-0 group-hover:opacity-100">
+                <div className="ministry-overlay bg-white border border-gray-200/80 image-overlay-center opacity-0 group-hover:opacity-100">
                 <div className="text-center text-white px-6">
-                  <h4 className="text-2xl font-bold mb-2">Hope for the Streets</h4>
-                  <p className="text-lg opacity-90">Bringing joy and transformation to vulnerable children</p>
+                  <h4 className="text-2xl font-bold mb-2 text-white">Hope for the Streets</h4>
+                  <p className="text-lg opacity-90 text-white">Bringing joy and transformation to vulnerable children</p>
                 </div>
               </div>
                 <div className="image-badge bg-primary text-primary-foreground">
                 <Heart className="h-4 w-4" />
               </div>
-                <p className="text-center text-sm text-foreground mt-2 italic">
+                <p className="text-center text-sm text-gray-300 mt-2 italic">
                 Bringing joy and hope to children through ministry outreach
               </p>
             </div>
             
-              <Card className="bg-destructive/10 border-destructive/30">
+              <Card className="bg-red-900/70 border-red-400/50">
               <CardContent className="p-8">
-                  <p className="text-lg mb-6 font-semibold text-destructive">
+                  <p className="text-lg mb-6 font-semibold text-white">
                   It's never by choice. Who would become a street child or ragpicker by choice?
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-4">
-                      <h4 className="font-semibold text-destructive">Broken Families</h4>
-                      <ul className="space-y-2 text-foreground">
-                      <li>• Violent homes with beatings and abuse</li>
-                      <li>• Second marriages where mothers are harmed</li>
-                      <li>• Abandonment and rejection by family</li>
-                      <li>• Death of parents leaving children orphaned</li>
+                      <h4 className="font-semibold text-white" style={{color: '#ffffff'}}>Broken Families</h4>
+                      <ul className="space-y-2 text-white" style={{color: '#ffffff'}}>
+                      <li style={{color: '#ffffff'}}>• Violent homes with beatings and abuse</li>
+                      <li style={{color: '#ffffff'}}>• Second marriages where mothers are harmed</li>
+                      <li style={{color: '#ffffff'}}>• Abandonment and rejection by family</li>
+                      <li style={{color: '#ffffff'}}>• Death of parents leaving children orphaned</li>
                     </ul>
                   </div>
                   <div className="space-y-4">
-                      <h4 className="font-semibold text-destructive">Survival Pressures</h4>
-                      <ul className="space-y-2 text-foreground">
-                      <li>• Forced to work from early age</li>
-                      <li>• Malnutrition and lack of basic needs</li>
-                      <li>• Peer pressure and gang influence</li>
-                      <li>• Girls forced into prostitution for survival</li>
+                      <h4 className="font-semibold text-white" style={{color: '#ffffff'}}>Survival Pressures</h4>
+                      <ul className="space-y-2 text-white" style={{color: '#ffffff'}}>
+                      <li style={{color: '#ffffff'}}>• Forced to work from early age</li>
+                      <li style={{color: '#ffffff'}}>• Malnutrition and lack of basic needs</li>
+                      <li style={{color: '#ffffff'}}>• Peer pressure and gang influence</li>
+                      <li style={{color: '#ffffff'}}>• Girls forced into prostitution for survival</li>
                     </ul>
                   </div>
                 </div>
@@ -380,20 +391,20 @@ const MinistryPage = () => {
           <div className="mb-16">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                  <h3 className="text-foreground text-3xl font-bold mb-6">Society's View vs. Their Contribution</h3>
-                  <Card className="bg-warning/10 border-warning/30 mb-6">
+                  <h3 className="text-white text-3xl font-bold mb-6">Society's View vs. Their Contribution</h3>
+                  <Card className="bg-orange-900/20 border-orange-400/30 mb-6">
                   <CardContent className="p-6">
-                      <h4 className="font-semibold text-warning mb-3">How Society Sees Them</h4>
-                      <p className="text-foreground">
+                      <h4 className="font-semibold text-white mb-3">How Society Sees Them</h4>
+                      <p className="text-gray-200">
                       Troublemakers, burdens on society, dirty and unwelcome. 
                       They're avoided, rejected, and criminalized.
                     </p>
                   </CardContent>
                 </Card>
-                  <Card className="bg-success/10 border-success/30">
+                  <Card className="bg-green-900/20 border-green-400/30">
                   <CardContent className="p-6">
-                      <h4 className="font-semibold text-success mb-3">The Hidden Truth</h4>
-                      <p className="text-foreground">
+                      <h4 className="font-semibold text-white mb-3">The Hidden Truth</h4>
+                      <p className="text-gray-200">
                       Up to 25% of everyday items (paper, packaging, plastic goods) 
                       come from materials they collect and recycle. They help reduce 
                       deforestation and keep cities from drowning in waste.
@@ -402,16 +413,16 @@ const MinistryPage = () => {
                 </Card>
               </div>
               <div className="space-y-6">
-                  <h4 className="text-foreground text-xl font-semibold">The Challenges They Face</h4>
+                  <h4 className="text-white text-xl font-semibold">The Challenges They Face</h4>
                 <div className="grid gap-4">
                   {challenges.map((challenge, index) => (
-                    <Card key={index} className="p-4">
+                    <Card key={index} className="p-4 bg-gray-800 border-gray-600">
                       <CardContent className="p-0">
                         <div className="flex items-start gap-3">
                           <div className="text-primary mt-1">{challenge.icon}</div>
                           <div>
-                            <h5 className="font-semibold mb-1">{challenge.title}</h5>
-                              <p className="text-sm text-foreground">{challenge.description}</p>
+                            <h5 className="font-semibold mb-1 text-white">{challenge.title}</h5>
+                              <p className="text-sm text-gray-200">{challenge.description}</p>
                           </div>
                         </div>
                       </CardContent>
@@ -424,17 +435,17 @@ const MinistryPage = () => {
 
           {/* Daily Routine */}
           <div className="mb-16">
-              <h3 className="text-foreground text-3xl font-bold text-center mb-8">A Ragpicker's Daily Routine</h3>
+              <h3 className="text-white text-3xl font-bold text-center mb-8">A Ragpicker's Daily Routine</h3>
             <div className="space-y-4">
               {dailyRoutine.map((item, index) => (
-                <Card key={index} className="p-4 hover:shadow-md transition-shadow">
+                <Card key={index} className="p-4 hover:shadow-md transition-shadow bg-gray-800 border-gray-600">
                   <CardContent className="p-0">
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-4">
-                        <Badge variant="outline" className="w-16 text-center">{item.time}</Badge>
-                          <span className="text-foreground">{item.activity}</span>
+                        <Badge variant="outline" className="w-16 text-center border-gray-400 text-gray-200">{item.time}</Badge>
+                          <span className="text-gray-200">{item.activity}</span>
                       </div>
-                      <Badge variant={item.earnings === "0" ? "secondary" : "default"}>
+                      <Badge variant={item.earnings === "0" ? "secondary" : "default"} className={item.earnings === "0" ? "bg-gray-600 text-gray-200" : "bg-green-600 text-white"}>
                         {item.earnings === "0" ? "No Income" : item.earnings}
                       </Badge>
                     </div>
@@ -442,9 +453,9 @@ const MinistryPage = () => {
                 </Card>
               ))}
             </div>
-            <Card className="mt-6 bg-orange-50 border-orange-200">
+            <Card className="mt-6 bg-orange-900/30 border-orange-400/30">
               <CardContent className="p-6">
-                <p className="text-orange-800 font-semibold">
+                <p className="text-white font-semibold" style={{color: '#ffffff'}}>
                   Walking up to 20km daily, barefoot and exhausted, competing with stray animals for scraps, 
                   earning barely enough to survive while facing constant threats and exploitation.
                 </p>
@@ -454,67 +465,79 @@ const MinistryPage = () => {
         </div>
       </section>
 
-      {/* Agape Children Centre */}
-      <section id="centre" className="py-16">
+      {/* Agape Children Centre - Black Background for Key Program */}
+      <section id="centre" className="py-16 bg-black text-white">
         <div className="container-wide mx-auto px-6">
           <div className="text-center mb-12">
-              <h2 className="text-foreground text-3xl font-semibold mb-6">Agape Children Centre</h2>
-              <p className="text-large text-foreground max-w-3xl mx-auto">
+              <motion.h2 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="text-white text-3xl font-semibold mb-6"
+              >
+                🏠 Agape Children Centre
+              </motion.h2>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-large text-gray-200 max-w-3xl mx-auto"
+              >
               A safe, loving home where abandoned and unwanted street children can experience Christian love, 
               commitment, and the chance for a transformed life.
-            </p>
+            </motion.p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
-                <h3 className="text-foreground text-2xl font-semibold">What We Provide</h3>
+                <h3 className="text-white text-2xl font-semibold">What We Provide</h3>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
                   <Home className="w-6 h-6 text-primary mt-1" />
                   <div>
-                      <h4 className="font-medium mb-1">Safe Housing</h4>
-                      <p className="text-foreground">Secure shelter for street children and ragpickers aged 5-12</p>
+                      <h4 className="font-medium mb-1 text-white">Safe Housing</h4>
+                      <p className="text-gray-200">Secure shelter for street children and ragpickers aged 5-12</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Heart className="w-6 h-6 text-primary mt-1" />
                   <div>
-                      <h4 className="font-medium mb-1">Loving Care</h4>
-                      <p className="text-foreground">Demonstrating God's love through practical daily care</p>
+                      <h4 className="font-medium mb-1 text-white">Loving Care</h4>
+                      <p className="text-gray-200">Demonstrating God's love through practical daily care</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <GraduationCap className="w-6 h-6 text-primary mt-1" />
                   <div>
-                      <h4 className="font-medium mb-1">Education & Skills</h4>
-                      <p className="text-foreground">Basic hygiene, social skills, nutrition, and play</p>
+                      <h4 className="font-medium mb-1 text-white">Education & Skills</h4>
+                      <p className="text-gray-200">Basic hygiene, social skills, nutrition, and play</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <Users className="w-6 h-6 text-primary mt-1" />
                   <div>
-                      <h4 className="font-medium mb-1">Community Integration</h4>
-                      <p className="text-foreground">Help them develop healthy relationships and social skills</p>
+                      <h4 className="font-medium mb-1 text-white">Community Integration</h4>
+                      <p className="text-gray-200">Help them develop healthy relationships and social skills</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Support Us Section */}
-                <Card className="mt-6 bg-accent/10 border border-accent/30">
+                <Card className="mt-6 bg-blue-900/30 border-blue-400/30">
                   <CardContent className="p-4 text-center">
-                    <h4 className="text-lg font-semibold text-accent-foreground flex items-center justify-center gap-2">
-                      <Heart className="w-5 h-5 text-accent-foreground" /> Support Us
+                    <h4 className="text-lg font-semibold text-white flex items-center justify-center gap-2">
+                      <Heart className="w-5 h-5 text-white" /> Support Us
                     </h4>
-                    <p className="text-base text-accent-foreground/90 mb-4">
+                    <p className="text-base text-white mb-4">
                       Help us provide shelter, food, and hope to street children. Every gift matters!
                     </p>
                     <Button
                       size="sm"
-                      className="text-base px-6 py-2 font-medium bg-accent text-accent-foreground"
+                      className="text-base px-6 py-2 font-medium bg-blue-600 text-white hover:bg-blue-700"
                     >
                       Donate Now
                     </Button>
-                    <div className="mt-4 text-xs text-accent-foreground/90">
+                    <div className="mt-4 text-xs text-white">
                       <div className="font-semibold mb-1">Bank Transfer / UPI:</div>
                       <div>Account Name: Agape Bible Church</div>
                       <div>Account No: 1234567890</div>
@@ -533,35 +556,35 @@ const MinistryPage = () => {
                   alt="Caring ministry work with children" 
                   className="w-full h-64 object-cover rounded-lg shadow-lg image-hover-zoom"
                 />
-                  <div className="ministry-overlay bg-card/80 image-overlay-center opacity-0 group-hover:opacity-100">
+                  <div className="ministry-overlay bg-white border border-gray-200/80 image-overlay-center opacity-0 group-hover:opacity-100">
                   <div className="text-center text-white px-6">
-                    <h4 className="text-2xl font-bold mb-2">Caring Ministry</h4>
-                    <p className="text-lg opacity-90">Personal attention and love for every child</p>
+                    <h4 className="text-2xl font-bold mb-2 text-white">Caring Ministry</h4>
+                    <p className="text-lg opacity-90 text-white">Personal attention and love for every child</p>
                   </div>
                 </div>
                   <div className="image-badge bg-primary text-primary-foreground">
                   <Users className="h-4 w-4" />
                 </div>
-                  <p className="text-center text-sm text-foreground mt-2 italic">
+                  <p className="text-center text-sm text-gray-200 mt-2 italic">
                   Personal care and attention for every child
                 </p>
               </div>
               
-              <Card className="p-6">
+              <Card className="p-6 bg-gray-800 border-gray-600">
                 <CardContent className="p-0">
-                    <h4 className="text-foreground text-xl font-semibold mb-4">Our Impact</h4>
+                    <h4 className="text-white text-xl font-semibold mb-4">Our Impact</h4>
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-foreground">250+</div>
-                      <p className="text-sm text-muted-foreground">Children Helped</p>
+                        <div className="text-2xl font-bold text-white">250+</div>
+                      <p className="text-sm text-gray-300">Children Helped</p>
                     </div>
                     <div className="text-center">
-                        <div className="text-2xl font-bold text-foreground">5-12</div>
-                      <p className="text-sm text-muted-foreground">Age Range</p>
+                        <div className="text-2xl font-bold text-white">5-12</div>
+                      <p className="text-sm text-gray-300">Age Range</p>
                     </div>
                   </div>
-                  <Separator className="my-4" />
-                    <blockquote className="italic text-foreground">
+                  <Separator className="my-4 bg-gray-600" />
+                    <blockquote className="italic text-gray-200">
                     "We aim to provide not just shelter, but hope—showing these precious children 
                     that they are valued, loved, and have a bright future ahead."
                   </blockquote>
@@ -573,11 +596,11 @@ const MinistryPage = () => {
       </section>
 
       {/* Our Approach */}
-        <section id="approach" className="py-16 bg-card text-foreground">
+        <section id="approach" className="py-16 bg-white border border-gray-200">
         <div className="container-wide mx-auto px-6">
           <div className="text-center mb-12">
-              <h2 className="text-foreground text-3xl font-semibold mb-6">Our Comprehensive Approach</h2>
-              <p className="text-large text-foreground max-w-3xl mx-auto">
+              <h2 className="text-gray-900 text-3xl font-semibold mb-6">Our Comprehensive Approach</h2>
+              <p className="text-large text-gray-700 max-w-3xl mx-auto">
               Working with street children requires patience, empathy, and a holistic approach 
               that addresses their physical, emotional, and spiritual needs.
             </p>
@@ -585,50 +608,50 @@ const MinistryPage = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {ourApproach.map((approach, index) => (
-              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow">
+              <Card key={index} className="text-center p-6 hover:shadow-lg transition-shadow bg-white border border-gray-200">
                 <CardContent className="p-0">
                   <div className="text-primary mb-4">{approach.icon}</div>
-                    <h3 className="text-foreground text-xl font-semibold mb-3">{approach.title}</h3>
-                    <p className="text-foreground">{approach.description}</p>
+                    <h3 className="text-gray-900 text-xl font-semibold mb-3">{approach.title}</h3>
+                    <p className="text-gray-700">{approach.description}</p>
                 </CardContent>
               </Card>
             ))}
           </div>
 
           {/* Why We're Committed */}
-            <Card className="bg-card/80 text-foreground">
+            <Card className="bg-white border border-gray-200">
             <CardContent className="p-8">
-                <h3 className="text-foreground text-3xl font-bold text-center mb-8">Why We're Committed</h3>
+                <h3 className="text-gray-900 text-3xl font-bold text-center mb-8">Why We're Committed</h3>
               <div className="grid md:grid-cols-2 gap-8">
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <Badge variant="secondary" className="mt-1 bg-primary-foreground text-primary">1</Badge>
+                    <Badge variant="secondary" className="mt-1">1</Badge>
                     <div>
-                      <h4 className="font-semibold mb-2">Equal in God's Eyes</h4>
-                        <p className="text-foreground">Every child deserves dignity and opportunity, regardless of their circumstances.</p>
+                      <h4 className="font-semibold mb-2 text-gray-900">Equal in God's Eyes</h4>
+                        <p className="text-gray-700">Every child deserves dignity and opportunity, regardless of their circumstances.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Badge variant="secondary" className="mt-1 bg-primary-foreground text-primary">2</Badge>
+                    <Badge variant="secondary" className="mt-1">2</Badge>
                     <div>
-                      <h4 className="font-semibold mb-2">Transformation</h4>
-                        <p className="text-foreground">Through education and love, we restore their worth and help them integrate into society.</p>
+                      <h4 className="font-semibold mb-2 text-gray-900">Transformation</h4>
+                        <p className="text-gray-700">Through education and love, we restore their worth and help them integrate into society.</p>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <Badge variant="secondary" className="mt-1 bg-primary-foreground text-primary">3</Badge>
+                    <Badge variant="secondary" className="mt-1">3</Badge>
                     <div>
-                      <h4 className="font-semibold mb-2">Sharing the Gospel</h4>
-                        <p className="text-foreground">Bringing hope and spiritual renewal to those who have known only despair.</p>
+                      <h4 className="font-semibold mb-2 text-gray-900">Sharing the Gospel</h4>
+                        <p className="text-gray-700">Bringing hope and spiritual renewal to those who have known only despair.</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Badge variant="secondary" className="mt-1 bg-primary-foreground text-primary">4</Badge>
+                    <Badge variant="secondary" className="mt-1">4</Badge>
                     <div>
-                      <h4 className="font-semibold mb-2">Health & Education</h4>
-                        <p className="text-foreground">Providing medical care, psychological support, and schooling for a brighter future.</p>
+                      <h4 className="font-semibold mb-2 text-gray-900">Health & Education</h4>
+                        <p className="text-gray-700">Providing medical care, psychological support, and schooling for a brighter future.</p>
                     </div>
                   </div>
                 </div>
@@ -641,19 +664,19 @@ const MinistryPage = () => {
       {/* Call to Action */}
         <section className="py-16 bg-gradient-to-r from-primary to-card text-primary-foreground">
         <div className="container-wide mx-auto px-6 text-center">
-          <h2 className="text-section-title font-bold mb-6">Join Our Mission</h2>
-          <p className="text-large mb-8 max-w-2xl mx-auto">
+          <h2 className="text-section-title font-bold mb-6 text-primary-foreground">Join Our Mission</h2>
+          <p className="text-large mb-8 max-w-2xl mx-auto text-primary-foreground">
             Through the Agape Children Centre and our nationwide mission efforts, we bring practical care 
             and the love of Christ to India's street children—giving them a real chance at a hopeful, dignified life.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/#contact">
-              <Button size="lg" variant="secondary">
+              <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
                 Partner With Us
               </Button>
             </Link>
             <Link to="/pastor-biography">
-                <Button size="lg" variant="secondary">
+                <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100">
                 Learn About Our Pastor
               </Button>
             </Link>

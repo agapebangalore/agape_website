@@ -620,9 +620,9 @@ export default function AgapeChurch() {
                   </div>
                   <div className="text-center pt-8">
                     <Link to="/pastor-biography">
-                      <Button size="lg" className="text-lg px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black font-semibold transition-all duration-200 shadow-lg hover:shadow-xl rounded-full">
+                      <Button size="lg" className="text-lg px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white font-semibold transition-all duration-200 shadow-lg hover:shadow-xl rounded-full">
                         Read Complete Biography
-                        <Book className="h-5 w-5 ml-2" />
+                        <Book className="h-5 w-5 ml-2 text-white" />
                       </Button>
                     </Link>
                   </div>
@@ -814,9 +814,9 @@ export default function AgapeChurch() {
             </p>
             <div className="text-center">
               <Link to="/ministry">
-                <Button size="lg" className="text-lg px-8 py-4 bg-gold-500 hover:bg-gold-600 text-black rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1" style={{ color: '#000000' }}>
-                  <span style={{ color: '#000000' }}>Learn More About Our Ministries</span>
-                  <Book className="h-5 w-5 ml-2" style={{ color: '#000000' }} />
+                <Button size="lg" className="text-lg px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                  <span className="text-white">Learn More About Our Ministries</span>
+                  <Book className="h-5 w-5 ml-2 text-white" />
                 </Button>
               </Link>
             </div>
@@ -827,124 +827,178 @@ export default function AgapeChurch() {
       {/* Contact Section */}
         <section id="contact" className="section-spacing bg-gradient-to-b from-gray-50 to-white">
         <div className="container-wide">
-          <div className="text-center space-y-6 mb-16">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold text-primary">Visit Us</span>
+          <div className="text-center space-y-8 mb-20">
+              <div className="inline-flex items-center gap-2 px-6 py-3 bg-primary/10 rounded-full mb-6">
+                <MapPin className="h-5 w-5 text-primary" />
+                <span className="text-base font-semibold text-primary">Join Our Community</span>
               </div>
-              <h2 className="text-section-title font-display font-bold text-gray-900">Visit Us This Sunday</h2>
-              <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              Experience worship, fellowship, and biblical teaching in a welcoming environment. You are always welcome at Agape Bible Church.
-            </p>
+              <h2 className="text-section-title font-display font-bold text-gray-900 mb-6">Visit Us This Sunday</h2>
+              <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
+                Experience authentic worship, meaningful fellowship, and biblical teaching in a warm, welcoming environment. 
+                Whether you're exploring faith or looking for a church home, you'll find a place at Agape Bible Church.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Clock className="h-5 w-5 text-primary" />
+                  <span className="font-medium">Sunday Services: 9:00 AM & 11:00 AM</span>
+                </div>
+                <div className="hidden sm:block text-gray-300">•</div>
+                <div className="flex items-center gap-2 text-gray-600">
+                  <Users className="h-5 w-5 text-secondary" />
+                  <span className="font-medium">All are welcome</span>
+                </div>
+              </div>
           </div>
 
-            {/* Enhanced Contact Card for better visibility */}
-            <div className="rounded-3xl bg-white border border-gray-200 shadow-2xl p-10 mb-16">
-              <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="space-y-10">
-              <div className="space-y-6">
-                    <h3 className="text-3xl font-display font-bold text-gray-900 flex items-center gap-3">
-                  <div className="p-2 bg-primary/10 rounded-full">
-                    <MapPin className="h-6 w-6 text-primary" />
-                  </div>
-                  Location
-                </h3>
-                <div className="space-y-3 pl-14">
+            {/* Enhanced Contact Card with better organization */}
+            <div className="rounded-3xl bg-white border border-gray-200 shadow-2xl p-12 mb-16">
+              <div className="grid lg:grid-cols-3 gap-12 items-start">
+                {/* Location Information */}
+                <div className="space-y-8">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-display font-bold text-gray-900 flex items-center gap-3">
+                      <div className="p-3 bg-primary/10 rounded-full">
+                        <MapPin className="h-6 w-6 text-primary" />
+                      </div>
+                      Location
+                    </h3>
+                    <div className="space-y-3">
                       <p className="text-xl font-semibold text-gray-900">{churchInfo.name}</p>
                       <p className="text-gray-600 leading-relaxed">{churchInfo.address}</p>
-                      <p className="text-gray-600">{churchInfo.city}</p>
+                      <p className="text-gray-600 font-medium">{churchInfo.city}</p>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              
-              <div className="space-y-6">
-                    <h3 className="text-3xl font-display font-bold text-gray-900 flex items-center gap-3">
-                  <div className="p-2 bg-secondary/10 rounded-full">
-                    <Clock className="h-6 w-6 text-secondary" />
+
+                {/* Service Times */}
+                <div className="space-y-8">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-display font-bold text-gray-900 flex items-center gap-3">
+                      <div className="p-3 bg-secondary/10 rounded-full">
+                        <Clock className="h-6 w-6 text-secondary" />
+                      </div>
+                      Service Times
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-primary">
+                        <p className="text-lg font-semibold text-gray-900">Sunday Worship</p>
+                        <p className="text-gray-600">9:00 AM & 11:00 AM</p>
+                      </div>
+                      <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-secondary">
+                        <p className="text-lg font-semibold text-gray-900">Wednesday Bible Study</p>
+                        <p className="text-gray-600">7:00 PM</p>
+                      </div>
+                      <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-accent">
+                        <p className="text-lg font-semibold text-gray-900">Saturday Youth Fellowship</p>
+                        <p className="text-gray-600">6:00 PM</p>
+                      </div>
+                    </div>
                   </div>
-                  Service Times
-                </h3>
-                <div className="space-y-3 pl-14">
-                      <p className="text-lg text-gray-700 font-medium">Sunday Worship: 9:00 AM & 11:00 AM</p>
-                      <p className="text-lg text-gray-700 font-medium">Wednesday Bible Study: 7:00 PM</p>
-                      <p className="text-lg text-gray-700 font-medium">Saturday Youth Fellowship: 6:00 PM</p>
                 </div>
-              </div>
-            </div>
-            
-            <div className="space-y-8">
-              <div className="space-y-6">
-                    <h3 className="text-3xl font-display font-bold text-gray-900 flex items-center gap-3">
-                  <div className="p-2 bg-accent/10 rounded-full">
-                    <Phone className="h-6 w-6 text-accent" />
-                  </div>
-                  Get In Touch
-                </h3>
-                <div className="space-y-4 pl-14">
-                  <div className="flex items-center gap-3 text-lg">
-                    <Phone className="h-5 w-5 text-gray-500" />
-                        <span className="text-gray-700 font-medium">{churchInfo.altPhone}</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-lg">
+
+                {/* Contact & Social */}
+                <div className="space-y-8">
+                  <div className="space-y-6">
+                    <h3 className="text-2xl font-display font-bold text-gray-900 flex items-center gap-3">
+                      <div className="p-3 bg-accent/10 rounded-full">
+                        <Phone className="h-6 w-6 text-accent" />
+                      </div>
+                      Contact
+                    </h3>
+                    <div className="space-y-4">
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
                         <Phone className="h-5 w-5 text-gray-500" />
-                        <span className="text-gray-700 font-medium">{churchInfo.phone}</span>
+                        <div>
+                          <p className="text-sm text-gray-500">Primary</p>
+                          <p className="text-gray-700 font-medium">{churchInfo.phone}</p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 p-3 bg-gray-50 rounded-lg">
+                        <Phone className="h-5 w-5 text-gray-500" />
+                        <div>
+                          <p className="text-sm text-gray-500">Alternative</p>
+                          <p className="text-gray-700 font-medium">{churchInfo.altPhone}</p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </div>
-              
-              <div className="space-y-6">
-                    <h3 className="text-3xl font-display font-bold text-gray-900">Connect With Us</h3>
-                <div className="grid grid-cols-2 gap-4 pl-2">
-                      <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 rounded-xl p-4 shadow-md hover:shadow-lg" asChild>
-                        <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-                          <Facebook className="h-5 w-5 text-blue-600" />
-                    </a>
-                  </Button>
-                      <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 transition-all duration-200 rounded-xl p-4 shadow-md hover:shadow-lg" asChild>
-                        <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-                          <Instagram className="h-5 w-5 text-pink-600" />
-                    </a>
-                  </Button>
-                      <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 transition-all duration-200 rounded-xl p-4 shadow-md hover:shadow-lg" asChild>
-                        <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
-                          <Twitter className="h-5 w-5 text-sky-600" />
-                    </a>
-                  </Button>
-                      <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 rounded-xl p-4 shadow-md hover:shadow-lg" asChild>
-                        <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                          <Youtube className="h-5 w-5 text-red-600" />
-                    </a>
-                  </Button>
-                </div>
-              </div>
+                  
+                  <div className="space-y-6">
+                    <h3 className="text-xl font-display font-bold text-gray-900">Follow Us</h3>
+                    <div className="grid grid-cols-2 gap-3">
+                      <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
+                        <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center gap-2">
+                          <Facebook className="h-4 w-4 text-blue-600" />
+                          <span className="text-xs font-medium">Facebook</span>
+                        </a>
+                      </Button>
+                      <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
+                        <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-2">
+                          <Instagram className="h-4 w-4 text-pink-600" />
+                          <span className="text-xs font-medium">Instagram</span>
+                        </a>
+                      </Button>
+                      <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
+                        <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center gap-2">
+                          <Twitter className="h-4 w-4 text-sky-600" />
+                          <span className="text-xs font-medium">Twitter</span>
+                        </a>
+                      </Button>
+                      <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
+                        <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center gap-2">
+                          <Youtube className="h-4 w-4 text-red-600" />
+                          <span className="text-xs font-medium">YouTube</span>
+                        </a>
+                      </Button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
 
-            {/* Google Maps Embed - Larger */}
-            <div className="flex justify-center mb-12">
-              <div className="w-full max-w-4xl aspect-[3/2] rounded-2xl overflow-hidden border border-gray-200 shadow-xl">
-                <iframe
-                  title="Agape Bible Church Location Map"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.241964073964!2d77.620333!3d13.0132357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16e2a094bf89%3A0xa0896909de2109f4!2sAgape%20Bible%20Church!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+            {/* Interactive Map Section */}
+            <div className="bg-gray-50 rounded-3xl p-8 mb-16">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">Find Us on the Map</h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  We're conveniently located in Bangalore. Click on the map for directions, or use the contact information above to reach us.
+                </p>
+              </div>
+              <div className="flex justify-center">
+                <div className="w-full max-w-5xl aspect-[3/2] rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
+                  <iframe
+                    title="Agape Bible Church Location Map"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.241964073964!2d77.620333!3d13.0132357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16e2a094bf89%3A0xa0896909de2109f4!2sAgape%20Bible%20Church!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen={true}
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  ></iframe>
+                </div>
+              </div>
             </div>
-          </div>
           
-          <div className="text-center">
-              <Button size="lg" className="text-lg px-8 py-3 bg-accent text-foreground"
+          <div className="text-center bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-8">
+            <h3 className="text-2xl font-display font-bold text-gray-900 mb-4">Ready to Join Us?</h3>
+            <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+              Take the next step in your faith journey. We'd love to welcome you into our church family this Sunday.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" className="text-lg px-8 py-4 bg-primary hover:bg-primary/90 text-white shadow-lg hover:shadow-xl transition-all duration-200"
                 onClick={() => scrollToSection('hero')}
-                onMouseOver={e => e.currentTarget.classList.add('bg-orange-600')}
-                onMouseOut={e => e.currentTarget.classList.remove('bg-orange-600')}
               >
-              Plan Your Visit
-              <ChevronRight className="h-5 w-5 ml-2" />
-            </Button>
+                Plan Your Visit
+                <ChevronRight className="h-5 w-5 ml-2" />
+              </Button>
+              <Button size="lg" variant="outline" className="text-lg px-8 py-4 border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200"
+                onClick={() => scrollToSection('contact')}
+              >
+                Get Directions
+                <MapPin className="h-5 w-5 ml-2" />
+              </Button>
+            </div>
           </div>
         </div>
       </section>
