@@ -26,9 +26,9 @@ const PLAYLISTS = {
 
 // Helper to fetch all video details for a playlist
 async function fetchPlaylistVideos(playlistId: string): Promise<(Video & { _group?: string })[]> {
-  let videos: (Video & { _group?: string })[] = [];
+  const videos: (Video & { _group?: string })[] = [];
   let nextPageToken = '';
-  let page = 1;
+  const page = 1;
   do {
     const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=50&key=${YOUTUBE_API_KEY}` + (nextPageToken ? `&pageToken=${nextPageToken}` : '');
     const res = await fetch(url);
@@ -102,7 +102,7 @@ const PodcastEpisodes: React.FC = () => {
       </h2>
       <div className="grid md:grid-cols-2 gap-8">
         {episodes.map((ep) => (
-          <div key={ep.id} className="bg-gray-50 border border-gray-200 rounded-xl p-6 flex flex-col shadow-md">
+          <div key={ep.id} className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col shadow-md">
             <h3 className="text-foreground text-lg font-semibold mb-2">{ep.name}</h3>
             <p className="text-foreground text-sm text-[oklch(0.18_0_0)] mb-2">
               {ep.release_date} &bull; {Math.floor(ep.duration_ms / 60000)} min
@@ -348,7 +348,7 @@ const SermonsPage: React.FC = () => {
                   </h2>
                   <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
                     {paginated.map((video) => (
-                      <Card key={video.id} className="bg-black/80 text-white p-4 flex flex-col items-center">
+                      <Card key={video.id} className="bg-white/85 text-gray-700 p-4 flex flex-col items-center">
                         <div className="w-full aspect-video mb-4">
                           <iframe
                             width="100%"
@@ -416,7 +416,7 @@ const SermonsPage: React.FC = () => {
             Podcasts
           </h2>
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-gray-50 border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow-md w-full col-span-2">
+            <div className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col items-center shadow-md w-full col-span-2">
               <img src="/icon-512x512.png" alt="Agape Bible Church Podcast" className="w-20 h-20 mb-4 rounded-full shadow" />
               {/* Subsections */}
               <h3 className="text-foreground text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>

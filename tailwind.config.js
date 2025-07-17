@@ -11,7 +11,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        // Material Design color system mapped to CSS variables
+        // Modern church color system
         primary: 'hsl(var(--primary))',
         'primary-foreground': 'hsl(var(--primary-foreground))',
         secondary: 'hsl(var(--secondary))',
@@ -31,7 +31,45 @@ module.exports = {
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
-        orangeBrand: '#ff9800',
+        
+        // Custom brand colors
+        navy: {
+          50: '#f0f4ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#4f46e5',
+          700: '#4338ca',
+          800: '#3730a3',
+          900: '#312e81',
+          950: '#1e3a8a',
+        },
+        gold: {
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          300: '#fcd34d',
+          400: '#fbbf24',
+          500: '#f59e0b',
+          600: '#d97706',
+          700: '#b45309',
+          800: '#92400e',
+          900: '#78350f',
+        },
+        burgundy: {
+          50: '#fef2f2',
+          100: '#fee2e2',
+          200: '#fecaca',
+          300: '#fca5a5',
+          400: '#f87171',
+          500: '#ef4444',
+          600: '#dc2626',
+          700: '#b91c1c',
+          800: '#991b1b',
+          900: '#7f1d1d',
+        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -40,8 +78,9 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-      serif: ['Playfair Display', 'Crimson Text', 'ui-serif', 'Georgia', 'serif'],
+      sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      display: ["Poppins", "Inter", "ui-sans-serif", "system-ui", "sans-serif"],
+      serif: ["Crimson Text", "ui-serif", "Georgia", "serif"],
     },
   },
   plugins: [require('tailwindcss-animate')],
