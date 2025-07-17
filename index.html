@@ -2,22 +2,52 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- PWA Primary Meta Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Agape Church" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-TileColor" content="#3b82f6" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <meta name="theme-color" content="#3b82f6" />
+    
     <title>Agape Bible Church - Bangalore</title>
     <meta name="description" content="Welcome to Agape Bible Church Bangalore - An independent, non-denominational Tamil church dedicated to reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ." />
+    
+    <!-- PWA Icons and Manifest -->
+    <link rel="icon" type="image/png" sizes="32x32" href="/icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/icon-192x192.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/icon-512x512.png" color="#3b82f6" />
+    <link rel="manifest" href="/manifest.json" />
+    
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Agape Bible Church - Bangalore" />
     <meta property="og:description" content="An independent, non-denominational Tamil church dedicated to reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ." />
     <meta property="og:image" content="/authentic-church-worship.png" />
     <meta property="og:url" content="https://agapebangalore.org/" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Agape Bible Church" />
+    
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Agape Bible Church - Bangalore" />
     <meta name="twitter:description" content="An independent, non-denominational Tamil church dedicated to reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ." />
     <meta name="twitter:image" content="/authentic-church-worship.png" />
+    <meta name="twitter:site" content="@agapebangalore" />
+    
+    <!-- SEO and Performance -->
     <link rel="canonical" href="https://agapebangalore.org/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="googlebot" content="index, follow" />
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="/authentic-church-worship.webp" as="image" type="image/webp" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   </head>
   <body>
     <div id="root"></div>

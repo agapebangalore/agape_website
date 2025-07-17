@@ -95,7 +95,7 @@ const MinistryPage = () => {
       </a>
       {/* Header Navigation */}
       <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border" aria-label="Main Navigation">
-        <div className="container-wide mx-auto px-6 py-4">
+        <div className="container-wide mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/#ministry">
               <Button variant="ghost" className="flex items-center gap-2 text-foreground hover:text-primary" aria-label="Back to Main Site">
@@ -115,7 +115,7 @@ const MinistryPage = () => {
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Quick Navigation */}
       <div className="bg-muted/30 py-4">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="flex flex-wrap gap-2 justify-center">
               <Button variant="ghost" size="sm" onClick={() => scrollToSection('missions')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Church Missions section">Church Missions</Button>
               <Button variant="ghost" size="sm" onClick={() => scrollToSection('planting')} className="text-foreground hover:text-primary hover:bg-muted" aria-label="Go to Church Planting section">Church Planting</Button>
@@ -128,9 +128,9 @@ const MinistryPage = () => {
 
       {/* Hero Section */}
         <section className="py-16 bg-gradient-to-br from-primary/20 to-white">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-hero font-bold mb-6 text-gray-900">Transforming Lives Through Christ's Love</h1>
+            <h1 className="text-2xl md:text-hero font-bold mb-6 text-gray-900">Transforming Lives Through Christ's Love</h1>
               <p className="text-section-title text-gray-800 mb-8">
               Mission Work Among Street Children & Church Planting Across India
             </p>
@@ -140,7 +140,7 @@ const MinistryPage = () => {
             </p>
             
             {/* Ministry Stats */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 sm:gap-6">
               {ministryStats.map((stat, index) => (
                 <Card key={index} className="text-center p-4 hover:shadow-lg transition-shadow bg-white border border-gray-200">
                   <CardContent className="p-0">
@@ -157,7 +157,7 @@ const MinistryPage = () => {
 
       {/* Church Missions Section */}
         <section id="missions" className="py-16 bg-white border border-gray-200">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
               <h2 className="text-gray-900 text-3xl font-semibold mb-6">Mission Work in India</h2>
               <p className="text-large text-gray-700 max-w-3xl mx-auto">
@@ -216,7 +216,7 @@ const MinistryPage = () => {
 
       {/* Church Planting Section */}
         <section id="planting" className="py-16 bg-background">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
               <h2 className="text-foreground text-3xl font-semibold mb-6">Church Planting Movement</h2>
               <p className="text-large text-foreground max-w-3xl mx-auto">
@@ -312,7 +312,7 @@ const MinistryPage = () => {
 
       {/* Street Children Ministry Section - Black Background for Impact */}
         <section id="children" className="py-16 bg-black text-white">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
@@ -467,7 +467,7 @@ const MinistryPage = () => {
 
       {/* Agape Children Centre - Black Background for Key Program */}
       <section id="centre" className="py-16 bg-black text-white">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
               <motion.h2 
                 initial={{ opacity: 0, y: 20 }}
@@ -521,31 +521,6 @@ const MinistryPage = () => {
                     </div>
                   </div>
                 </div>
-
-                {/* Support Us Section */}
-                <Card className="mt-6 bg-blue-900/30 border-blue-400/30">
-                  <CardContent className="p-4 text-center">
-                    <h4 className="text-lg font-semibold text-white flex items-center justify-center gap-2">
-                      <Heart className="w-5 h-5 text-white" /> Support Us
-                    </h4>
-                    <p className="text-base text-white mb-4">
-                      Help us provide shelter, food, and hope to street children. Every gift matters!
-                    </p>
-                    <Button
-                      size="sm"
-                      className="text-base px-6 py-2 font-medium bg-blue-600 text-white hover:bg-blue-700"
-                    >
-                      Donate Now
-                    </Button>
-                    <div className="mt-4 text-xs text-white">
-                      <div className="font-semibold mb-1">Bank Transfer / UPI:</div>
-                      <div>Account Name: Agape Bible Church</div>
-                      <div>Account No: 1234567890</div>
-                      <div>IFSC: ABCD0123456</div>
-                      <div>UPI: agapebible@upi</div>
-                    </div>
-                  </CardContent>
-                </Card>
             </div>
             
             <div className="space-y-6">
@@ -595,9 +570,125 @@ const MinistryPage = () => {
         </div>
       </section>
 
+      {/* Support Our Mission - Dedicated Section */}
+      <section className="py-16 bg-gradient-to-br from-orange-600 via-red-600 to-pink-700">
+        <div className="container-wide mx-auto px-4 sm:px-6">
+          <div className="text-center mb-12">
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-3xl font-bold mb-6"
+              style={{color: '#ffffff'}}
+            >
+              💝 Transform Lives Today
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-lg max-w-3xl mx-auto"
+              style={{color: '#ffffff'}}
+            >
+              Your support directly funds safe housing, nutritious meals, education, and loving care 
+              for children who have nowhere else to turn. Be the hope they desperately need.
+            </motion.p>
+          </div>
+
+          <div className="grid lg:grid-cols-3 gap-8 mb-12">
+            {/* What Your Donation Does */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4 text-center" style={{color: '#ffffff'}}>Your Impact</h3>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🏠</span>
+                    <span style={{color: '#ffffff'}}>Safe shelter from street dangers</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">🍽️</span>
+                    <span style={{color: '#ffffff'}}>Nutritious meals every day</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">📚</span>
+                    <span style={{color: '#ffffff'}}>Education and life skills</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">💊</span>
+                    <span style={{color: '#ffffff'}}>Healthcare and medical attention</span>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    <span className="text-2xl">❤️</span>
+                    <span style={{color: '#ffffff'}}>Love, dignity, and hope</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Donation Amounts */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4 text-center" style={{color: '#ffffff'}}>Make a Difference</h3>
+                <div className="space-y-4">
+                  <div className="bg-white/10 rounded-lg p-4 border border-white/20 text-center">
+                    <div className="text-2xl font-bold text-green-300">₹500</div>
+                    <div className="text-sm" style={{color: '#ffffff'}}>Feeds a child for 1 month</div>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4 border border-white/20 text-center">
+                    <div className="text-2xl font-bold text-blue-300">₹2,000</div>
+                    <div className="text-sm" style={{color: '#ffffff'}}>Provides shelter for 1 month</div>
+                  </div>
+                  <div className="bg-white/10 rounded-lg p-4 border border-white/20 text-center">
+                    <div className="text-2xl font-bold text-purple-300">₹5,000</div>
+                    <div className="text-sm" style={{color: '#ffffff'}}>Complete care for 1 month</div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Payment Information */}
+            <Card className="bg-white/10 backdrop-blur border-white/20">
+              <CardContent className="p-6">
+                <h3 className="text-xl font-bold mb-4 text-center" style={{color: '#ffffff'}}>How to Donate</h3>
+                <div className="space-y-4">
+                  <div className="text-center">
+                    <div className="text-blue-300 font-semibold mb-2">🏦 Bank Transfer</div>
+                    <div className="text-sm space-y-1">
+                      <div style={{color: '#ffffff'}}>Agape Bible Church</div>
+                      <div style={{color: '#ffffff'}}>A/C: 1234567890</div>
+                      <div style={{color: '#ffffff'}}>IFSC: ABCD0123456</div>
+                    </div>
+                  </div>
+                  <div className="border-t border-white/20 pt-4 text-center">
+                    <div className="text-green-300 font-semibold mb-2">📱 Digital Payments</div>
+                    <div className="text-sm space-y-1">
+                      <div style={{color: '#ffffff'}}>UPI: agapebible@upi</div>
+                      <div style={{color: '#ffffff'}}>GPay • PhonePe • Paytm</div>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Call to Action */}
+          <div className="text-center">
+            <Button
+              size="lg"
+              className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-4 text-lg shadow-xl transform hover:scale-105 transition-all duration-200"
+            >
+              🤝 Donate Now - Change a Life Forever
+            </Button>
+            <p className="mt-4 text-sm" style={{color: '#ffffff'}}>
+              💯 100% of your donation goes directly to helping children • Tax exemption available
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Our Approach */}
         <section id="approach" className="py-16 bg-white border border-gray-200">
-        <div className="container-wide mx-auto px-6">
+        <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
               <h2 className="text-gray-900 text-3xl font-semibold mb-6">Our Comprehensive Approach</h2>
               <p className="text-large text-gray-700 max-w-3xl mx-auto">
@@ -663,7 +754,7 @@ const MinistryPage = () => {
 
       {/* Call to Action */}
         <section className="py-16 bg-gradient-to-r from-primary to-card text-primary-foreground">
-        <div className="container-wide mx-auto px-6 text-center">
+        <div className="container-wide mx-auto px-4 sm:px-6 text-center">
           <h2 className="text-section-title font-bold mb-6 text-primary-foreground">Join Our Mission</h2>
           <p className="text-large mb-8 max-w-2xl mx-auto text-primary-foreground">
             Through the Agape Children Centre and our nationwide mission efforts, we bring practical care 

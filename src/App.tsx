@@ -56,7 +56,7 @@ function AnimatedVisionText() {
         >
           <div className="space-y-6">
             {/* First part of the heading */}
-            <h1 className="!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
               <motion.span 
                 className="inline-block mr-4"
                 initial={{ opacity: 0, x: -50 }}
@@ -115,7 +115,7 @@ function AnimatedVisionText() {
             </div>
             
             {/* Second part of the heading - same size as first part */}
-            <h1 className="!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
               <motion.span 
                 className="inline-block"
                 initial={{ opacity: 0 }}
@@ -209,7 +209,7 @@ export default function AgapeChurch() {
               onClick={() => scrollToSection('hero')}
               className="flex items-center space-x-3 font-display text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
             >
-              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-10 w-10 object-contain" />
+              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
               <span className="hidden sm:block">AGAPE BIBLE CHURCH</span>
               <span className="sm:hidden">AGAPE</span>
             </button>
@@ -754,7 +754,7 @@ export default function AgapeChurch() {
           {/* Statistics */}
           <div className="grid md:grid-cols-4 gap-6 mb-20">
             <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <div className="text-6xl font-display font-bold text-primary">70,000</div>
+              <div className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary">70,000</div>
                 <p className="text-gray-200 font-medium">Rag Pickers in Bangalore</p>
             </div>
             <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">

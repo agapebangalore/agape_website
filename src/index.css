@@ -11,6 +11,12 @@
   --font-display: "Poppins", "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Crimson Text", ui-serif, Georgia, serif;
   --animate-gradient: gradient 8s linear infinite;
+  
+  /* Mobile-optimized container widths */
+  --container-mobile: 100%;
+  --container-tablet: 768px;
+  --container-desktop: 1024px;
+  --container-wide: 1280px;
 
   @keyframes gradient {
     to {
@@ -459,6 +465,138 @@ h4, .text-lg, .text-large {
 
 .text-primary {
   color: hsl(var(--primary)) !important;
+}
+
+/* PWA and Mobile Optimizations */
+@media (max-width: 640px) {
+  /* Ensure minimum touch targets */
+  button, 
+  .btn, 
+  a[role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Improve text readability on mobile */
+  body {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+  
+  /* Optimize container spacing for mobile */
+  .container-wide {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Improve form inputs on mobile */
+  input, 
+  textarea, 
+  select {
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  /* Better mobile menu positioning */
+  .mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+  }
+}
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+  /* Fix viewport height on mobile Safari */
+  .min-h-screen {
+    min-height: -webkit-fill-available;
+  }
+  
+  /* Prevent elastic scrolling */
+  body {
+    overscroll-behavior-y: none;
+  }
+}
+
+/* Android Chrome specific fixes */
+@media screen and (max-width: 640px) {
+  /* Improve tap highlighting */
+  * {
+    -webkit-tap-highlight-color: rgba(59, 130, 246, 0.1);
+  }
+  
+  /* Fix input zoom on Android */
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* Use higher quality images on retina displays */
+  .hero-image,
+  .ministry-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Landscape orientation optimizations */
+@media screen and (orientation: landscape) and (max-height: 500px) {
+  /* Reduce hero section height on landscape mobile */
+  .hero-section {
+    min-height: 60vh;
+  }
+  
+  /* Compact navigation on landscape */
+  .nav-mobile {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  /* Improve readability in dark mode */
+  :root {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  /* Optimize for printing */
+  .no-print {
+    display: none !important;
+  }
+  
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Ensure good contrast for print */
+  * {
+    color: black !important;
+    background: transparent !important;
+  }
 }
 
 .text-secondary {

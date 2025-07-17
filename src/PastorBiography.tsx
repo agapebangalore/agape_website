@@ -185,11 +185,11 @@ const PastorBiography = () => {
         <section className="py-16 bg-gradient-to-br from-primary/60 to-card">
         <div className="container-wide mx-auto px-6">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-hero font-bold mb-6">Archbishop Dr. Reuben M. Sathiyaraj</h1>
-            <p className="text-section-title text-muted-foreground mb-8">
+            <h1 className="text-2xl md:text-hero font-bold mb-6">Archbishop Dr. Reuben M. Sathiyaraj</h1>
+            <p className="text-xl md:text-section-title text-muted-foreground mb-8">
               Founding Senior Pastor of Agape Bible Fellowship and Churches
             </p>
-              <p className="text-large text-foreground leading-relaxed mb-12">
+              <p className="text-lg md:text-large text-foreground leading-relaxed mb-12">
               A remarkable journey from rebellion to redemption, from the streets of Chennai to the tribal islands of Andaman, 
               from a broken young man to a transformational leader who has planted hundreds of churches and trained countless missionaries.
             </p>
@@ -284,10 +284,10 @@ const PastorBiography = () => {
       {/* Family Section */}
         <section className="py-16 bg-card text-foreground">
         <div className="container-wide mx-auto px-6">
-          <h2 className="text-section-title font-bold text-center mb-12">The Sathiyaraj Family</h2>
+          <h2 className="text-xl md:text-section-title font-bold text-center mb-12">The Sathiyaraj Family</h2>
           
           <div className="max-w-4xl mx-auto">
-            <p className="text-large text-center mb-12 text-muted-foreground">
+            <p className="text-lg md:text-large text-center mb-12 text-muted-foreground">
               A family united in faith and ministry, each member contributing to the advancement of God's kingdom.
             </p>
             
@@ -313,7 +313,7 @@ const PastorBiography = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-section-title font-bold text-center mb-12 text-white"
+            className="text-xl md:text-section-title font-bold text-center mb-12 text-white"
           >
             📖 The Complete Story
           </motion.h2>
@@ -485,7 +485,7 @@ const PastorBiography = () => {
       <section className="py-16 bg-primary text-primary-foreground">
         <div className="container-wide mx-auto px-6 text-center">
             <h2 className="text-3xl font-semibold mb-6">Continue the Mission</h2>
-          <p className="text-large mb-8 max-w-2xl mx-auto">
+          <p className="text-lg md:text-large mb-8 max-w-2xl mx-auto">
             Pastor Reuben's story continues through the lives he touches and the churches he plants. 
             Join us in supporting this ongoing ministry.
           </p>

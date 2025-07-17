@@ -4,12 +4,22 @@
   "description": "An independent, non-denominational Tamil church in Bangalore, India. Reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ since 1990.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0f172a",
+  "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
+  "background_color": "#ffffff",
   "theme_color": "#3b82f6",
-  "orientation": "portrait-primary",
+  "orientation": "any",
   "scope": "/",
   "lang": "en",
-  "categories": ["religion", "church", "community", "ministry"],
+  "dir": "ltr",
+  "categories": ["religion", "church", "community", "ministry", "spiritual", "worship"],
+  "prefer_related_applications": false,
+  "edge_side_panel": {
+    "preferred_width": 400
+  },
+  "handle_links": "preferred",
+  "launch_handler": {
+    "client_mode": ["navigate-existing", "auto"]
+  },
   "icons": [
     {
       "src": "/icon-192x192.png",
@@ -26,37 +36,67 @@
     {
       "src": "/apple-touch-icon.png",
       "sizes": "180x180",
-      "type": "image/png"
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/agape-bible-church-logo.png",
+      "sizes": "64x64 128x128 256x256",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/authentic-church-worship.png",
+      "type": "image/png",
+      "sizes": "1280x720",
+      "form_factor": "wide",
+      "label": "Church worship service"
+    },
+    {
+      "src": "/community-fellowship.png",
+      "type": "image/png", 
+      "sizes": "750x1334",
+      "form_factor": "narrow",
+      "label": "Mobile church community"
     }
   ],
   "shortcuts": [
     {
-      "name": "Sermons",
+      "name": "Sunday Service",
+      "short_name": "Service",
+      "description": "Join us for worship - 9AM & 11AM",
+      "url": "/#contact",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    },
+    {
+      "name": "Live Sermons",
       "short_name": "Sermons",
       "description": "Listen to life-changing messages",
-      "url": "/#sermons",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "url": "/sermons",
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Our Pastor",
       "short_name": "Pastor",
       "description": "Learn about Archbishop Sathiyaraj",
       "url": "/pastor-biography",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
-      "name": "Ministry",
+      "name": "Ministry Work",
       "short_name": "Ministry",
       "description": "Our mission work and outreach",
       "url": "/ministry",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
-    },
+      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192", "type": "image/png" }]
+    }
+  ],
+  "related_applications": [
     {
-      "name": "Contact Us",
-      "short_name": "Contact",
-      "description": "Visit us this Sunday",
-      "url": "/#contact",
-      "icons": [{ "src": "/icon-192x192.png", "sizes": "192x192" }]
+      "platform": "play",
+      "url": "https://play.google.com/store/apps/details?id=org.agapebangalore.app",
+      "id": "org.agapebangalore.app"
     }
   ]
 }
