@@ -93,7 +93,7 @@ export const MorphingCard: React.FC<{
           stiffness: 300,
           damping: 30
         }}
-        className="overflow-hidden bg-white"
+        className="overflow-visible"
       >
         <motion.div
           animate={{

@@ -1,224 +1,102 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Card } from './components/ui/card';
-import { Input } from './components/ui/input';
 import { Button } from './components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
+import { Input } from './components/ui/input';
 import { AnimatedGradientText } from './components/ui/animated-gradient-text';
-import { Link, useNavigate } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  ArrowLeft, 
+  Play, 
+  Calendar, 
+  Clock, 
+  Youtube, 
+  Search, 
+  Filter,
+  Menu,
+  X,
+  Heart,
+  Users,
+  Book
+} from 'lucide-react';
 
-const YOUTUBE_API_KEY = 'AIzaSyCwLstOa6u5rnlN3R1xGhqdxVgszFRRdQo';
-const CHANNEL_ID = 'UCvn-_SocyaB-XHL-VROM4eQ'; // Correct Agape Bangalore YouTube Channel ID
-
-interface Video {
+// Sermon data structure
+interface Sermon {
   id: string;
   title: string;
+  speaker: string;
+  date: string;
+  duration: string;
   description: string;
   thumbnail: string;
-  publishedAt: string;
+  videoId: string;
+  category: string;
 }
 
-// Playlist IDs for special groupings
-const PLAYLISTS = {
-  REVELATION_BIBLE_STUDY: 'PLLIRZZSu7zcpV7fZC-tjuoEZN9NQS2Xn2',
-  ARCHBISHOP_PRACTICAL: 'PLLIRZZSu7zcrbJtimqqn8s05QqxQ3J0cv',
-  TRUTH_OF_REDEMPTION: 'PLLIRZZSu7zcrqpcbHzGtDEwUY-rS09eaL',
-  DR_JIM_REUBEN_ELLIOT: 'PLLIRZZSu7zcqQoxLlcb9JWpenApbRCXwB',
-};
-
-// Helper to fetch all video details for a playlist
-async function fetchPlaylistVideos(playlistId: string): Promise<(Video & { _group?: string })[]> {
-  const videos: (Video & { _group?: string })[] = [];
-  let nextPageToken = '';
-  const page = 1;
-  do {
-    const url = `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${playlistId}&maxResults=50&key=${YOUTUBE_API_KEY}` + (nextPageToken ? `&pageToken=${nextPageToken}` : '');
-    const res = await fetch(url);
-    const data = await res.json();
-    videos.push(...(data.items || []).map((item: any) => ({
-      id: item.snippet.resourceId.videoId,
-      title: item.snippet.title,
-      description: item.snippet.description,
-      thumbnail: item.snippet.thumbnails?.medium?.url || '',
-      publishedAt: item.snippet.publishedAt,
-    })));
-    nextPageToken = data.nextPageToken;
-  } while (nextPageToken);
-  return videos;
-}
-
-// Helper to fetch video details for a list of IDs (max 50 per request)
-async function fetchVideosByIds(ids: string[]): Promise<(Video & { _group?: string })[]> {
-  const result: (Video & { _group?: string })[] = [];
-  for (let i = 0; i < ids.length; i += 50) {
-    const batch = ids.slice(i, i + 50);
-    const url = `https://www.googleapis.com/youtube/v3/videos?part=snippet&id=${batch.join(',')}&key=${YOUTUBE_API_KEY}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    result.push(...(data.items || []).map((item: any) => ({
-      id: item.id,
-      title: item.snippet.title,
-      description: item.snippet.description,
-      thumbnail: item.snippet.thumbnails?.medium?.url || '',
-      publishedAt: item.snippet.publishedAt,
-    })));
+// Static sermon data - organized and curated
+const sermonData: Sermon[] = [
+  {
+    id: "1",
+    title: "UNITY, INTEGRITY, AND THE FEAR OF GOD",
+    speaker: "Rev. Dr. Jim Reuben Elliot",
+    date: "June 10, 2025",
+    duration: "1:34 min",
+    description: "A call to be builders, not breakers, in the church. Understanding the importance of unity in the body of Christ.",
+    thumbnail: "/unity-integrity-sermon.jpg.avif",
+    videoId: "AuSGBxGT-Hk",
+    category: "Church Life & Unity"
+  },
+  {
+    id: "2",
+    title: "BE ZEALOUS FOR THE HOUSE OF GOD",
+    speaker: "Bishop Dr. Reuben M. Sathiyaraj",
+    date: "June 29, 2025",
+    duration: "38 min",
+    description: "Understanding our responsibility toward God's house and maintaining passion for His presence.",
+    thumbnail: "/stand-united-sermon.jpg",
+    videoId: "jlZ3ecEwTK8",
+    category: "Church Life & Unity"
+  },
+  {
+    id: "3",
+    title: "Jesus Heals the Leper",
+    speaker: "Rev. Dr. Jim Reuben Elliot",
+    date: "March 2023",
+    duration: "35 min",
+    description: "A Gospel sermon from our open-air crusades in Bagalur Layout, demonstrating Christ's healing power.",
+    thumbnail: "/jesus-heals-leper.jpg",
+    videoId: "P5GCZwXUMh8",
+    category: "Gospel & Healing"
   }
-  return result;
-}
+];
 
-// Add PodcastEpisodes component
-const SPOTIFY_SHOW_ID = '45oJua9cpBUCHKeh2WoZMH';
-const SPOTIFY_API_URL = `https://spotify-podcast-api.vercel.app/api/shows/${SPOTIFY_SHOW_ID}`;
-
-const PodcastEpisodes: React.FC = () => {
-  const [episodes, setEpisodes] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    async function fetchEpisodes() {
-      setLoading(true);
-      setError(null);
-      try {
-        // Use a public proxy API for Spotify podcast data (or replace with your own backend if needed)
-        const res = await fetch(SPOTIFY_API_URL);
-        const data = await res.json();
-        setEpisodes(data.episodes || []);
-      } catch (err: any) {
-        setError('Failed to load podcast episodes.');
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchEpisodes();
-  }, []);
-
-  if (loading) return <div className="text-center">Loading podcast episodes…</div>;
-  if (error) return <div className="text-center text-red-500">{error}</div>;
-  if (!episodes.length) return <div className="text-center">No podcast episodes found.</div>;
-
-  return (
-    <section className="mb-16 mt-12">
-      <h2 className="text-foreground text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center gap-2">
-        All Podcast Episodes
-      </h2>
-      <div className="grid md:grid-cols-2 gap-8">
-        {episodes.map((ep) => (
-          <div key={ep.id} className="bg-white border border-gray-200 rounded-xl p-6 flex flex-col shadow-md">
-            <h3 className="text-foreground text-lg font-semibold mb-2">{ep.name}</h3>
-            <p className="text-foreground text-sm text-[oklch(0.18_0_0)] mb-2">
-              {ep.release_date} &bull; {Math.floor(ep.duration_ms / 60000)} min
-            </p>
-            <iframe
-              src={`https://open.spotify.com/embed/episode/${ep.id}`}
-              width="100%"
-              height="80"
-              frameBorder="0"
-              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-              loading="lazy"
-              className="rounded-lg mb-2"
-              title={ep.name}
-            ></iframe>
-            <p className="text-foreground text-sm text-[oklch(0.18_0_0)] line-clamp-3">{ep.description}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-  );
-};
+const categories = ["All", "Church Life & Unity", "Gospel & Healing", "Bible Study", "Testimonies"];
 
 const SermonsPage: React.FC = () => {
-  const [videos, setVideos] = useState<Video[]>([]);
-  const [search, setSearch] = useState('');
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [page, setPage] = useState(1);
-  const PER_PAGE = 9;
+  const [searchTerm, setSearchTerm] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const navigate = useNavigate();
 
-  // Helper to scroll to section on homepage
-  const goToSection = (sectionId: string) => {
-    navigate('/');
-    setTimeout(() => {
-      window.location.hash = sectionId;
-    }, 0);
+  // Filter sermons based on search and category
+  const filteredSermons = sermonData.filter(sermon => {
+    const matchesSearch = sermon.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         sermon.speaker.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                         sermon.description.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || sermon.category === selectedCategory;
+    return matchesSearch && matchesCategory;
+  });
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   useEffect(() => {
-    async function fetchVideos() {
-      setLoading(true);
-      setError(null);
-      try {
-        // Step 1: Get uploads playlist ID
-        const channelRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/channels?part=contentDetails&id=${CHANNEL_ID}&key=${YOUTUBE_API_KEY}`
-        );
-        const channelData = await channelRes.json();
-        const uploadsPlaylistId = channelData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
-        if (!uploadsPlaylistId) {
-          throw new Error('Uploads playlist not found. API response: ' + JSON.stringify(channelData));
-        }
-
-        // Step 2: Fetch videos from uploads playlist
-        const uploadsRes = await fetch(
-          `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${uploadsPlaylistId}&maxResults=50&key=${YOUTUBE_API_KEY}`
-        );
-        const uploadsData = await uploadsRes.json();
-        const uploads: (Video & { _group?: string })[] = (uploadsData.items || []).map((item: any) => ({
-          id: item.snippet.resourceId.videoId,
-          title: item.snippet.title,
-          description: item.snippet.description,
-          thumbnail: item.snippet.thumbnails?.medium?.url || '',
-          publishedAt: item.snippet.publishedAt,
-        }));
-
-        // Fetch custom playlists
-        const [revelation, archbishop, truthRedemption, drJim] = await Promise.all([
-          fetchPlaylistVideos(PLAYLISTS.REVELATION_BIBLE_STUDY),
-          fetchPlaylistVideos(PLAYLISTS.ARCHBISHOP_PRACTICAL),
-          fetchPlaylistVideos(PLAYLISTS.TRUTH_OF_REDEMPTION),
-          fetchPlaylistVideos(PLAYLISTS.DR_JIM_REUBEN_ELLIOT),
-        ]);
-
-        // Tag custom playlist videos
-        revelation.forEach(v => v._group = 'Revelation Bible Study');
-        archbishop.forEach(v => v._group = "Arch Bishop Reuben M. Sathiyaraj's Practical Teaching Sermons");
-        truthRedemption.forEach(v => v._group = 'Truth of Redemption - Bible Study Series');
-        drJim.forEach(v => v._group = "Dr. Jim Reuben Elliot's Sermon");
-
-        // Merge all videos, deduplicate by ID (custom playlists take precedence)
-        const allVideosMap: { [id: string]: Video & { _group?: string } } = {};
-        [...revelation, ...archbishop, ...truthRedemption, ...drJim, ...uploads].forEach(v => {
-          allVideosMap[v.id] = v._group ? v : { ...v, _group: v._group };
-        });
-        const allVideos = Object.values(allVideosMap);
-        // Sort videos by publishedAt (newest first)
-        allVideos.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());
-        setVideos(allVideos);
-      } catch (err: any) {
-        setError(err.message || 'Failed to fetch videos');
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchVideos();
+    window.scrollTo(0, 0);
   }, []);
-
-  // Helper: infer group from title/description
-  function getVideoGroup(video: Video): string {
-    const text = (video.title + ' ' + video.description).toLowerCase();
-    if (/song|worship|music|hymn|choir|praise|sing/.test(text)) return 'Songs & Worship';
-    if (/testimony|story|witness|miracle|deliverance/.test(text)) return 'Testimonies & Miracles';
-    if (/healing|heal|miracle|deliverance|restoration/.test(text)) return 'Healing & Miracles';
-    if (/bible study|study|teaching|lesson|class|discipleship/.test(text)) return 'Bible Study & Teaching';
-    if (/sermon|message|preach|homily|exhort|word|gospel|service/.test(text)) return 'Sermons & Messages';
-    return 'Other';
-  }
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Skip to Content Link (for accessibility) */}
+      {/* Skip to Content Link */}
       <a
         href="#main-content"
         className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-primary text-primary-foreground px-4 py-2 rounded shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
@@ -226,314 +104,328 @@ const SermonsPage: React.FC = () => {
       >
         Skip to main content
       </a>
-      {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
-        <div className="container-wide">
-          <div className="flex items-center justify-between h-16">
-            {/* Logo */}
-            <button
-              onClick={() => goToSection('hero')}
-              className="flex items-center space-x-2 font-serif text-xl font-medium hover:text-primary transition-colors"
-              aria-label="Go to home"
-            >
-              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
-              <span>AGAPE BIBLE CHURCH</span>
-            </button>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-8">
-              <button onClick={() => goToSection('about')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">About</button>
-              <button onClick={() => goToSection('vision')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Vision</button>
-              <button onClick={() => goToSection('pastor')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Pastor</button>
-              <Link to="/sermons" className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Sermons</Link>
-              <button onClick={() => goToSection('ministry')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Ministry</button>
-              <button onClick={() => goToSection('contact')} className="text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Contact</button>
+      {/* Navigation Header */}
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+        <div className="container-wide mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
+                <ArrowLeft className="w-4 h-4" />
+                <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
+                                 <span className="font-display text-xl font-semibold text-gray-900">AGAPE BIBLE CHURCH</span>
+              </Button>
+            </Link>
+            
+            <div className="hidden md:flex items-center space-x-6">
+              <h1 className="text-xl font-bold text-gray-900">Sermons & Messages</h1>
             </div>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2"
-              aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
+            
+            <Button onClick={scrollToTop} variant="outline" size="sm" aria-label="Scroll to Top">
+              Top
+            </Button>
           </div>
-
-          {/* Mobile Navigation */}
-          {mobileMenuOpen && (
-            <div className="md:hidden border-t border-border/50 py-4">
-              <div className="space-y-2">
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('about'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">About</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('vision'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Vision</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('pastor'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Pastor</button>
-                <Link to="/sermons" className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]" onClick={() => setMobileMenuOpen(false)}>Sermons</Link>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('ministry'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Ministry</button>
-                <button onClick={() => { setMobileMenuOpen(false); goToSection('contact'); }} className="block w-full text-left px-2 py-2 text-sm font-medium transition-colors hover:text-primary text-[oklch(0.18_0_0)]">Contact</button>
-              </div>
-            </div>
-          )}
         </div>
       </nav>
-      <div className="h-16" /> {/* Spacer for fixed nav */}
 
-      {/* Enhanced Hero Section with Animations */}
-      <section className="w-full bg-primary text-primary-foreground py-16 mb-12 shadow-md relative overflow-hidden">
-        {/* Background gradient overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/90 to-primary opacity-90" />
+      {/* Main Content */}
+      <main id="main-content" tabIndex={-1} aria-label="Main Content">
         
-        <div className="container max-w-4xl mx-auto text-center space-y-8 relative z-10">
-          {/* Animated Page Title */}
-          <motion.div
-            initial={{ opacity: 0, y: -30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, type: "spring" }}
-          >
-            <AnimatedGradientText className="text-4xl md:text-5xl font-serif font-bold mb-2 tracking-tight">
-              Sermons & Messages
-            </AnimatedGradientText>
-          </motion.div>
-          
-          {/* Animated Description */}
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-white text-lg md:text-xl font-light max-w-2xl mx-auto mb-4"
-          >
-            Watch, learn, and grow in faith with our latest sermons and biblical messages. Stream directly or watch on YouTube. New messages are added regularly!
-          </motion.p>
-          
-          {/* Animated CTA Button */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="flex justify-center gap-4"
-          >
-            <motion.a 
-              href="https://www.youtube.com/@AgapeBangalore" 
-              target="_blank" 
-              rel="noopener noreferrer" 
-              className="inline-flex items-center px-8 py-4 rounded-full bg-white text-primary font-semibold shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1" 
-              style={{ color: 'hsl(var(--primary))' }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <svg className="h-5 w-5 mr-2" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.566A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.12C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.566a2.994 2.994 0 0 0 2.112-2.12C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-              Visit YouTube Channel
-            </motion.a>
-          </motion.div>
-        </div>
-      </section>
-
-      <div className="container py-8">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-          className="max-w-md mx-auto mb-8"
-        >
-          <Input
-            type="text"
-            placeholder="Search sermons by title or description..."
-            value={search}
-            onChange={e => setSearch(e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-border focus:ring-2 focus:ring-primary shadow-lg hover:shadow-xl transition-all duration-300"
-            aria-label="Search sermons"
-          />
-        </motion.div>
-        {loading && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center py-12"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-              className="inline-block w-8 h-8 border-4 border-primary border-t-transparent rounded-full mb-4"
-            />
-            <p className="text-gray-600">Loading sermons…</p>
-          </motion.div>
-        )}
-        {error && (
-          <motion.div 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="text-center text-red-500 py-8 bg-red-50 rounded-lg border border-red-200 mx-4"
-          >
-            {error}
-          </motion.div>
-        )}
-        {/* Grouped by theme/type */}
-        {(() => {
-          // Filter out private videos and apply search
-          const filtered = videos.filter(video => {
-            const isPrivate = video.title.toLowerCase() === 'private video' || video.description.toLowerCase().includes('this video is private');
-            if (isPrivate) return false;
-            return (
-              video.title.toLowerCase().includes(search.toLowerCase()) ||
-              video.description.toLowerCase().includes(search.toLowerCase())
-            );
-          });
-          // Group videos (priority: explicit group, else smart group)
-          const groups: { [group: string]: Video[] } = {};
-          filtered.forEach(video => {
-            const group = (video as any)._group || getVideoGroup(video);
-            if (!groups[group]) groups[group] = [];
-            groups[group].push(video);
-          });
-          const groupOrder = [
-            'Revelation Bible Study',
-            'Truth of Redemption - Bible Study Series',
-            "Arch Bishop Reuben M. Sathiyaraj's Practical Teaching Sermons",
-            "Dr. Jim Reuben Elliot's Sermon",
-            'Sermons & Messages',
-            'Songs & Worship',
-            'Bible Study & Teaching',
-            'Testimonies & Miracles',
-            'Healing & Miracles',
-            'Other',
-          ];
-          return <>
-            {groupOrder.filter(g => groups[g] && groups[g].length).map((group, index) => {
-              // Pagination per group
-              const totalPages = Math.ceil(groups[group].length / PER_PAGE) || 1;
-              const paginated = groups[group].slice((page - 1) * PER_PAGE, page * PER_PAGE);
-              
-              // Strategic black backgrounds for key content
-              const shouldHaveBlackBg = [
-                'Revelation Bible Study',
-                "Dr. Jim Reuben Elliot's Sermon", 
-                'Testimonies & Miracles'
-              ].includes(group);
-              
-              const sectionClasses = shouldHaveBlackBg 
-                ? "mb-16 bg-black text-white py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16"
-                : "mb-16";
-                
-              return (
-                <motion.section 
-                  key={group} 
-                  className={sectionClasses}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <div className={shouldHaveBlackBg ? "container mx-auto" : ""}>
-                    {/* Major Sections */}
-                    <h2 className={`${shouldHaveBlackBg ? 'text-white' : 'text-foreground'} text-2xl md:text-3xl font-bold font-serif mb-8 flex items-center justify-center gap-2`}>
-                      {group}
-                    </h2>
-                    <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-                      {paginated.map((video) => (
-                        <Card key={video.id} className={shouldHaveBlackBg ? "bg-gray-900/80 text-white p-4 flex flex-col items-center border border-gray-700" : "bg-white/85 text-gray-700 p-4 flex flex-col items-center"}>
-                        <div className="w-full aspect-video mb-4">
-                          <iframe
-                            width="100%"
-                            height="200"
-                            src={`https://www.youtube.com/embed/${video.id}`}
-                            title={video.title}
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                            className="w-full h-full rounded-lg"
-                          ></iframe>
-                        </div>
-                        <h2 className={`${shouldHaveBlackBg ? 'text-white' : 'text-foreground'} text-lg font-semibold mb-1 text-center group-hover:text-primary transition-colors`}>
-                          {video.title}
-                        </h2>
-                        <p className={`${shouldHaveBlackBg ? 'text-gray-300' : 'text-foreground'} text-xs mb-2 text-center`}>
-                          {video.publishedAt ? new Date(video.publishedAt).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' }) : ''}
-                        </p>
-                        <p className={`${shouldHaveBlackBg ? 'text-gray-200' : 'text-foreground'} text-sm line-clamp-3 text-center mb-3`}>{video.description}</p>
-                        <a
-                          href={`https://www.youtube.com/watch?v=${video.id}`}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center px-4 py-1.5 rounded-full bg-primary text-primary-foreground font-medium text-xs shadow hover:bg-primary/90 transition-colors" style={{ color: '#ffffff' }}
-                        >
-                          <svg className="h-4 w-4 mr-1" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a2.994 2.994 0 0 0-2.112-2.12C19.228 3.5 12 3.5 12 3.5s-7.228 0-9.386.566A2.994 2.994 0 0 0 .502 6.186C0 8.344 0 12 0 12s0 3.656.502 5.814a2.994 2.994 0 0 0 2.112 2.12C4.772 20.5 12 20.5 12 20.5s7.228 0 9.386-.566a2.994 2.994 0 0 0 2.112-2.12C24 15.656 24 12 24 12s0-3.656-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                          Watch on YouTube
-                        </a>
-                        </Card>
-                      ))}
-                    </div>
-                    {/* Pagination controls per group */}
-                    {totalPages > 1 && (
-                      <div className="flex justify-center items-center gap-4 mt-8">
-                        <Button
-                          variant={shouldHaveBlackBg ? "secondary" : "outline"}
-                          size="sm"
-                          onClick={() => setPage(p => Math.max(1, p - 1))}
-                          disabled={page === 1}
-                        >
-                          Previous
-                        </Button>
-                        <span className={`text-sm ${shouldHaveBlackBg ? 'text-gray-300' : 'text-gray-600'}`}>
-                          Page {page} of {totalPages}
-                        </span>
-                        <Button
-                          variant={shouldHaveBlackBg ? "secondary" : "outline"}
-                          size="sm"
-                          onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                          disabled={page === totalPages}
-                        >
-                          Next
-                        </Button>
-                      </div>
-                    )}
-                  </div>
-                </motion.section>
-              );
-            })}
-          </>
-        })()}
-
-        {/* Podcast Section - Black Background for Prominence */}
-        <section className="mb-16 mt-24 bg-black text-white py-16 -mx-4 px-4 md:-mx-8 md:px-8 lg:-mx-16 lg:px-16">
-          <div className="container mx-auto">
-            <motion.h2 
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-white text-2xl md:text-3xl font-bold font-serif mb-8 text-center"
-            >
-              🎧 Podcasts
-            </motion.h2>
-            <div className="grid md:grid-cols-1 gap-8 max-w-4xl mx-auto">
-              <motion.div 
+        {/* Hero Section */}
+        <section className="py-16 bg-gradient-to-br from-primary/10 via-white to-secondary/10">
+          <div className="container-wide mx-auto px-6">
+            <div className="text-center max-w-4xl mx-auto">
+              <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-gray-900/50 border border-gray-700 rounded-xl p-8 flex flex-col items-center shadow-xl backdrop-blur-sm"
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8 }}
               >
-              <img src="/icon-512x512.png" alt="Agape Bible Church Podcast" className="w-20 h-20 mb-4 rounded-full shadow" />
-              {/* Subsections */}
-              <h3 className="text-white text-xl font-semibold mb-2 text-center">Agape Bible Church Podcast</h3>
-              <p className="text-gray-200 text-base mb-4 text-center">
-                Listen to all our latest sermons, Bible studies, and inspirational messages on Spotify. Scroll and play any episode below!
-              </p>
-              <iframe 
-                src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
-                width="100%" 
-                height="600" 
-                frameBorder="0" 
-                allowFullScreen
-                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                loading="lazy"
-                className="rounded-lg mb-2"
-                title="Agape Bible Church Podcast on Spotify"
-              ></iframe>
-              <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-4 py-2 rounded-full bg-primary text-primary-foreground font-medium text-sm shadow hover:bg-primary/90 transition-colors mt-2" style={{ color: '#ffffff' }}>
-                <span className="mr-2">🎧</span> Listen on Spotify
-              </a>
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+                  <Play className="h-4 w-4 text-primary" />
+                  <span className="text-sm font-semibold text-primary">Sermons & Messages</span>
+                </div>
+                
+                <h1 className="text-4xl md:text-5xl font-serif font-bold text-gray-900 mb-6">
+                  Life-Changing Messages
+                </h1>
+                
+                <p className="text-xl text-gray-600 leading-relaxed mb-8 max-w-3xl mx-auto">
+                  Listen to biblical messages that transform hearts and renew minds. Watch our latest sermons, 
+                  Bible studies, and inspirational teachings from Archbishop Dr. Reuben M. Sathiyaraj and Rev. Dr. Jim Reuben Elliot.
+                </p>
+                
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+                    <a href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener noreferrer">
+                      <Youtube className="h-5 w-5 mr-2" />
+                      Visit YouTube Channel
+                    </a>
+                  </Button>
+                  
+                  <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300" asChild>
+                    <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer">
+                      <span className="mr-2">🎧</span>
+                      Listen on Spotify
+                    </a>
+                  </Button>
+                </div>
               </motion.div>
             </div>
           </div>
         </section>
-      </div>
+
+        {/* Search and Filter Section */}
+        <section className="py-12 bg-gray-50">
+          <div className="container-wide mx-auto px-6">
+            <div className="max-w-4xl mx-auto">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="flex flex-col md:flex-row gap-4 mb-8"
+              >
+                {/* Search Input */}
+                <div className="flex-1 relative">
+                  <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                  <Input
+                    type="text"
+                    placeholder="Search sermons by title, speaker, or topic..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="pl-10 py-3 border-gray-300 focus:border-primary focus:ring-primary"
+                  />
+                </div>
+                
+                {/* Category Filter */}
+                <div className="flex gap-2 flex-wrap">
+                  {categories.map((category) => (
+                    <Button
+                      key={category}
+                      variant={selectedCategory === category ? "default" : "outline"}
+                      size="sm"
+                      onClick={() => setSelectedCategory(category)}
+                      className={`${
+                        selectedCategory === category 
+                          ? 'bg-primary text-white' 
+                          : 'border-gray-300 text-gray-700 hover:border-primary hover:text-primary'
+                      } transition-all duration-200`}
+                    >
+                      {category}
+                    </Button>
+                  ))}
+                </div>
+              </motion.div>
+              
+              {/* Results count */}
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4, delay: 0.4 }}
+                className="text-gray-600 mb-6"
+              >
+                {filteredSermons.length} sermon{filteredSermons.length !== 1 ? 's' : ''} found
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* Sermons Grid */}
+        <section className="py-16">
+          <div className="container-wide mx-auto px-6">
+            {filteredSermons.length === 0 ? (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center py-16"
+              >
+                <div className="w-16 h-16 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Search className="h-8 w-8 text-gray-400" />
+                </div>
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">No sermons found</h3>
+                <p className="text-gray-600">Try adjusting your search terms or category filter.</p>
+              </motion.div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredSermons.map((sermon, index) => (
+                  <motion.div
+                    key={sermon.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ y: -5 }}
+                    className="group"
+                  >
+                    <Card className="overflow-hidden hover:shadow-2xl transition-all duration-500 bg-white border border-gray-200 h-full">
+                      <div className="relative overflow-hidden">
+                        <img 
+                          src={sermon.thumbnail} 
+                          alt={sermon.title}
+                          className="w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                          <Button size="lg" className="bg-white/90 text-primary hover:bg-white hover:scale-110 transition-all duration-200 rounded-full shadow-lg">
+                            <Play className="h-6 w-6" />
+                          </Button>
+                        </div>
+                        <div className="absolute bottom-3 right-3 bg-black/80 text-white text-xs px-2 py-1 rounded-full font-medium">
+                          {sermon.duration}
+                        </div>
+                        <div className="absolute top-3 left-3 bg-primary/90 text-white text-xs px-3 py-1 rounded-full font-medium">
+                          {sermon.category}
+                        </div>
+                      </div>
+                      
+                      <CardHeader className="p-6">
+                        <CardTitle className="text-xl font-bold text-gray-900 line-clamp-2 mb-2 group-hover:text-primary transition-colors">
+                          {sermon.title}
+                        </CardTitle>
+                        <CardDescription className="text-primary font-semibold">
+                          {sermon.speaker}
+                        </CardDescription>
+                      </CardHeader>
+                      
+                      <CardContent className="px-6 pb-6">
+                        <p className="text-gray-600 line-clamp-3 mb-4 leading-relaxed">
+                          {sermon.description}
+                        </p>
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-2 text-sm text-gray-500">
+                            <Calendar className="h-4 w-4" />
+                            {sermon.date}
+                          </div>
+                          <Button 
+                            size="sm" 
+                            className="bg-primary hover:bg-primary/90 text-white rounded-full px-4 py-2 transition-all duration-200"
+                            asChild
+                          >
+                            <a 
+                              href={`https://www.youtube.com/watch?v=${sermon.videoId}`} 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                            >
+                              <Play className="h-4 w-4 mr-1" />
+                              Watch
+                            </a>
+                          </Button>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Podcast Section */}
+        <section className="py-16 bg-black text-white">
+          <div className="container-wide mx-auto px-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-12"
+            >
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full mb-6">
+                <span className="text-2xl">🎧</span>
+                                 <span className="text-sm font-semibold text-yellow-500">Podcast</span>
+              </div>
+              
+                             <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
+                 Listen Anywhere, Anytime
+               </h2>
+              
+              <p className="text-xl text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                Access our complete sermon library on Spotify. Perfect for your commute, workout, or quiet time.
+              </p>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="max-w-4xl mx-auto"
+            >
+              <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                <div className="flex items-center gap-4 mb-6">
+                  <img 
+                    src="/agape-bible-church-logo.png" 
+                    alt="Agape Bible Church Podcast" 
+                    className="w-16 h-16 rounded-full shadow-lg"
+                  />
+                  <div>
+                    <h3 className="text-2xl font-bold text-white">Agape Bible Church Podcast</h3>
+                    <p className="text-gray-300">Biblical messages for spiritual growth</p>
+                  </div>
+                </div>
+                
+                <iframe 
+                  src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
+                  width="100%" 
+                  height="400" 
+                  frameBorder="0" 
+                  allowFullScreen
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                  loading="lazy"
+                  className="rounded-lg mb-6"
+                  title="Agape Bible Church Podcast on Spotify"
+                />
+                
+                <div className="text-center">
+                  <Button 
+                    size="lg" 
+                    className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl"
+                    asChild
+                  >
+                    <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer">
+                      <span className="mr-2">🎧</span>
+                      Listen on Spotify
+                    </a>
+                  </Button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Call to Action */}
+        <section className="py-16 bg-gradient-to-br from-primary/10 to-secondary/10">
+          <div className="container-wide mx-auto px-6 text-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-3xl mx-auto"
+            >
+                             <h2 className="text-3xl md:text-4xl font-serif font-bold text-gray-900 mb-6">
+                 Join Us for Worship
+               </h2>
+              
+              <p className="text-xl text-gray-600 leading-relaxed mb-8">
+                Experience these messages live every Sunday. You're invited to join our church family for worship, 
+                fellowship, and spiritual growth.
+              </p>
+              
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300" asChild>
+                  <Link to="/#contact">
+                    <Users className="h-5 w-5 mr-2" />
+                    Visit This Sunday
+                  </Link>
+                </Button>
+                
+                <Button variant="outline" size="lg" className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-4 rounded-full font-semibold transition-all duration-300" asChild>
+                  <Link to="/#about">
+                    <Heart className="h-5 w-5 mr-2" />
+                    Learn About Us
+                  </Link>
+                </Button>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      </main>
     </div>
   );
 };

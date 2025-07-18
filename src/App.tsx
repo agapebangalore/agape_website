@@ -29,10 +29,13 @@ import {
   Clock,
   ChevronRight,
   ArrowDown,
+  ArrowRight,
   Facebook,
   Instagram,
   Twitter,
-  Youtube
+  Youtube,
+  Church,
+  TrendingUp
 } from "lucide-react";
 
 const AnimatedVisionText = React.memo(() => {
@@ -529,78 +532,250 @@ export default function AgapeChurch() {
       {/* Animated Divider */}
       <AnimatedDivider type="dots" className="my-12" />
 
-      {/* About Section */}
-        <section id="about" className="section-spacing bg-card text-foreground">
+      {/* About Section - Our Journey Since 1990 */}
+      <section id="about" className="section-spacing bg-gradient-to-br from-gray-50 to-white">
         <div className="container-wide">
-          <div className="text-center space-y-6 mb-16">
-              <h2 className="text-3xl font-semibold mb-6">Our Journey Since 1990</h2>
-              <p className="text-large text-foreground max-w-4xl mx-auto">
-              Our journey commenced on {churchInfo.established}. We are an {churchInfo.type} located in Bangalore, India.
-            </p>
+          {/* Enhanced Header */}
+          <ScrollRevealSection className="text-center space-y-6 mb-20">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
+              <Calendar className="h-4 w-4 text-primary" />
+              <span className="text-sm font-semibold text-primary">Since 1990</span>
+            </div>
+            <motion.h2 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              className="text-4xl md:text-5xl font-bold text-gray-900 mb-6"
+            >
+              Our Journey of <span className="text-primary">Faith</span>
+            </motion.h2>
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
+            >
+              Our journey commenced on <span className="font-semibold text-primary">{churchInfo.established}</span>. We are an {churchInfo.type} located in Bangalore, India, committed to spreading God's love through action.
+            </motion.p>
+          </ScrollRevealSection>
+
+          {/* Timeline Visual */}
+          <div className="relative mb-20">
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent"></div>
+            
+            {/* Timeline Items */}
+            <div className="space-y-20">
+              {/* 1990 - Foundation */}
+              <StaggerContainer>
+                <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+                  <StaggerItem>
+                    <div className="lg:text-right space-y-6 lg:pr-12">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold mb-4">
+                        <Church className="h-4 w-4" />
+                        1990
+                      </div>
+                      <h3 className="text-3xl font-bold text-gray-900">
+                        Humble Beginnings
+                      </h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        Founded with just 3 families, Archbishop Dr. Reuben Sathiyaraj planted the seeds of what would become a thriving church community in Bangalore. From the very beginning, our mission was clear: to reach the unreached, teach the reached, and touch the untouched.
+                      </p>
+                      <div className="flex items-center gap-4 lg:justify-end">
+                        <div className="flex items-center gap-2 text-primary">
+                          <Users className="h-4 w-4" />
+                          <span className="font-semibold">3 Families</span>
+                        </div>
+                        <div className="flex items-center gap-2 text-primary">
+                          <MapPin className="h-4 w-4" />
+                          <span className="font-semibold">Bangalore</span>
+                        </div>
+                      </div>
+                    </div>
+                  </StaggerItem>
+                  
+                  <StaggerItem>
+                    <MorphingCard className="bg-white border border-gray-200 shadow-xl">
+                      <div className="relative group overflow-hidden rounded-lg">
+                        <img 
+                          src="/original-church-photo.jpg" 
+                          alt="Original Church Building - 1990" 
+                          className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <h4 className="text-xl font-bold mb-1">Our First Home</h4>
+                            <p className="text-sm opacity-90">Where it all began in 1990</p>
+                          </div>
+                        </div>
+                      </div>
+                    </MorphingCard>
+                  </StaggerItem>
+
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary border-4 border-white rounded-full shadow-lg z-10"></div>
+                </div>
+              </StaggerContainer>
+
+              {/* Present Day - Growth */}
+              <StaggerContainer>
+                <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+                  <StaggerItem>
+                    <MorphingCard className="bg-white border border-gray-200 shadow-xl lg:order-1">
+                      <div className="relative group overflow-hidden rounded-lg">
+                        <img 
+                          src="/authentic-church-worship.png" 
+                          alt="Modern Church Worship - Growing Community" 
+                          className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="absolute bottom-4 left-4 text-white">
+                            <h4 className="text-xl font-bold mb-1">Thriving Community</h4>
+                            <p className="text-sm opacity-90">1000+ believers worshipping together</p>
+                          </div>
+                        </div>
+                        <div className="absolute top-4 right-4 bg-primary text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          Today
+                        </div>
+                      </div>
+                    </MorphingCard>
+                  </StaggerItem>
+                  
+                  <StaggerItem>
+                    <div className="space-y-6 lg:pl-12 lg:order-2">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold mb-4">
+                        <TrendingUp className="h-4 w-4" />
+                        2024
+                      </div>
+                      <h3 className="text-3xl font-bold text-gray-900">
+                        Growing in Grace
+                      </h3>
+                      <p className="text-lg text-gray-600 leading-relaxed">
+                        Today, we serve over 1000 believers and 250 children across 6 churches. Our ministry extends beyond our walls through rehabilitation homes for street children, training programs for pastors, and community outreach initiatives throughout Bangalore.
+                      </p>
+                      <div className="grid grid-cols-2 gap-4">
+                        <div className="bg-primary/5 p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-primary">1000+</div>
+                          <div className="text-sm text-gray-600">Believers</div>
+                        </div>
+                        <div className="bg-primary/5 p-4 rounded-lg text-center">
+                          <div className="text-2xl font-bold text-primary">6</div>
+                          <div className="text-sm text-gray-600">Churches</div>
+                        </div>
+                      </div>
+                    </div>
+                  </StaggerItem>
+
+                  {/* Timeline Dot */}
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg z-10"></div>
+                </div>
+              </StaggerContainer>
+            </div>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <div className="space-y-6">
-                <h3 className="text-2xl font-semibold text-foreground">
-                Manifesting Love Through Action
-              </h3>
-                <p className="text-lg text-foreground leading-relaxed">
-                  At AGAPE BIBLE CHURCH, we believe that love is most meaningful when it's put into action; it's about helping others discover Jesus in the tapestry of our daily lives.
-              </p>
-                <p className="text-lg text-foreground leading-relaxed">
-                Our congregation is dedicated to showcasing God's love through tangible acts of kindness, making us a practical and living testament to His grace.
-              </p>
-            </div>
-            <MagneticHover strength={0.1} className="relative group ministry-image-container">
-              <TiltCard tiltIntensity={8} glowEffect={true}>
-                <img 
-                  src="/community-fellowship.png" 
-                  alt="Community Fellowship and Bible Study" 
-                  className="w-full h-96 object-cover rounded-lg shadow-2xl"
-                />
-                <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
-                  <div className="text-center text-white px-6">
-                    <h4 className="text-2xl font-bold mb-2">Community Fellowship</h4>
-                    <p className="text-lg opacity-90">Building relationships through Bible study and prayer</p>
-                  </div>
-                </div>
-              </TiltCard>
-            </MagneticHover>
-          </div>
+          {/* Mission Cards */}
+          <StaggerContainer>
+            <div className="grid md:grid-cols-2 gap-8 mb-16">
+              <StaggerItem>
+                <Card className="bg-white border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 shadow-lg hover:shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <Heart className="h-6 w-6 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">Manifesting Love</h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      At AGAPE BIBLE CHURCH, we believe that love is most meaningful when it's put into action. We help others discover Jesus through practical demonstrations of His love in our daily lives.
+                    </p>
+                    <div className="flex items-center gap-2 text-primary font-semibold">
+                      <ArrowRight className="h-4 w-4" />
+                      <span>Love in Action</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
 
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <MagneticHover strength={0.1} className="relative order-2 lg:order-1 group ministry-image-container">
-              <TiltCard tiltIntensity={8} glowEffect={true}>
-                <img 
-                  src="/children-ministry-authentic.png" 
-                  alt="Reaching Out to Bangalore - Children's Ministry" 
-                  className="w-full h-96 object-cover rounded-lg shadow-2xl"
-                />
-                <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
-                  <div className="text-center text-white px-6">
-                    <h4 className="text-2xl font-bold mb-2">Reaching Out to Bangalore</h4>
-                    <p className="text-lg opacity-90">Serving the children and communities of Bangalore with love and hope</p>
-                  </div>
-                </div>
-                <PulsingGlow color="primary" intensity={0.2} className="absolute -top-2 -right-2">
-                  <div className="bg-primary text-primary-foreground p-2 rounded-full">
-                    <Heart className="h-4 w-4" />
-                  </div>
-                </PulsingGlow>
-              </TiltCard>
-            </MagneticHover>
-            <div className="space-y-6 order-1 lg:order-2">
-                <h3 className="text-2xl font-semibold text-foreground">
-                Reaching Out to Bangalore
-              </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                Nestled in the heart of Bangalore, we hold a deep affection for this city's rich traditions, diverse cultures, and the warmth that people from all walks of life bring.
-              </p>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                Our love for Bangalore stems from the fact that Jesus loves this city passionately, having given His life so that every resident may experience a transformative journey.
+              <StaggerItem>
+                <Card className="bg-white border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 shadow-lg hover:shadow-xl">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <MapPin className="h-6 w-6 text-primary" />
+                      </div>
+                      <h3 className="text-2xl font-bold text-gray-900">Reaching Bangalore</h3>
+                    </div>
+                    <p className="text-gray-600 leading-relaxed mb-6">
+                      Nestled in the heart of Bangalore, we embrace this city's rich traditions and diverse cultures. Our love for Bangalore stems from Jesus's passionate love for every resident of this great city.
+                    </p>
+                    <div className="flex items-center gap-2 text-primary font-semibold">
+                      <ArrowRight className="h-4 w-4" />
+                      <span>City-Wide Impact</span>
+                    </div>
+                  </CardContent>
+                </Card>
+              </StaggerItem>
+            </div>
+          </StaggerContainer>
+
+          {/* Community Gallery */}
+          <ScrollRevealSection>
+            <div className="text-center mb-12">
+              <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Community in Action</h3>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                See how God is working through our church family to impact lives across Bangalore
               </p>
             </div>
-          </div>
+            
+            <div className="grid md:grid-cols-3 gap-6">
+              <MorphingCard className="bg-white border border-gray-200 shadow-lg">
+                <div className="relative group overflow-hidden">
+                  <img 
+                    src="/community-fellowship.png" 
+                    alt="Community Fellowship and Bible Study" 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h4 className="text-lg font-bold mb-1">Fellowship</h4>
+                      <p className="text-sm opacity-90">Building lasting relationships</p>
+                    </div>
+                  </div>
+                </div>
+              </MorphingCard>
+
+              <MorphingCard className="bg-white border border-gray-200 shadow-lg">
+                <div className="relative group overflow-hidden">
+                  <img 
+                    src="/children-ministry-authentic.png" 
+                    alt="Children's Ministry Program" 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h4 className="text-lg font-bold mb-1">Children's Ministry</h4>
+                      <p className="text-sm opacity-90">Nurturing young hearts</p>
+                    </div>
+                  </div>
+                </div>
+              </MorphingCard>
+
+              <MorphingCard className="bg-white border border-gray-200 shadow-lg">
+                <div className="relative group overflow-hidden">
+                  <img 
+                    src="/community-outreach.jpg" 
+                    alt="Community Outreach Programs" 
+                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent">
+                    <div className="absolute bottom-4 left-4 text-white">
+                      <h4 className="text-lg font-bold mb-1">Outreach</h4>
+                      <p className="text-sm opacity-90">Serving our community</p>
+                    </div>
+                  </div>
+                </div>
+              </MorphingCard>
+            </div>
+          </ScrollRevealSection>
         </div>
       </section>
 
