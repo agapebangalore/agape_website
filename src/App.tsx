@@ -4,18 +4,19 @@ import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { PerformanceMonitor } from "./components/ui/performance-monitor";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
-import { Typewriter } from "@/components/ui/typewriter-text";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
-import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
-import { LoadingState, SkeletonGrid } from "@/components/ui/loading-states";
-import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
-import { ParallaxBackground, FloatingElement, BackgroundParticles } from "@/components/ui/parallax-elements";
-import { TiltCard, MorphingCard, SlideInCard } from "@/components/ui/advanced-cards";
-import { TextReveal, PulsingGlow, MagneticHover } from "@/components/ui/micro-interactions";
-import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "@/components/ui/scroll-orchestration";
+import { VisibilityGuard } from "./components/ui/visibility-guard";
+import { Button } from "./components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card";
+import { AnimatedGradientText } from "./components/ui/animated-gradient-text";
+import { Typewriter } from "./components/ui/typewriter-text";
+import { ScrollProgress } from "./components/ui/scroll-progress";
+import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "./components/ui/animated-button";
+import { LoadingState, SkeletonGrid } from "./components/ui/loading-states";
+import { AnimatedCounter, StatCard } from "./components/ui/animated-counter";
+import { ParallaxBackground, FloatingElement, BackgroundParticles } from "./components/ui/parallax-elements";
+import { TiltCard, MorphingCard, SlideInCard } from "./components/ui/advanced-cards";
+import { TextReveal, PulsingGlow, MagneticHover } from "./components/ui/micro-interactions";
+import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "./components/ui/scroll-orchestration";
 import {
   Heart,
   MapPin,
@@ -207,9 +208,10 @@ export default function AgapeChurch() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Scroll Progress Indicator */}
-      <ScrollProgress />
+    <VisibilityGuard>
+      <div className="min-h-screen bg-background">
+        {/* Scroll Progress Indicator */}
+        <ScrollProgress />
       
       {/* Announcement Bar */}
       <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium" style={{letterSpacing: '0.01em'}}>
@@ -1352,5 +1354,6 @@ export default function AgapeChurch() {
       {/* Performance Monitoring */}
       <PerformanceMonitor />
     </div>
+    </VisibilityGuard>
   );
 }
