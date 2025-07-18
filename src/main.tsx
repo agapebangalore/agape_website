@@ -6,6 +6,7 @@ import App from './App.tsx'
 import PastorBiography from './PastorBiography.tsx'
 import MinistryPage from './MinistryPage.tsx'
 import SermonsPage from './SermonsPage.tsx'
+import { RouteTransition } from './components/ui/page-transition'
 
 // Register Service Worker for PWA functionality
 if ('serviceWorker' in navigator) {
@@ -55,12 +56,14 @@ document.addEventListener('click', requestNotificationPermission, { once: true }
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <Router>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/sermons" element={<SermonsPage />} />
-        <Route path="/pastor-biography" element={<PastorBiography />} />
-        <Route path="/ministry" element={<MinistryPage />} />
-      </Routes>
+      <RouteTransition>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/sermons" element={<SermonsPage />} />
+          <Route path="/pastor-biography" element={<PastorBiography />} />
+          <Route path="/ministry" element={<MinistryPage />} />
+        </Routes>
+      </RouteTransition>
     </Router>
   </StrictMode>,
 )

@@ -2,10 +2,15 @@ import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { Typewriter } from "@/components/ui/typewriter-text";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
+import { LoadingState, SkeletonGrid } from "@/components/ui/loading-states";
+import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
 import {
   Heart,
   MapPin,
@@ -190,6 +195,9 @@ export default function AgapeChurch() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
+      
       {/* Announcement Bar */}
       <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium" style={{letterSpacing: '0.01em'}}>
         <Typewriter 
@@ -224,13 +232,15 @@ export default function AgapeChurch() {
               <Link to="/sermons" className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
               <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
               <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
-              <Button 
+              <AnimatedButton 
                 size="sm" 
-                className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-md hover:shadow-lg"
+                className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium shadow-md hover:shadow-lg"
                 onClick={() => scrollToSection('contact')}
+                animationType="scale"
+                intensity="subtle"
               >
                 Visit Us
-              </Button>
+              </AnimatedButton>
             </div>
 
             {/* Mobile Menu Button - Enhanced for better touch targets */}
@@ -254,13 +264,15 @@ export default function AgapeChurch() {
                 <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
                 <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
                 <div className="pt-6 border-t border-gray-200 mt-6 px-2">
-                  <Button 
+                  <AnimatedButton 
                     size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-base rounded-full font-medium transition-all duration-200 shadow-md min-h-[44px]"
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-base rounded-full font-medium shadow-md min-h-[44px]"
                     onClick={() => scrollToSection('contact')}
+                    animationType="scale"
+                    intensity="subtle"
                   >
                     Visit Us
-                  </Button>
+                  </AnimatedButton>
                 </div>
               </div>
             </div>
@@ -333,24 +345,27 @@ export default function AgapeChurch() {
               transition={{ duration: 0.6, delay: 1 }}
               className="flex flex-col sm:flex-row gap-6 justify-center pt-2"
             >
-              <Button 
+              <PrimaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-primary hover:bg-primary/90 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-white" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold text-white" 
                 onClick={() => scrollToSection('about')}
+                animationType="lift"
+                intensity="medium"
               >
                 Discover Our Story
                 <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
-              </Button>
+              </PrimaryAnimatedButton>
               
-              <Button 
-                variant="outline" 
+              <SecondaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold" 
                 onClick={() => scrollToSection('contact')}
+                animationType="bounce"
+                intensity="medium"
               >
                 <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Visit This Sunday
-              </Button>
+              </SecondaryAnimatedButton>
             </motion.div>
             
             {/* Quick Info */}
@@ -663,7 +678,15 @@ export default function AgapeChurch() {
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
             {recentSermons.map((sermon, index) => (
-                <Card key={index} className="group hover:shadow-2xl transition-all duration-500 bg-white border border-gray-200 rounded-2xl overflow-hidden hover:-translate-y-2">
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  whileHover={{ y: -10, transition: { duration: 0.3 } }}
+                  viewport={{ once: true }}
+                >
+                  <Card className="group hover:shadow-2xl transition-all duration-500 bg-white border border-gray-200 rounded-2xl overflow-hidden">
                 <CardContent className="p-0">
                   <div className="relative overflow-hidden">
                     <img 
@@ -699,6 +722,7 @@ export default function AgapeChurch() {
                   </div>
                 </CardContent>
               </Card>
+                </motion.div>
             ))}
           </div>
 
@@ -765,22 +789,31 @@ export default function AgapeChurch() {
 
           {/* Statistics */}
           <div className="grid md:grid-cols-4 gap-6 mb-20">
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <div className="text-4xl sm:text-5xl md:text-6xl font-display font-bold text-primary">70,000</div>
-                <p className="text-gray-200 font-medium">Rag Pickers in Bangalore</p>
-            </div>
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <div className="text-6xl font-display font-bold text-gold-500">65,000</div>
-                <p className="text-gray-200 font-medium">Street Children</p>
-            </div>
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <div className="text-6xl font-display font-bold text-accent">50%</div>
-                <p className="text-gray-200 font-medium">Are Minors</p>
-            </div>
-            <div className="text-center space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
-              <div className="text-6xl font-display font-bold text-green-400">750</div>
-                <p className="text-gray-200 font-medium">Slum Areas</p>
-            </div>
+            <StatCard
+              value={70000}
+              label="Rag Pickers in Bangalore"
+              className="text-primary"
+              icon={<Users className="h-8 w-8 text-primary" />}
+            />
+            <StatCard
+              value={65000}
+              label="Street Children"
+              className="text-gold-500"
+              icon={<Heart className="h-8 w-8 text-gold-500" />}
+            />
+            <StatCard
+              value={50}
+              label="Are Minors"
+              suffix="%"
+              className="text-accent"
+              icon={<Users className="h-8 w-8 text-accent" />}
+            />
+            <StatCard
+              value={750}
+              label="Slum Areas"
+              className="text-green-400"
+              icon={<MapPin className="h-8 w-8 text-green-400" />}
+            />
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
@@ -1089,6 +1122,8 @@ export default function AgapeChurch() {
       
       {/* Vercel Analytics */}
       <Analytics />
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
