@@ -1,15 +1,13 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import { splitVendorChunkPlugin } from 'vite'
 import tailwindcss from '@tailwindcss/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
     react(),
-    tailwindcss(),
-    splitVendorChunkPlugin()
+    tailwindcss()
   ],
   resolve: {
     alias: {
@@ -28,36 +26,62 @@ export default defineConfig({
     },
     rollupOptions: {
       output: {
-        manualChunks: {
-          // Split vendor chunks for better caching
-          'react-vendor': ['react', 'react-dom'],
-          'motion-vendor': ['framer-motion'],
-          'ui-vendor': ['lucide-react'],
-          'router-vendor': ['react-router-dom'],
-          'analytics-vendor': ['@vercel/analytics', '@vercel/speed-insights']
-        }
-      }
+        // Use function form for manual chunks (recommended approach)
+        manualChunks: (id) => {
+          // React vendor chunk
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'react-vendor';
+          }
+          // Motion vendor chunk
+          if (id.includes('node_modules/framer-motion')) {
+            return 'motion-vendor';
+          }
+          // UI vendor chunk
+          if (id.includes('node_modules/lucide-react') || 
+              id.includes('node_modules/@radix-ui') ||
+              id.includes('node_modules/class-variance-authority')) {
+            return 'ui-vendor';
+          }
+          // Router vendor chunk
+          if (id.includes('node_modules/react-router')) {
+            return 'router-vendor';
+          }
+          // Analytics vendor chunk
+          if (id.includes('node_modules/@vercel/analytics') || 
+              id.includes('node_modules/@vercel/speed-insights')) {
+            return 'analytics-vendor';
+          }
+          // Other vendor chunks
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        },
+      },
     },
-    // Enable gzip compression
-    cssCodeSplit: true,
-    sourcemap: false,
-    // Optimize chunk size
+    // Chunk size warnings
     chunkSizeWarningLimit: 1000,
   },
   server: {
-    // Improve dev server performance
+    // Improve HMR performance
     hmr: {
-      overlay: false
-    }
+      overlay: false,
+    },
   },
+  // Pre-bundle dependencies for faster dev server startup
   optimizeDeps: {
-    // Pre-bundle dependencies for faster dev server
     include: [
       'react',
       'react-dom',
       'framer-motion',
       'lucide-react',
-      'react-router-dom'
-    ]
-  }
+      'react-router-dom',
+      '@vercel/analytics',
+      '@vercel/speed-insights'
+    ],
+  },
+  // Improve build performance
+  esbuild: {
+    // Remove console.log in production
+    drop: ['console', 'debugger'],
+  },
 })
