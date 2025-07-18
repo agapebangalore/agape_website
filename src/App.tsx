@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { Typewriter } from "@/components/ui/typewriter-text";
 import {
   Heart,
   MapPin,
@@ -48,18 +49,18 @@ function AnimatedVisionText() {
   }, [visionIndex, visionPhrases]);
 
   return (
-    <div className="w-full text-center space-y-2 px-4">
+    <div className="w-full text-center space-y-3 sm:space-y-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, type: "spring" }}
-          className="space-y-2"
+          className="space-y-3 sm:space-y-4"
         >
-          <div className="space-y-2">
+          <div className="space-y-3 sm:space-y-4">
             {/* First part of the heading */}
-            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
               <motion.span 
-                className="inline-block mr-4"
+                className="inline-block mr-2 sm:mr-4"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -67,7 +68,7 @@ function AnimatedVisionText() {
                 An independent,
               </motion.span>
               <motion.span 
-                className="inline-block mr-4"
+                className="inline-block mr-2 sm:mr-4"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -75,7 +76,7 @@ function AnimatedVisionText() {
                 non-denominational
               </motion.span>
               <motion.span 
-                className="inline-block text-primary mr-4"
+                className="inline-block text-primary mr-2 sm:mr-4"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
@@ -83,7 +84,7 @@ function AnimatedVisionText() {
                 Tamil church
               </motion.span>
               <motion.span 
-                className="inline-block mr-4"
+                className="inline-block mr-2 sm:mr-4"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
@@ -93,8 +94,8 @@ function AnimatedVisionText() {
             </h1>
             
             {/* Animated vision text */}
-            <div className="relative h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center overflow-hidden my-2">
-              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-black leading-none">
+            <div className="relative h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 flex items-center justify-center overflow-hidden my-4">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-black leading-none">
                 {visionPhrases.map((phrase, index) => (
                   <motion.div
                     key={index}
@@ -116,7 +117,7 @@ function AnimatedVisionText() {
             </div>
             
             {/* Second part of the heading - same size as first part */}
-            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
               <motion.span 
                 className="inline-block"
                 initial={{ opacity: 0 }}
@@ -193,6 +194,18 @@ export default function AgapeChurch() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Announcement Bar */}
+      <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium" style={{letterSpacing: '0.01em'}}>
+        <Typewriter 
+          text="For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you."
+          speed={40}
+          cursor="|"
+          loop={true}
+          className="whitespace-nowrap"
+        />
+      </div>
+      {/* Add a spacer for the fixed bar */}
+      <div className="h-10 md:h-10" />
       {/* Skip to Content Link (for accessibility) */}
       <a
         href="#main-content"
@@ -202,13 +215,13 @@ export default function AgapeChurch() {
         Skip to main content
       </a>
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-200 shadow-sm" aria-label="Main Navigation">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <button
               onClick={() => scrollToSection('hero')}
-              className="flex items-center space-x-3 font-display text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
+              className="flex items-center space-x-3 font-sans text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
             >
               <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
               <span className="hidden sm:block">AGAPE BIBLE CHURCH</span>
@@ -244,7 +257,7 @@ export default function AgapeChurch() {
 
           {/* Mobile Navigation - Enhanced spacing and touch targets */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 py-6 bg-white/95 backdrop-blur-md">
+            <div className="md:hidden border-t border-gray-200 py-6 bg-white/98 backdrop-blur-md">
               <div className="space-y-2 px-2">
                 <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">About</button>
                 <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Vision</button>
@@ -270,7 +283,7 @@ export default function AgapeChurch() {
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
+      <section id="hero" className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
@@ -294,8 +307,8 @@ export default function AgapeChurch() {
         </div>
         
         {/* Content - Centered Overlay */}
-        <div className="container-wide relative z-10 text-center px-4 sm:px-6 py-6 sm:py-8">
-          <div className="max-w-7xl mx-auto space-y-4">
+        <div className="w-full relative z-10 text-center px-4 sm:px-6 py-8 sm:py-12">
+          <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
             {/* Established Badge */}
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
@@ -567,7 +580,7 @@ export default function AgapeChurch() {
                 <Users className="h-4 w-4 text-gold-500" />
                 <span className="text-sm font-semibold text-gold-500">Leadership</span>
               </div>
-              <h2 className="text-section-title font-display font-bold text-white">Our Pastor</h2>
+              <h2 className="text-section-title text-white">Our Pastor</h2>
             <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               From rebellion to redemption - the remarkable journey of our founding pastor.
             </p>
@@ -651,7 +664,7 @@ export default function AgapeChurch() {
                 <Play className="h-4 w-4 text-primary" />
                 <span className="text-sm font-semibold text-primary">Recent Sermons</span>
               </div>
-              <h2 className="text-section-title font-display font-bold text-gray-900 mb-6">
+              <h2 className="text-section-title text-gray-900 mb-6">
               Life-Changing Messages
             </h2>
               <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -755,7 +768,7 @@ export default function AgapeChurch() {
                 <Heart className="h-4 w-4 text-gold-500" />
                 <span className="text-sm font-semibold text-gold-500">Our Ministry</span>
               </div>
-              <h2 className="text-section-title font-display font-bold text-white mb-6">Heart for the Marginalized</h2>
+              <h2 className="text-section-title text-white mb-6">Heart for the Marginalized</h2>
               <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
               Our heart breaks for the 70,000 rag pickers and 65,000 street children in Bangalore. Through the Agape Children Centre, we provide hope, shelter, and Christ's love.
             </p>
@@ -842,7 +855,7 @@ export default function AgapeChurch() {
                 <MapPin className="h-5 w-5 text-primary" />
                 <span className="text-base font-semibold text-primary">Join Our Community</span>
               </div>
-              <h2 className="text-section-title font-display font-bold text-gray-900 mb-6">Visit Us This Sunday</h2>
+              <h2 className="text-section-title text-gray-900 mb-6">Visit Us This Sunday</h2>
               <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
                 Experience authentic worship, meaningful fellowship, and biblical teaching in a warm, welcoming environment. 
                 Whether you're exploring faith or looking for a church home, you'll find a place at Agape Bible Church.
