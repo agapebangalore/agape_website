@@ -269,36 +269,32 @@ export default function AgapeChurch() {
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-[90vh] flex items-center justify-center relative bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+      <section id="hero" className="min-h-[90vh] flex items-center justify-center relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
         </div>
         
-        {/* Founding Father Image - Right Aligned */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 lg:w-2/5 xl:w-1/3 hidden md:block">
-          <div className="relative h-full">
-            <img 
-              src="/1.jpg"
-              alt="Founding Father of Agape Bible Church"
-              width="2251"
-              height="1500"
-              fetchPriority="high"
-              loading="eager"
-              className="w-full h-full object-cover object-left-top"
-            />
-            {/* Gradient overlay to blend with content */}
-            <div className="absolute inset-0 bg-gradient-to-l from-transparent via-white/20 to-white/90" />
-            <div className="absolute inset-0 bg-gradient-to-t from-white/30 via-transparent to-white/30" />
-          </div>
+        {/* Founding Father Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/1.jpg"
+            alt="Founding Father of Agape Bible Church"
+            width="2251"
+            height="1500"
+            fetchPriority="high"
+            loading="eager"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Sophisticated overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/75" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-white/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/60" />
         </div>
         
-        {/* Content - Left Aligned */}
-        <div className="container-wide relative z-10 px-4 sm:px-6 py-6 sm:py-8">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-              {/* Text Content */}
-              <div className="space-y-4 text-center md:text-left">
+        {/* Content - Centered Overlay */}
+        <div className="container-wide relative z-10 text-center px-4 sm:px-6 py-6 sm:py-8">
+          <div className="max-w-7xl mx-auto space-y-4">
             {/* Established Badge */}
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
@@ -332,7 +328,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start pt-2"
+              className="flex flex-col sm:flex-row gap-6 justify-center pt-2"
             >
               <Button 
                 size="lg" 
@@ -359,7 +355,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 sm:gap-6 md:gap-8 pt-4 text-gray-600"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 pt-4 text-gray-600"
             >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
@@ -374,22 +370,6 @@ export default function AgapeChurch() {
                 <span className="text-base font-medium">Tamil Heritage</span>
               </div>
             </motion.div>
-              </div>
-              
-              {/* Mobile Image - Show on smaller screens */}
-              <div className="md:hidden mt-8">
-                <div className="relative h-64 rounded-2xl overflow-hidden">
-                  <img 
-                    src="/1.jpg"
-                    alt="Founding Father of Agape Bible Church"
-                    width="2251"
-                    height="1500"
-                    className="w-full h-full object-cover object-center"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-                </div>
-              </div>
-            </div>
           </div>
         </div>
         
