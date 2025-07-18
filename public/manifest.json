@@ -1,7 +1,7 @@
 {
   "name": "Agape Bible Church Bangalore",
   "short_name": "Agape Church",
-  "description": "An independent, non-denominational Tamil church in Bangalore, India. Reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ since 1990.",
+  "description": "An independent, non-denominational Tamil church in Bangalore, India. Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ since 1990.",
   "start_url": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],

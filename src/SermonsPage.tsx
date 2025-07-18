@@ -4,6 +4,11 @@ import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Input } from './components/ui/input';
 import { AnimatedGradientText } from './components/ui/animated-gradient-text';
+import { ScrollRevealSection, StaggerContainer, StaggerItem, AnimatedDivider } from './components/ui/scroll-orchestration';
+import { TiltCard, MorphingCard } from './components/ui/advanced-cards';
+import { TextReveal, PulsingGlow, MagneticHover } from './components/ui/micro-interactions';
+import { ParallaxBackground, FloatingElement } from './components/ui/parallax-elements';
+import { PrimaryAnimatedButton, AnimatedButton } from './components/ui/animated-button';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
@@ -17,10 +22,17 @@ import {
   X,
   Heart,
   Users,
-  Book
+  Book,
+  Star,
+  Bookmark,
+  Share2,
+  Download,
+  Headphones,
+  Video,
+  Sparkles
 } from 'lucide-react';
 
-// Sermon data structure
+// Enhanced Sermon data structure
 interface Sermon {
   id: string;
   title: string;
@@ -31,9 +43,15 @@ interface Sermon {
   thumbnail: string;
   videoId: string;
   category: string;
+  series?: string;
+  scriptureReferences: string[];
+  topics: string[];
+  featured: boolean;
+  views: number;
+  difficulty: 'beginner' | 'intermediate' | 'advanced';
 }
 
-// Static sermon data - organized and curated
+// Static sermon data - organized and curated with enhanced metadata
 const sermonData: Sermon[] = [
   {
     id: "1",
@@ -44,7 +62,13 @@ const sermonData: Sermon[] = [
     description: "A call to be builders, not breakers, in the church. Understanding the importance of unity in the body of Christ.",
     thumbnail: "/unity-integrity-sermon.jpg.avif",
     videoId: "AuSGBxGT-Hk",
-    category: "Church Life & Unity"
+    category: "Church Life & Unity",
+    series: "Building the Church",
+    scriptureReferences: ["Ephesians 4:1-16", "1 Corinthians 3:9-17"],
+    topics: ["Unity", "Integrity", "Fear of God", "Church Building"],
+    featured: true,
+    views: 1250,
+    difficulty: 'intermediate'
   },
   {
     id: "2",
@@ -55,7 +79,13 @@ const sermonData: Sermon[] = [
     description: "Understanding our responsibility toward God's house and maintaining passion for His presence.",
     thumbnail: "/stand-united-sermon.jpg",
     videoId: "jlZ3ecEwTK8",
-    category: "Church Life & Unity"
+    category: "Church Life & Unity",
+    series: "Building the Church",
+    scriptureReferences: ["Psalm 69:9", "John 2:13-17", "1 Chronicles 29:3"],
+    topics: ["Zeal", "House of God", "Passion", "Responsibility"],
+    featured: false,
+    views: 892,
+    difficulty: 'beginner'
   },
   {
     id: "3",
@@ -66,7 +96,12 @@ const sermonData: Sermon[] = [
     description: "A Gospel sermon from our open-air crusades in Bagalur Layout, demonstrating Christ's healing power.",
     thumbnail: "/jesus-heals-leper.jpg",
     videoId: "P5GCZwXUMh8",
-    category: "Gospel & Healing"
+    category: "Gospel & Healing",
+    scriptureReferences: ["Matthew 8:1-4", "Mark 1:40-45", "Luke 5:12-16"],
+    topics: ["Healing", "Miracles", "Faith", "Compassion"],
+    featured: true,
+    views: 2156,
+    difficulty: 'beginner'
   }
 ];
 

@@ -40,20 +40,23 @@ import {
 
 const AnimatedVisionText = React.memo(() => {
   const [visionIndex, setVisionIndex] = useState(0);
+  const [isVisible, setIsVisible] = useState(true);
+  
   const visionPhrases = useMemo(
     () => [
-      { text: "reaching the unreached", color: "text-primary", bgColor: "bg-primary/10" },
-      { text: "teaching the reached", color: "text-gold-600", bgColor: "bg-gold-500/10" },
-      { text: "touching the untouched", color: "text-burgundy-600", bgColor: "bg-burgundy-500/10" }
+      { text: "Reaching the unreached", color: "text-primary", bgColor: "bg-primary/10" },
+      { text: "Teaching the reached", color: "text-gold-600", bgColor: "bg-gold-500/10" },
+      { text: "Touching the untouched", color: "text-burgundy-600", bgColor: "bg-burgundy-500/10" }
     ],
     []
   );
 
   useEffect(() => {
-    const timeoutId = setTimeout(() => {
+    setIsVisible(true);
+    const intervalId = setInterval(() => {
       setVisionIndex((prevIndex) => (prevIndex + 1) % visionPhrases.length);
     }, 3000);
-    return () => clearTimeout(timeoutId);
+    return () => clearInterval(intervalId);
   }, [visionPhrases.length]);
 
   return (
@@ -106,15 +109,19 @@ const AnimatedVisionText = React.memo(() => {
               <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-black leading-none">
                 {visionPhrases.map((phrase, index) => (
                   <motion.div
-                    key={index}
+                    key={`${index}-${phrase.text}`}
                     className={`absolute inset-0 flex items-center justify-center ${phrase.color}`}
-                    initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
                     animate={
                       visionIndex === index
                         ? { opacity: 1, y: 0, scale: 1 }
-                        : { opacity: 0, y: visionIndex > index ? -100 : 100, scale: 0.8 }
+                        : { opacity: 0, y: visionIndex > index ? -50 : 50, scale: 0.9 }
                     }
-                    transition={{ type: "spring", stiffness: 100, damping: 20 }}
+                    transition={{ 
+                      duration: 0.6, 
+                      ease: [0.25, 0.46, 0.45, 0.94],
+                      opacity: { duration: 0.4 }
+                    }}
                   >
                     <span className="text-center leading-none tracking-tight drop-shadow-lg">
                       {phrase.text}
@@ -154,7 +161,7 @@ export default function AgapeChurch() {
     website: "agapebangalore.org",
     established: "August 5th, 1990",
     type: "Independent, Indigenous, Evangelical, and Charismatic Church",
-    description: "An independent, non-denominational Tamil church dedicated to reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ.",
+    description: "An independent, non-denominational Tamil church dedicated to Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ.",
     mission: "Our mission encompasses sending Church Planters throughout the state of Karnataka for the purpose of evangelism, Bible training, and supporting native missionaries. We extend love especially to marginalized individuals such as orphans, street children, rag pickers, eunuchs, and others who have been abandoned by society.",
     churches: "Currently, Agape directly oversees the operation of six churches, and many others receive guidance and support through discreet direction."
   };
@@ -457,7 +464,7 @@ export default function AgapeChurch() {
                   <h3 className="text-3xl font-display font-bold text-white mb-6">Our Vision & Mission</h3>
                   <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                     <p className="text-2xl text-white font-semibold mb-4 leading-relaxed">
-                    Reaching the Unreached, teaching the Reached and touching the Untouched with the Gospel of Jesus Christ, 
+                    Reaching the unreached, Teaching the reached and Touching the untouched with the Gospel of Jesus Christ, 
                     by all means, at any cost, without anymore delay!
                   </p>
                 </div>
@@ -561,15 +568,20 @@ export default function AgapeChurch() {
 
           {/* Timeline Visual */}
           <div className="relative mb-20">
-            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent"></div>
+            <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-primary via-primary/50 to-transparent hidden lg:block"></div>
             
             {/* Timeline Items */}
-            <div className="space-y-20">
+            <div className="space-y-16 lg:space-y-20">
               {/* 1990 - Foundation */}
               <StaggerContainer>
-                <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative">
+                  {/* Mobile Timeline Indicator */}
+                  <div className="lg:hidden w-full flex justify-center mb-8">
+                    <div className="w-6 h-6 bg-primary border-4 border-white rounded-full shadow-lg"></div>
+                  </div>
+                  
                   <StaggerItem>
-                    <div className="lg:text-right space-y-6 lg:pr-12">
+                    <div className="text-center lg:text-right space-y-6 lg:pr-12">
                       <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary text-white rounded-full text-sm font-semibold mb-4">
                         <Church className="h-4 w-4" />
                         1990
@@ -580,7 +592,7 @@ export default function AgapeChurch() {
                       <p className="text-lg text-gray-600 leading-relaxed">
                         Founded with just 3 families, Archbishop Dr. Reuben Sathiyaraj planted the seeds of what would become a thriving church community in Bangalore. From the very beginning, our mission was clear: to reach the unreached, teach the reached, and touch the untouched.
                       </p>
-                      <div className="flex items-center gap-4 lg:justify-end">
+                      <div className="flex items-center gap-4 justify-center lg:justify-end">
                         <div className="flex items-center gap-2 text-primary">
                           <Users className="h-4 w-4" />
                           <span className="font-semibold">3 Families</span>
@@ -612,13 +624,18 @@ export default function AgapeChurch() {
                   </StaggerItem>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary border-4 border-white rounded-full shadow-lg z-10"></div>
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-primary border-4 border-white rounded-full shadow-lg z-10 hidden lg:block"></div>
                 </div>
               </StaggerContainer>
 
               {/* Present Day - Growth */}
               <StaggerContainer>
-                <div className="grid lg:grid-cols-2 gap-16 items-center relative">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center relative">
+                  {/* Mobile Timeline Indicator */}
+                  <div className="lg:hidden w-full flex justify-center mb-8">
+                    <div className="w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg"></div>
+                  </div>
+                  
                   <StaggerItem>
                     <MorphingCard className="bg-white border border-gray-200 shadow-xl lg:order-1">
                       <div className="relative group overflow-hidden rounded-lg">
@@ -641,7 +658,7 @@ export default function AgapeChurch() {
                   </StaggerItem>
                   
                   <StaggerItem>
-                    <div className="space-y-6 lg:pl-12 lg:order-2">
+                    <div className="text-center lg:text-left space-y-6 lg:pl-12 lg:order-2">
                       <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold mb-4">
                         <TrendingUp className="h-4 w-4" />
                         2024
@@ -652,7 +669,7 @@ export default function AgapeChurch() {
                       <p className="text-lg text-gray-600 leading-relaxed">
                         Today, we serve over 1000 believers and 250 children across 6 churches. Our ministry extends beyond our walls through rehabilitation homes for street children, training programs for pastors, and community outreach initiatives throughout Bangalore.
                       </p>
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="bg-primary/5 p-4 rounded-lg text-center">
                           <div className="text-2xl font-bold text-primary">1000+</div>
                           <div className="text-sm text-gray-600">Believers</div>
@@ -666,7 +683,7 @@ export default function AgapeChurch() {
                   </StaggerItem>
 
                   {/* Timeline Dot */}
-                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg z-10"></div>
+                  <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-6 h-6 bg-green-500 border-4 border-white rounded-full shadow-lg z-10 hidden lg:block"></div>
                 </div>
               </StaggerContainer>
             </div>
@@ -674,7 +691,7 @@ export default function AgapeChurch() {
 
           {/* Mission Cards */}
           <StaggerContainer>
-            <div className="grid md:grid-cols-2 gap-8 mb-16">
+            <div className="grid md:grid-cols-2 gap-8 mb-16 items-stretch">
               <StaggerItem>
                 <Card className="bg-white border-2 border-primary/20 hover:border-primary/40 transition-colors duration-300 shadow-lg hover:shadow-xl">
                   <CardContent className="p-8">
@@ -719,14 +736,14 @@ export default function AgapeChurch() {
 
           {/* Community Gallery */}
           <ScrollRevealSection>
-            <div className="text-center mb-12">
-              <h3 className="text-3xl font-bold text-gray-900 mb-4">Our Community in Action</h3>
+            <div className="text-center mb-16">
+              <h3 className="text-3xl font-bold text-gray-900 mb-6">Our Community in Action</h3>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                 See how God is working through our church family to impact lives across Bangalore
               </p>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
               <MorphingCard className="bg-white border border-gray-200 shadow-lg">
                 <div className="relative group overflow-hidden">
                   <img 
@@ -1268,7 +1285,7 @@ export default function AgapeChurch() {
                 <span className="font-display text-2xl font-bold">AGAPE BIBLE CHURCH</span>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                An {churchInfo.type} located in Bangalore, India. Reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ since {churchInfo.established}.
+                An {churchInfo.type} located in Bangalore, India. Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ since {churchInfo.established}.
               </p>
             </div>
             
