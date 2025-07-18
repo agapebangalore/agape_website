@@ -207,7 +207,7 @@ export default function AgapeChurch() {
       {/* Spacer for announcement bar (height: 40px) */}
       <div className="h-10" />
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+      <nav className="sticky top-10 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
