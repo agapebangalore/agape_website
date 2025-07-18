@@ -4,19 +4,18 @@ import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { PerformanceMonitor } from "./components/ui/performance-monitor";
-import { VisibilityGuard } from "./components/ui/visibility-guard";
-import { Button } from "./components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "./components/ui/card";
-import { AnimatedGradientText } from "./components/ui/animated-gradient-text";
-import { Typewriter } from "./components/ui/typewriter-text";
-import { ScrollProgress } from "./components/ui/scroll-progress";
-import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "./components/ui/animated-button";
-import { LoadingState, SkeletonGrid } from "./components/ui/loading-states";
-import { AnimatedCounter, StatCard } from "./components/ui/animated-counter";
-import { ParallaxBackground, FloatingElement, BackgroundParticles } from "./components/ui/parallax-elements";
-import { TiltCard, MorphingCard, SlideInCard } from "./components/ui/advanced-cards";
-import { TextReveal, PulsingGlow, MagneticHover } from "./components/ui/micro-interactions";
-import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "./components/ui/scroll-orchestration";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
+import { Typewriter } from "@/components/ui/typewriter-text";
+import { ScrollProgress } from "@/components/ui/scroll-progress";
+import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
+import { LoadingState, SkeletonGrid } from "@/components/ui/loading-states";
+import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
+import { ParallaxBackground, FloatingElement, BackgroundParticles } from "@/components/ui/parallax-elements";
+import { TiltCard, MorphingCard, SlideInCard } from "@/components/ui/advanced-cards";
+import { TextReveal, PulsingGlow, MagneticHover } from "@/components/ui/micro-interactions";
+import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "@/components/ui/scroll-orchestration";
 import {
   Heart,
   MapPin,
@@ -208,10 +207,9 @@ export default function AgapeChurch() {
   };
 
   return (
-    <VisibilityGuard>
-      <div className="min-h-screen bg-background">
-        {/* Scroll Progress Indicator */}
-        <ScrollProgress />
+    <div className="min-h-screen bg-background">
+      {/* Scroll Progress Indicator */}
+      <ScrollProgress />
       
       {/* Announcement Bar */}
       <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium" style={{letterSpacing: '0.01em'}}>
@@ -463,7 +461,7 @@ export default function AgapeChurch() {
             <div className="space-y-8">
               <div className="space-y-6">
                   <h3 className="text-3xl font-display font-bold text-white mb-6">Our Vision & Mission</h3>
-                  <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <div className="bg-black/80 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                     <p className="text-2xl text-white font-semibold mb-4 leading-relaxed">
                     Reaching the unreached, Teaching the reached and Touching the untouched with the Gospel of Jesus Christ, 
                     by all means, at any cost, without anymore delay!
@@ -482,7 +480,7 @@ export default function AgapeChurch() {
             </div>
             
             <div className="space-y-6">
-                <Card className="bg-white/5 text-white border-white/10 backdrop-blur-sm">
+                <Card className="bg-black/90 text-white border-white/10 backdrop-blur-sm">
                 <CardContent className="p-8">
                   <h4 className="text-2xl font-display font-bold text-gold-500 mb-6">
                     Join Our Mission
@@ -515,19 +513,19 @@ export default function AgapeChurch() {
               </Card>
               
               <div className="grid grid-cols-2 gap-4">
-                  <div className="text-center space-y-2 p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="text-center space-y-2 p-6 bg-black/80 rounded-2xl border border-white/10">
                   <div className="text-3xl font-display font-bold text-gold-500">1990</div>
                     <p className="text-sm text-gray-300">Established</p>
                 </div>
-                  <div className="text-center space-y-2 p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="text-center space-y-2 p-6 bg-black/80 rounded-2xl border border-white/10">
                   <div className="text-3xl font-display font-bold text-gold-500">Multi-Ethnic</div>
                     <p className="text-sm text-gray-300">Community</p>
                 </div>
-                  <div className="text-center space-y-2 p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="text-center space-y-2 p-6 bg-black/80 rounded-2xl border border-white/10">
                   <div className="text-3xl font-display font-bold text-gold-500">Tamil</div>
                     <p className="text-sm text-gray-300">Heritage</p>
                 </div>
-                  <div className="text-center space-y-2 p-6 bg-white/5 rounded-2xl border border-white/10">
+                  <div className="text-center space-y-2 p-6 bg-black/80 rounded-2xl border border-white/10">
                   <div className="text-3xl font-display font-bold text-gold-500">Bangalore</div>
                     <p className="text-sm text-gray-300">Located</p>
                 </div>
@@ -812,7 +810,7 @@ export default function AgapeChurch() {
           </div>
 
           <div className="max-w-5xl mx-auto">
-              <MorphingCard className="bg-white/5 text-white border-white/10 backdrop-blur-sm">
+              <MorphingCard className="bg-black/90 text-white border-white/10 backdrop-blur-sm">
                 <CardHeader className="text-center pb-8">
                   <TextReveal 
                     text="Archbishop Dr. Reuben M. Sathiyaraj"
@@ -852,7 +850,7 @@ export default function AgapeChurch() {
                       </p>
                     </div>
                   </div>
-                  <div className="bg-white/5 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
+                  <div className="bg-black/80 p-8 rounded-2xl border border-white/10 backdrop-blur-sm">
                     <p className="text-2xl italic text-white mb-4 leading-relaxed font-serif">
                       "For though I preach the gospel, I have nothing to glory of: for necessity is laid upon me; yea, woe is unto me, if I preach not the gospel!"
                     </p>
@@ -1049,7 +1047,7 @@ export default function AgapeChurch() {
               <p className="text-xl text-gray-200 leading-relaxed">
                 We provide a safe haven for abandoned children aged 5-12, offering shelter, hygiene facilities, nutritious meals, and most importantly - unconditional love and protection from exploitation.
               </p>
-              <div className="space-y-4 p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm">
+              <div className="space-y-4 p-8 bg-black/80 rounded-2xl border border-white/10 backdrop-blur-sm">
                   <h4 className="text-2xl font-bold text-gold-500 mb-4">Their Hidden Value</h4>
                 <p className="text-gray-200 leading-relaxed text-lg">
                   25% of recycled materials in our homes come from their work - contributing significantly to environmental protection while society overlooks their value.
@@ -1057,19 +1055,19 @@ export default function AgapeChurch() {
               </div>
             </div>
             <div className="grid grid-cols-2 gap-6">
-                <div className="space-y-4 text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+                <div className="space-y-4 text-center p-8 bg-black/80 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-black/70 transition-all">
                 <div className="text-4xl font-display font-bold text-primary">25-75</div>
                 <p className="text-gray-200 font-medium">Rupees earned daily</p>
               </div>
-                <div className="space-y-4 text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+                <div className="space-y-4 text-center p-8 bg-black/80 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-black/70 transition-all">
                 <div className="text-4xl font-display font-bold text-gold-500">20km</div>
                 <p className="text-gray-200 font-medium">Traveled daily for collections</p>
               </div>
-                <div className="space-y-4 text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+                <div className="space-y-4 text-center p-8 bg-black/80 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-black/70 transition-all">
                 <div className="text-4xl font-display font-bold text-accent">25%</div>
                 <p className="text-gray-200 font-medium">Of recycled materials</p>
               </div>
-                <div className="space-y-4 text-center p-8 bg-white/5 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-all">
+                <div className="space-y-4 text-center p-8 bg-black/80 rounded-2xl border border-white/10 backdrop-blur-sm hover:bg-black/70 transition-all">
                 <div className="text-4xl font-display font-bold text-green-400">6</div>
                 <p className="text-gray-200 font-medium">Churches directly overseen</p>
               </div>
@@ -1353,7 +1351,6 @@ export default function AgapeChurch() {
       <SpeedInsights />
       {/* Performance Monitoring */}
       <PerformanceMonitor />
-      </div>
-    </VisibilityGuard>
+    </div>
   );
 }

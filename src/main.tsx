@@ -7,6 +7,15 @@ import PastorBiography from './PastorBiography.tsx'
 import MinistryPage from './MinistryPage.tsx'
 import SermonsPage from './SermonsPage.tsx'
 import { RouteTransition } from './components/ui/page-transition'
+import { initializeTheme, detectCSSLoading } from './utils/theme-init'
+import { initializeTextVisibilityProtection } from './utils/text-visibility-fix'
+
+// Initialize theme immediately to prevent text visibility issues
+initializeTheme();
+detectCSSLoading();
+
+// Initialize text visibility protection
+initializeTextVisibilityProtection();
 
 // Register Service Worker for PWA functionality
 if ('serviceWorker' in navigator) {
