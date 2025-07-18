@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Analytics } from "@vercel/analytics/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
@@ -1083,6 +1084,9 @@ export default function AgapeChurch() {
           ✨ Built by Agape Family
         </span>
       </aside>
+      
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 }
