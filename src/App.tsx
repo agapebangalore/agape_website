@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { PerformanceMonitor } from "./components/ui/performance-monitor";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
@@ -40,7 +41,6 @@ import {
 
 const AnimatedVisionText = React.memo(() => {
   const [visionIndex, setVisionIndex] = useState(0);
-  const [isVisible, setIsVisible] = useState(true);
   
   const visionPhrases = useMemo(
     () => [
@@ -52,7 +52,6 @@ const AnimatedVisionText = React.memo(() => {
   );
 
   useEffect(() => {
-    setIsVisible(true);
     const intervalId = setInterval(() => {
       setVisionIndex((prevIndex) => (prevIndex + 1) % visionPhrases.length);
     }, 3000);
@@ -1350,6 +1349,8 @@ export default function AgapeChurch() {
       <Analytics />
       {/* Vercel Speed Insights */}
       <SpeedInsights />
+      {/* Performance Monitoring */}
+      <PerformanceMonitor />
     </div>
   );
 }
