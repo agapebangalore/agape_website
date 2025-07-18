@@ -56,7 +56,7 @@ function AnimatedVisionText() {
         >
           <div className="space-y-2">
             {/* First part of the heading */}
-            <h1 className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
               <motion.span 
                 className="inline-block mr-4"
                 initial={{ opacity: 0, x: -50 }}
@@ -92,8 +92,8 @@ function AnimatedVisionText() {
             </h1>
             
             {/* Animated vision text */}
-            <div className="relative h-16 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center overflow-hidden my-2">
-              <div className="!text-4xl md:!text-5xl lg:!text-6xl xl:!text-7xl font-display font-black leading-none">
+            <div className="relative h-12 sm:h-16 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center overflow-hidden my-2">
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-black leading-none">
                 {visionPhrases.map((phrase, index) => (
                   <motion.div
                     key={index}
@@ -115,7 +115,7 @@ function AnimatedVisionText() {
             </div>
             
             {/* Second part of the heading - same size as first part */}
-            <h1 className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
               <motion.span 
                 className="inline-block"
                 initial={{ opacity: 0 }}
@@ -222,33 +222,41 @@ export default function AgapeChurch() {
               <Link to="/sermons" className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
               <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
               <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
-              <Button size="sm" className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-md hover:shadow-lg" style={{ color: '#ffffff' }}>
-                <span style={{ color: '#ffffff' }}>Visit Us</span>
+              <Button 
+                size="sm" 
+                className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium transition-all duration-200 shadow-md hover:shadow-lg"
+                onClick={() => scrollToSection('contact')}
+              >
+                Visit Us
               </Button>
             </div>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Button - Enhanced for better touch targets */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
+              className="md:hidden p-3 rounded-md hover:bg-gray-100 transition-colors min-h-[44px] min-w-[44px] flex items-center justify-center"
               aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
             >
               {mobileMenuOpen ? <X className="h-6 w-6 text-gray-700" /> : <Menu className="h-6 w-6 text-gray-700" />}
             </button>
           </div>
 
-          {/* Mobile Navigation */}
+          {/* Mobile Navigation - Enhanced spacing and touch targets */}
           {mobileMenuOpen && (
-            <div className="md:hidden border-t border-gray-200 py-4 bg-white/95 backdrop-blur-md">
-              <div className="space-y-1">
-                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">About</button>
-                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Vision</button>
-                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Pastor</button>
-                <Link to="/sermons" className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
-                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
-                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-3 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
-                <div className="pt-4 border-t border-gray-200 mt-4">
-                  <Button size="sm" className="w-full bg-primary hover:bg-primary/90 text-white py-3 rounded-full font-medium transition-all duration-200 shadow-md">
+            <div className="md:hidden border-t border-gray-200 py-6 bg-white/95 backdrop-blur-md">
+              <div className="space-y-2 px-2">
+                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">About</button>
+                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Vision</button>
+                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Pastor</button>
+                <Link to="/sermons" className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Sermons</Link>
+                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
+                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
+                <div className="pt-6 border-t border-gray-200 mt-6 px-2">
+                  <Button 
+                    size="lg" 
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-base rounded-full font-medium transition-all duration-200 shadow-md min-h-[44px]"
+                    onClick={() => scrollToSection('contact')}
+                  >
                     Visit Us
                   </Button>
                 </div>
@@ -270,20 +278,19 @@ export default function AgapeChurch() {
         {/* Background Image with Better Overlay */}
         <div className="absolute inset-0">
           <img 
-            src="/authentic-church-worship.webp"
-            srcSet="/authentic-church-worship.webp 1x, /authentic-church-worship.png 2x"
-            alt="Agape Bible Church Hero Banner - Authentic Worship"
-            width="1536"
-            height="1024"
+            src="/1.jpg"
+            alt="Agape Bible Church Hero Banner - Church Community"
+            width="2251"
+            height="1500"
             fetchPriority="high"
             loading="eager"
-            className="w-full h-full object-cover opacity-15"
+            className="w-full h-full object-cover opacity-20"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-white/80 via-white/90 to-white/95" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/75 via-white/85 to-white/90" />
         </div>
         
         {/* Content */}
-        <div className="container-wide relative z-10 text-center px-6 py-8">
+        <div className="container-wide relative z-10 text-center px-4 sm:px-6 py-6 sm:py-8">
           <div className="max-w-7xl mx-auto space-y-4">
             {/* Established Badge */}
             <motion.div 
@@ -322,22 +329,21 @@ export default function AgapeChurch() {
             >
               <Button 
                 size="lg" 
-                className="text-xl px-10 py-6 bg-primary hover:bg-primary/90 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 bg-primary hover:bg-primary/90 rounded-full font-semibold transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-white" 
                 onClick={() => scrollToSection('about')}
-                style={{ color: '#ffffff' }}
               >
-                <span style={{ color: '#ffffff' }}>Discover Our Story</span>
-                <ChevronRight className="h-5 w-5 ml-2" style={{ color: '#ffffff' }} />
+                Discover Our Story
+                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
               </Button>
               
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="text-xl px-10 py-6 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 border-2 border-primary text-primary hover:bg-primary hover:text-white rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-xl" 
                 onClick={() => scrollToSection('contact')}
               >
-                <MapPin className="h-5 w-5 mr-2" />
-                <span>Visit This Sunday</span>
+                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                Visit This Sunday
               </Button>
             </motion.div>
             
@@ -346,7 +352,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-4 text-gray-600"
+              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 pt-4 text-gray-600"
             >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
@@ -851,8 +857,8 @@ export default function AgapeChurch() {
           </div>
 
             {/* Enhanced Contact Card with better organization */}
-            <div className="rounded-3xl bg-white border border-gray-200 shadow-2xl p-12 mb-16">
-              <div className="grid lg:grid-cols-3 gap-12 items-start">
+            <div className="rounded-3xl bg-white border border-gray-200 shadow-2xl p-6 sm:p-8 md:p-12 mb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12 items-start">
                 {/* Location Information */}
                 <div className="space-y-8">
                   <div className="space-y-6">
@@ -925,7 +931,7 @@ export default function AgapeChurch() {
                   
                   <div className="space-y-6">
                     <h3 className="text-xl font-display font-bold text-gray-900">Follow Us</h3>
-                    <div className="grid grid-cols-2 gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
                         <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center gap-2">
                           <Facebook className="h-4 w-4 text-blue-600" />
@@ -1066,12 +1072,12 @@ export default function AgapeChurch() {
         </div>
       </footer>
 
-      {/* Built by ELI */}
+      {/* Built by Agape Family */}
       <aside aria-label="Site Info" className="fixed bottom-4 right-4 z-50">
         <span
           className="inline-flex items-center px-4 py-2 rounded-full bg-white text-gray-700 text-xs font-semibold shadow-lg border border-gray-200"
         >
-          ✨ Built by ELI
+          ✨ Built by Agape Family
         </span>
       </aside>
     </div>

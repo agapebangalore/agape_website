@@ -308,6 +308,12 @@ h4, .text-lg, .text-large {
   padding: 0 1rem;
 }
 
+@media (min-width: 640px) {
+  .container-wide {
+    padding: 0 1.5rem;
+  }
+}
+
 @media (min-width: 768px) {
   .container-wide {
     padding: 0 2rem;
