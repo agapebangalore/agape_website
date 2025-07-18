@@ -11,6 +11,9 @@ import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
 import { LoadingState, SkeletonGrid } from "@/components/ui/loading-states";
 import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
+import { ParallaxBackground, FloatingElement, BackgroundParticles } from "@/components/ui/parallax-elements";
+import { TiltCard, MorphingCard, SlideInCard } from "@/components/ui/advanced-cards";
+import { TextReveal, PulsingGlow, MagneticHover } from "@/components/ui/micro-interactions";
 import {
   Heart,
   MapPin,
@@ -285,10 +288,21 @@ export default function AgapeChurch() {
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
       <section id="hero" className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
+        {/* Enhanced Background with Parallax */}
+        <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
-        </div>
+        </ParallaxBackground>
+        
+        {/* Floating Elements */}
+        <FloatingElement delay={0} duration={6} className="top-1/4 left-1/4 opacity-20">
+          <Heart className="h-16 w-16 text-primary" />
+        </FloatingElement>
+        <FloatingElement delay={2} duration={8} className="top-1/3 right-1/4 opacity-15">
+          <Users className="h-12 w-12 text-secondary" />
+        </FloatingElement>
+        <FloatingElement delay={4} duration={5} className="bottom-1/3 left-1/6 opacity-10">
+          <Book className="h-14 w-14 text-accent" />
+        </FloatingElement>
         
         {/* Founding Father Background Image */}
         <div className="absolute inset-0">
@@ -418,14 +432,15 @@ export default function AgapeChurch() {
               </div>
               <h2 className="text-section-title font-display font-bold text-white mb-6">Welcoming You Home</h2>
             <div className="max-w-4xl mx-auto space-y-6">
-                <p className="text-xl text-gray-200 leading-relaxed">
-                Agape Bible Church is an independent, non-denominational Tamil Church located in the heart of Bangalore city 
-                proclaiming the gospel of Christ Jesus by all means, at any cost, without anymore delay!
-              </p>
-                <p className="text-xl text-gray-200 leading-relaxed">
-                You are welcomed to join us and share in our vision and run with us towards the goal, 
-                Christ Jesus has called us towards.
-              </p>
+                <TextReveal 
+                  text="Agape Bible Church is an independent, non-denominational Tamil Church located in the heart of Bangalore city proclaiming the gospel of Christ Jesus by all means, at any cost, without anymore delay!"
+                  className="text-xl text-gray-200 leading-relaxed"
+                />
+                <TextReveal 
+                  text="You are welcomed to join us and share in our vision and run with us towards the goal, Christ Jesus has called us towards."
+                  delay={0.5}
+                  className="text-xl text-gray-200 leading-relaxed"
+                />
             </div>
           </div>
 
@@ -529,38 +544,44 @@ export default function AgapeChurch() {
                 Our congregation is dedicated to showcasing God's love through tangible acts of kindness, making us a practical and living testament to His grace.
               </p>
             </div>
-            <div className="relative group ministry-image-container">
-              <img 
-                src="/community-fellowship.png" 
-                alt="Community Fellowship and Bible Study" 
-                className="w-full h-96 object-cover rounded-lg shadow-2xl image-hover-zoom"
-              />
-              <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
-                <div className="text-center text-white px-6">
-                  <h4 className="text-2xl font-bold mb-2">Community Fellowship</h4>
-                  <p className="text-lg opacity-90">Building relationships through Bible study and prayer</p>
+            <MagneticHover strength={0.1} className="relative group ministry-image-container">
+              <TiltCard tiltIntensity={8} glowEffect={true}>
+                <img 
+                  src="/community-fellowship.png" 
+                  alt="Community Fellowship and Bible Study" 
+                  className="w-full h-96 object-cover rounded-lg shadow-2xl"
+                />
+                <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
+                  <div className="text-center text-white px-6">
+                    <h4 className="text-2xl font-bold mb-2">Community Fellowship</h4>
+                    <p className="text-lg opacity-90">Building relationships through Bible study and prayer</p>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </TiltCard>
+            </MagneticHover>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="relative order-2 lg:order-1 group ministry-image-container">
-              <img 
-                src="/children-ministry-authentic.png" 
+            <MagneticHover strength={0.1} className="relative order-2 lg:order-1 group ministry-image-container">
+              <TiltCard tiltIntensity={8} glowEffect={true}>
+                <img 
+                  src="/children-ministry-authentic.png" 
                   alt="Reaching Out to Bangalore - Children's Ministry" 
-                className="w-full h-96 object-cover rounded-lg shadow-2xl image-hover-zoom"
-              />
-              <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
-                <div className="text-center text-white px-6">
+                  className="w-full h-96 object-cover rounded-lg shadow-2xl"
+                />
+                <div className="ministry-overlay image-overlay-center opacity-0 group-hover:opacity-100">
+                  <div className="text-center text-white px-6">
                     <h4 className="text-2xl font-bold mb-2">Reaching Out to Bangalore</h4>
                     <p className="text-lg opacity-90">Serving the children and communities of Bangalore with love and hope</p>
+                  </div>
                 </div>
-              </div>
-              <div className="image-badge bg-primary text-primary-foreground">
-                <Heart className="h-4 w-4" />
-              </div>
-            </div>
+                <PulsingGlow color="primary" intensity={0.2} className="absolute -top-2 -right-2">
+                  <div className="bg-primary text-primary-foreground p-2 rounded-full">
+                    <Heart className="h-4 w-4" />
+                  </div>
+                </PulsingGlow>
+              </TiltCard>
+            </MagneticHover>
             <div className="space-y-6 order-1 lg:order-2">
                 <h3 className="text-2xl font-semibold text-foreground">
                 Reaching Out to Bangalore
@@ -591,11 +612,14 @@ export default function AgapeChurch() {
           </div>
 
           <div className="max-w-5xl mx-auto">
-              <Card className="bg-white/5 text-white border-white/10 backdrop-blur-sm">
-              <CardHeader className="text-center pb-8">
-                  <CardTitle className="text-5xl font-display font-bold text-white mb-4">Archbishop Dr. Reuben M. Sathiyaraj</CardTitle>
-                <CardDescription className="text-xl text-gold-500 font-semibold">Founding Senior Pastor - Established Agape Bible Fellowship 1990</CardDescription>
-              </CardHeader>
+              <MorphingCard className="bg-white/5 text-white border-white/10 backdrop-blur-sm">
+                <CardHeader className="text-center pb-8">
+                  <TextReveal 
+                    text="Archbishop Dr. Reuben M. Sathiyaraj"
+                    className="text-5xl font-display font-bold text-white mb-4"
+                  />
+                  <CardDescription className="text-xl text-gold-500 font-semibold">Founding Senior Pastor - Established Agape Bible Fellowship 1990</CardDescription>
+                </CardHeader>
               <CardContent className="space-y-10">
                   <div className="flex justify-center mb-12">
                     <div className="relative">
@@ -608,18 +632,9 @@ export default function AgapeChurch() {
                     </div>
                   </div>
                 <div className="grid md:grid-cols-3 gap-8 text-center">
-                  <div className="space-y-4 p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <div className="text-4xl font-display font-bold text-gold-500">35+</div>
-                    <p className="text-gray-300 font-medium">Years of Ministry</p>
-                  </div>
-                  <div className="space-y-4 p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <div className="text-4xl font-display font-bold text-gold-500">1000+</div>
-                    <p className="text-gray-300 font-medium">Believers Served</p>
-                  </div>
-                  <div className="space-y-4 p-6 bg-white/5 rounded-2xl border border-white/10">
-                    <div className="text-4xl font-display font-bold text-gold-500">6</div>
-                    <p className="text-gray-300 font-medium">Churches Overseen</p>
-                  </div>
+                  <StatCard value={35} suffix="+" label="Years of Ministry" className="text-gold-500" />
+                  <StatCard value={1000} suffix="+" label="Believers Served" className="text-gold-500" />
+                  <StatCard value={6} label="Churches Overseen" className="text-gold-500" />
                 </div>
                 <div className="border-t border-white/10 pt-8" />
                 <div className="space-y-8">
@@ -647,15 +662,15 @@ export default function AgapeChurch() {
                   </div>
                   <div className="text-center pt-8">
                     <Link to="/pastor-biography">
-                      <Button size="lg" className="text-lg px-8 py-4 bg-gold-500 hover:bg-gold-600 text-white font-semibold transition-all duration-200 shadow-lg hover:shadow-xl rounded-full">
+                      <PrimaryAnimatedButton size="lg" className="text-lg px-8 py-4 rounded-full font-semibold" animationType="lift">
                         Read Complete Biography
-                        <Book className="h-5 w-5 ml-2 text-white" />
-                      </Button>
+                        <Book className="h-5 w-5 ml-2" />
+                      </PrimaryAnimatedButton>
                     </Link>
                   </div>
                 </div>
               </CardContent>
-            </Card>
+              </MorphingCard>
           </div>
         </div>
       </section>
