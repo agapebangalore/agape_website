@@ -14,6 +14,7 @@ import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
 import { ParallaxBackground, FloatingElement, BackgroundParticles } from "@/components/ui/parallax-elements";
 import { TiltCard, MorphingCard, SlideInCard } from "@/components/ui/advanced-cards";
 import { TextReveal, PulsingGlow, MagneticHover } from "@/components/ui/micro-interactions";
+import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "@/components/ui/scroll-orchestration";
 import {
   Heart,
   MapPin,
@@ -422,6 +423,9 @@ export default function AgapeChurch() {
         </motion.div>
       </section>
 
+      {/* Animated Divider */}
+      <AnimatedDivider type="line" className="my-8" />
+
       {/* Welcome & Vision Section */}
       <section id="vision" className="section-spacing bg-black text-white">
         <div className="container-wide">
@@ -521,6 +525,9 @@ export default function AgapeChurch() {
           </div>
         </div>
       </section>
+
+      {/* Animated Divider */}
+      <AnimatedDivider type="dots" className="my-12" />
 
       {/* About Section */}
         <section id="about" className="section-spacing bg-card text-foreground">
@@ -803,33 +810,45 @@ export default function AgapeChurch() {
           </div>
 
           {/* Statistics */}
-          <div className="grid md:grid-cols-4 gap-6 mb-20">
-            <StatCard
-              value={70000}
-              label="Rag Pickers in Bangalore"
-              className="text-primary"
-              icon={<Users className="h-8 w-8 text-primary" />}
-            />
-            <StatCard
-              value={65000}
-              label="Street Children"
-              className="text-gold-500"
-              icon={<Heart className="h-8 w-8 text-gold-500" />}
-            />
-            <StatCard
-              value={50}
-              label="Are Minors"
-              suffix="%"
-              className="text-accent"
-              icon={<Users className="h-8 w-8 text-accent" />}
-            />
-            <StatCard
-              value={750}
-              label="Slum Areas"
-              className="text-green-400"
-              icon={<MapPin className="h-8 w-8 text-green-400" />}
-            />
-          </div>
+          <ScrollRevealSection>
+            <StaggerContainer staggerDelay={0.15}>
+              <div className="grid md:grid-cols-4 gap-6 mb-20">
+                <StaggerItem>
+                  <StatCard
+                    value={70000}
+                    label="Rag Pickers in Bangalore"
+                    className="text-primary"
+                    icon={<Users className="h-8 w-8 text-primary" />}
+                  />
+                </StaggerItem>
+                <StaggerItem>
+                  <StatCard
+                    value={65000}
+                    label="Street Children"
+                    className="text-gold-500"
+                    icon={<Heart className="h-8 w-8 text-gold-500" />}
+                  />
+                </StaggerItem>
+                <StaggerItem>
+                  <StatCard
+                    value={50}
+                    label="Are Minors"
+                    suffix="%"
+                    className="text-accent"
+                    icon={<Users className="h-8 w-8 text-accent" />}
+                  />
+                </StaggerItem>
+                <StaggerItem>
+                  <StatCard
+                    value={750}
+                    label="Slum Areas"
+                    className="text-green-400"
+                    icon={<MapPin className="h-8 w-8 text-green-400" />}
+                  />
+                </StaggerItem>
+              </div>
+            </StaggerContainer>
+          </ScrollRevealSection>
 
           <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
             <div className="space-y-8">

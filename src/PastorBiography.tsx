@@ -5,6 +5,8 @@ import { ArrowLeft, Heart, MapPin, Users, Calendar, BookOpen, Globe } from "luci
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { AdvancedTimeline } from "@/components/ui/timeline-advanced";
+import { ScrollRevealSection, StaggerContainer, StaggerItem } from "@/components/ui/scroll-orchestration";
 
 const PastorBiography = () => {
   useEffect(() => {
@@ -22,7 +24,7 @@ const PastorBiography = () => {
       title: "Born in Tamil Nadu",
       description: "Born into a poor Christian village family as the youngest of 6 children. Parents prioritized education despite limited means.",
       icon: <Heart className="w-4 h-4" />,
-      type: "early"
+      type: "early" as const
     },
     {
       year: "1952",
@@ -30,7 +32,7 @@ const PastorBiography = () => {
       title: "Father's Death & Divine Dedication",
       description: "Father passed away. Mother dedicated young Reuben to God's ministry - a decision that would shape his entire destiny.",
       icon: <BookOpen className="w-4 h-4" />,
-      type: "calling"
+      type: "calling" as const
     },
     {
       year: "1960s-70s",
@@ -38,7 +40,7 @@ const PastorBiography = () => {
       title: "Years of Rebellion",
       description: "Struggled with his calling, leading a double life. Outwardly dutiful but inwardly rejecting God's plan for his life.",
       icon: <MapPin className="w-4 h-4" />,
-      type: "struggle"
+      type: "struggle" as const
     },
     {
       year: "1967",
@@ -46,7 +48,7 @@ const PastorBiography = () => {
       title: "Rock Bottom in Chennai",
       description: "Ran away from home after rejecting his faith. Betrayed by friends, lived on streets for 3 days without food, contemplated suicide.",
       icon: <MapPin className="w-4 h-4" />,
-      type: "struggle"
+      type: "struggle" as const
     },
     {
       year: "1967",
@@ -54,7 +56,7 @@ const PastorBiography = () => {
       title: "Divine Encounter on the Beach",
       description: "About to end his life, heard Ecclesiastes 11:9 at a beach gospel meeting. Surrendered his life to Christ that very night.",
       icon: <Heart className="w-4 h-4" />,
-      type: "calling"
+      type: "calling" as const
     },
     {
       year: "1967-69",
@@ -62,7 +64,7 @@ const PastorBiography = () => {
       title: "Bible Seminary",
       description: "Worked as gardener while studying God's Word. Gained tuition, boarding, and accommodation through dedicated service.",
       icon: <BookOpen className="w-4 h-4" />,
-      type: "training"
+      type: "training" as const
     },
     {
       year: "1970s",
@@ -70,7 +72,7 @@ const PastorBiography = () => {
       title: "Pioneer Missionary to Tribal Groups",
       description: "5 years of groundbreaking missionary work among the Onge and Jarawa tribes in Andaman & Nicobar Islands.",
       icon: <Globe className="w-4 h-4" />,
-      type: "ministry"
+      type: "ministry" as const
     },
     {
       year: "1980s",
@@ -78,7 +80,7 @@ const PastorBiography = () => {
       title: "Bible School Teacher & Roving Preacher",
       description: "Taught in Bible School, completed missionary outreach course. Traveled as charismatic preacher to isolated communities.",
       icon: <Users className="w-4 h-4" />,
-      type: "ministry"
+      type: "ministry" as const
     },
     {
       year: "1985",
@@ -86,7 +88,7 @@ const PastorBiography = () => {
       title: "Marriage to Flora",
       description: "Married Flora, who became his ministry partner and support. Together they would build a family devoted to God's service.",
       icon: <Heart className="w-4 h-4" />,
-      type: "family"
+      type: "family" as const
     },
     {
       year: "1987",
@@ -94,7 +96,7 @@ const PastorBiography = () => {
       title: "Settled in Bangalore",
       description: "God led the family to Bangalore where their children Jim Elliot, Sabina Livingbel, and Ruby Carole were born.",
       icon: <MapPin className="w-4 h-4" />,
-      type: "family"
+      type: "family" as const
     },
     {
       year: "1990",
@@ -102,7 +104,7 @@ const PastorBiography = () => {
       title: "Founded Agape Bible Church",
       description: "Started with just 3 families, planted the seeds of what would become a thriving church community in Bangalore.",
       icon: <Users className="w-4 h-4" />,
-      type: "ministry"
+      type: "ministry" as const
     },
     {
       year: "2024",
@@ -110,7 +112,7 @@ const PastorBiography = () => {
       title: "Archbishop & Senior Pastor",
       description: "Leading 1000+ believers, 250 children, trained hundreds of pastors, overseeing 6 churches and multiple ministries.",
       icon: <Globe className="w-4 h-4" />,
-      type: "ministry"
+      type: "ministry" as const
     }
   ];
 
@@ -226,9 +228,10 @@ const PastorBiography = () => {
         </div>
       </section>
 
-      {/* Timeline - Black Background for Emphasis */}
+      {/* Advanced Timeline - Black Background for Emphasis */}
       <section className="py-16 bg-black text-white">
         <div className="container-wide mx-auto px-6">
+          <ScrollRevealSection>
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -237,47 +240,9 @@ const PastorBiography = () => {
             >
               ⏳ Life Timeline: A Journey of Faith
             </motion.h2>
+          </ScrollRevealSection>
           
-          <div className="max-w-4xl mx-auto">
-            {timelineEvents.map((event, index) => (
-              <div key={index} className="flex gap-6 mb-8 group">
-                {/* Timeline Line */}
-                <div className="flex flex-col items-center">
-                  <div className={`
-                    w-12 h-12 rounded-full flex items-center justify-center text-white font-semibold
-                      ${event.type === 'early' ? 'bg-primary' : 
-                        event.type === 'calling' ? 'bg-green-600' :
-                        event.type === 'struggle' ? 'bg-red-600' :
-                        event.type === 'training' ? 'bg-purple-600' :
-                        event.type === 'family' ? 'bg-gold-600' : 'bg-orange-600'}
-                  `}>
-                    {event.icon}
-                  </div>
-                  {index < timelineEvents.length - 1 && (
-                    <div className="w-0.5 h-16 bg-gray-600 mt-2"></div>
-                  )}
-                </div>
-
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                >
-                  <Card className="flex-1 group-hover:shadow-xl transition-all bg-gray-900/80 text-white border border-gray-700">
-                    <CardContent className="p-6">
-                      <div className="flex items-center gap-4 mb-3">
-                        <span className="text-lg font-bold text-gold-400">{event.year}</span>
-                        <span className="text-sm bg-gray-700 text-gray-200 px-2 py-1 rounded">{event.age}</span>
-                      </div>
-                      <h3 className="text-2xl text-white font-semibold mb-2">{event.title}</h3>
-                      <p className="text-gray-200 leading-relaxed">{event.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              </div>
-            ))}
-          </div>
+          <AdvancedTimeline events={timelineEvents} />
         </div>
       </section>
 
@@ -291,17 +256,21 @@ const PastorBiography = () => {
               A family united in faith and ministry, each member contributing to the advancement of God's kingdom.
             </p>
             
-            <div className="grid md:grid-cols-2 gap-6">
-              {familyMembers.map((member, index) => (
-                  <Card key={index} className="hover:shadow-lg transition-shadow bg-card text-foreground">
-                  <CardContent className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
-                    <p className="text-primary font-medium mb-3">{member.role}</p>
-                    <p className="text-muted-foreground">{member.description}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+            <StaggerContainer>
+              <div className="grid md:grid-cols-2 gap-6">
+                {familyMembers.map((member, index) => (
+                  <StaggerItem key={index}>
+                    <Card className="hover:shadow-lg transition-shadow bg-card text-foreground">
+                      <CardContent className="p-6">
+                        <h3 className="text-xl font-semibold mb-2">{member.name}</h3>
+                        <p className="text-primary font-medium mb-3">{member.role}</p>
+                        <p className="text-muted-foreground">{member.description}</p>
+                      </CardContent>
+                    </Card>
+                  </StaggerItem>
+                ))}
+              </div>
+            </StaggerContainer>
           </div>
         </div>
       </section>
@@ -327,16 +296,16 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Early Life & Divine Calling</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Reuben Sathiyaraj was born in the State of Tamil Nadu into a poor Christian village family as the youngest of 6 children: 2 girls and 4 boys. 
                   His parents, though not highly educated, believed deeply in the importance of education and ensured all their children attended the Church of South India Christian school.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   When Reuben was just 2 years old, his father died—an event that would profoundly shape his destiny. In her grief and faith, 
                   his mother dedicated him to God's ministry, a single act that would influence his entire future life. Even as a child and young man, 
                   he rebelled against this dedication, living two distinctly different lives.
                 </p>
-                <p className="text-gray-200">
+                <p className="text-gray-300">
                   To his mother, he appeared to be the dutiful, God-fearing son, but inside he was burning with rebellion, rejecting the divine calling 
                   that had been placed upon his life before he could even understand it.
                 </p>
@@ -346,16 +315,16 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">The Prodigal Years</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   When his education was completed, Reuben finally declared his rejection of faith to his mother. The confrontation was explosive—
                   in his rage, he picked up a huge boulder, threw it at her, and ran away from home to Chennai, the capital of Tamil Nadu.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   In Chennai, he mixed with rough crowds, having no direction, no faith, and no family. He started a business with two friends 
                   who ultimately robbed and abandoned him. For three days, he roamed the streets of Chennai—penniless, dejected, and destitute. 
                   He was so hungry that he watched a banana seller, hoping someone would take pity on him, even contemplating eating banana skins.
                 </p>
-                <p className="text-gray-200">
+                <p className="text-gray-300">
                   The Parable of the Prodigal Son kept running through his head: "And he would fain have filled his belly with the husks that 
                   the swine did eat: and no man gave unto him" (Luke 15:16).
                 </p>
@@ -365,13 +334,13 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Divine Encounter</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Deep despair and depression overwhelmed him, and he decided to end his life by walking into the sea. As he headed toward the water, 
                   there was a Gospel meeting in progress on the beach. He recognized the preacher who was quoting Ecclesiastes 11:9: 
                   "Rejoice, O young man, in thy youth; and let thy heart cheer thee in the days of thy youth, and walk in the ways of thine heart, 
                   and in the sight of thine eyes: but know thou, that for all these things God will bring thee into judgment."
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   This same verse had angered him before—he had once thrown his Bible to the ground, stamping and kicking it like a football. 
                   Hearing it again brought vivid memories flooding back. Though he felt angry and wanted his suicide plan to succeed, 
                   God had other plans. That very night, instead of ending his life, he accepted the Lord and committed his life to God's glory.
@@ -382,12 +351,12 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Reconciliation & Calling</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Like the Prodigal Son, thoughts of reconciliation with his mother and family began creeping into his mind. The harder he tried 
                   to push these thoughts away, the stronger they became. He decided to write to his mother, and like in the parable, 
                   she welcomed him home with open arms.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   His faith and belief in Jesus Christ flooded back. He started working in a laboratory as a quality controller, 
                   but felt an irresistible pull to spread God's word and preach the Gospel. His life verse, 1 Corinthians 9:16, 
                   became his driving inspiration: "For though I preach the gospel, I have nothing to glory of: for necessity is laid upon me; 
@@ -399,12 +368,12 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Testing & Seminary</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Swallowing his pride, he approached his elder brother, who was already a pastor, for spiritual guidance. His brother initially 
                   laughed at him, saying there were already two brothers in ministry and that was enough. However, he decided to test Reuben's 
                   commitment by challenging him to fast in a locked room for three days. If his calling remained strong, he would help.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   After three days of fasting, Reuben's commitment to ministry was stronger than ever. But when he shared this with his brother, 
                   his brother flew into a rage, threw money at him, and ordered him out of the house. Reuben took only the 10 Rupees needed for bus fare 
                   and returned the rest. At age 17, in the middle of the night, he left home again—this time for God's service.
@@ -415,17 +384,17 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Pioneer Missionary Work</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Determined to study God's Word, he approached a Bible Seminary in Tamil Nadu, which accepted him for a 2-year course. 
                   Though penniless, he had direction and commitment. He worked as a gardener in the seminary grounds in exchange for tuition, 
                   boarding, and accommodation.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   After completing Bible Seminary, he was sent to the Andaman & Nicobar Islands for 5 years as a pioneer missionary working among 
                   primitive tribal groups. He was one of the first missionaries to enter this spiritual wilderness, where tribal people initially 
                   resisted giving up their pagan rituals to accept Christ.
                 </p>
-                <p className="text-gray-200">
+                <p className="text-gray-300">
                   Despite his youth, he showed remarkable discernment and leadership skills, leading his missionary team and preaching with such 
                   fire and authenticity that the tribals could identify his biblical teachings with their own cultures and way of life. 
                   Many churches were planted during this time and continue expanding today.
@@ -436,16 +405,16 @@ const PastorBiography = () => {
               <Card className="p-8 mb-8 bg-gray-900/80 text-white border border-gray-700">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Ministry in Bangalore</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   When he returned to Tamil Nadu, he taught in Bible School and completed a 2-year correspondence course on missionary outreach. 
                   Throughout this time, he maintained a burning desire and vision to preach the Gospel throughout spiritually barren India. 
                   For several years, he served as a roving charismatic preacher, seeking out isolated communities and teaching God's Word.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   In 1985, he married Flora, who became his devoted ministry partner. They settled in Bangalore in 1987, where their three children—
                   Jim Elliot, Sabina Livingbel, and Ruby Carole—were born. Flora fully supports her husband and assists in many pastoral activities.
                 </p>
-                <p className="text-gray-200">
+                <p className="text-gray-300">
                   In 1990, he planted the seeds for what is now the growing and spiritually vibrant Agape Bible Church. From humble beginnings 
                   with just 3 families, the church now ministers to over 1000 believers and 250 children. His ministry extends beyond the home church 
                   to include training missionaries and lay leaders, running rehabilitation homes for street children and rag-pickers, 
@@ -457,12 +426,12 @@ const PastorBiography = () => {
               <Card className="p-8 bg-card text-foreground">
               <CardContent className="p-0">
                 <h3 className="text-2xl font-semibold mb-4 text-white">Legacy & Vision</h3>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   Archbishop Dr. Reuben Sathiyaraj has particular empathy for society's marginalized—especially street children and rag-pickers. 
                   He sees potential in those whom society has thrown away and rejected. His respect and care for his God-given gifts motivate 
                   his fellow workers and inspire transformation in the most unlikely places.
                 </p>
-                <p className="mb-4 text-gray-200">
+                <p className="mb-4 text-gray-300">
                   The spiritual growth in the slum areas of Bangalore is entirely due to the commitment and God-given gifts of this dynamic 
                   and compassionate man. He truly embodies what it means to be "a man of the people"—one who has experienced the depths of 
                   despair and the heights of God's grace.
