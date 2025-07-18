@@ -204,18 +204,10 @@ export default function AgapeChurch() {
           className="whitespace-nowrap"
         />
       </div>
-      {/* Add a spacer for the fixed bar */}
-      <div className="h-10 md:h-10" />
-      {/* Skip to Content Link (for accessibility) */}
-      <a
-        href="#main-content"
-        className="sr-only focus:not-sr-only absolute top-2 left-2 z-50 bg-primary text-primary-foreground px-4 py-2 rounded shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-        tabIndex={0}
-      >
-        Skip to main content
-      </a>
-      {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+      {/* Spacer for announcement bar (height: 40px) */}
+      <div className="h-10" />
+      {/* Sticky Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -279,7 +271,8 @@ export default function AgapeChurch() {
           )}
         </div>
       </nav>
-
+      {/* Spacer for nav (height: 80px) */}
+      <div className="h-20" />
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
