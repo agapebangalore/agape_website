@@ -47,14 +47,14 @@ function AnimatedVisionText() {
   }, [visionIndex, visionPhrases]);
 
   return (
-    <div className="w-full text-center space-y-8 px-4">
+    <div className="w-full text-center space-y-2 px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, type: "spring" }}
-          className="space-y-6"
+          className="space-y-2"
         >
-          <div className="space-y-6">
+          <div className="space-y-2">
             {/* First part of the heading */}
             <h1 className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl xl:!text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-6xl mx-auto">
               <motion.span 
@@ -92,8 +92,8 @@ function AnimatedVisionText() {
             </h1>
             
             {/* Animated vision text */}
-            <div className="relative h-24 md:h-32 lg:h-40 xl:h-48 flex items-center justify-center overflow-hidden my-8">
-              <div className="!text-5xl md:!text-6xl lg:!text-7xl xl:!text-8xl font-display font-black leading-none">
+            <div className="relative h-16 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center overflow-hidden my-2">
+              <div className="!text-4xl md:!text-5xl lg:!text-6xl xl:!text-7xl font-display font-black leading-none">
                 {visionPhrases.map((phrase, index) => (
                   <motion.div
                     key={index}
@@ -261,7 +261,7 @@ export default function AgapeChurch() {
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
+      <section id="hero" className="min-h-[90vh] flex items-center justify-center relative bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
@@ -283,8 +283,8 @@ export default function AgapeChurch() {
         </div>
         
         {/* Content */}
-        <div className="container-wide relative z-10 text-center px-6 py-20">
-          <div className="max-w-7xl mx-auto space-y-12">
+        <div className="container-wide relative z-10 text-center px-6 py-8">
+          <div className="max-w-7xl mx-auto space-y-4">
             {/* Established Badge */}
             <motion.div 
               initial={{ opacity: 0, y: -20 }}
@@ -318,7 +318,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-col sm:flex-row gap-6 justify-center pt-8"
+              className="flex flex-col sm:flex-row gap-6 justify-center pt-2"
             >
               <Button 
                 size="lg" 
@@ -346,7 +346,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-12 text-gray-600"
+              className="flex flex-col sm:flex-row items-center justify-center gap-8 pt-4 text-gray-600"
             >
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 text-primary" />
