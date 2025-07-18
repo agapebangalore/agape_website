@@ -1353,7 +1353,7 @@ export default function AgapeChurch() {
       <SpeedInsights />
       {/* Performance Monitoring */}
       <PerformanceMonitor />
-    </div>
+      </div>
     </VisibilityGuard>
   );
 }
