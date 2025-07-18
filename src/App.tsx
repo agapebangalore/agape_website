@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Analytics } from "@vercel/analytics/react";
@@ -26,7 +26,7 @@ import {
   Youtube
 } from "lucide-react";
 
-function AnimatedVisionText() {
+const AnimatedVisionText = React.memo(() => {
   const [visionIndex, setVisionIndex] = useState(0);
   const visionPhrases = useMemo(
     () => [
@@ -39,28 +39,24 @@ function AnimatedVisionText() {
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
-      if (visionIndex === visionPhrases.length - 1) {
-        setVisionIndex(0);
-      } else {
-        setVisionIndex(visionIndex + 1);
-      }
+      setVisionIndex((prevIndex) => (prevIndex + 1) % visionPhrases.length);
     }, 3000);
     return () => clearTimeout(timeoutId);
-  }, [visionIndex, visionPhrases]);
+  }, [visionPhrases.length]);
 
   return (
-    <div className="w-full text-center space-y-3 sm:space-y-4">
+    <div className="w-full text-center space-y-2 sm:space-y-3">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, type: "spring" }}
-          className="space-y-3 sm:space-y-4"
+          className="space-y-2 sm:space-y-3"
         >
-          <div className="space-y-3 sm:space-y-4">
+          <div className="space-y-2 sm:space-y-3">
             {/* First part of the heading */}
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
               <motion.span 
-                className="inline-block mr-2 sm:mr-4"
+                className="inline-block mr-2 sm:mr-3"
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2, duration: 0.8 }}
@@ -68,7 +64,7 @@ function AnimatedVisionText() {
                 An independent,
               </motion.span>
               <motion.span 
-                className="inline-block mr-2 sm:mr-4"
+                className="inline-block mr-2 sm:mr-3"
                 initial={{ opacity: 0, x: 50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.4, duration: 0.8 }}
@@ -76,7 +72,7 @@ function AnimatedVisionText() {
                 non-denominational
               </motion.span>
               <motion.span 
-                className="inline-block text-primary mr-2 sm:mr-4"
+                className="inline-block text-primary mr-2 sm:mr-3"
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ delay: 0.6, duration: 0.8 }}
@@ -84,7 +80,7 @@ function AnimatedVisionText() {
                 Tamil church
               </motion.span>
               <motion.span 
-                className="inline-block mr-2 sm:mr-4"
+                className="inline-block"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.8, duration: 0.8 }}
@@ -94,8 +90,8 @@ function AnimatedVisionText() {
             </h1>
             
             {/* Animated vision text */}
-            <div className="relative h-16 sm:h-20 md:h-24 lg:h-28 xl:h-32 flex items-center justify-center overflow-hidden my-4">
-              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-black leading-none">
+            <div className="relative h-14 sm:h-16 md:h-20 lg:h-24 xl:h-28 flex items-center justify-center overflow-hidden my-2 sm:my-3">
+              <div className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-display font-black leading-none">
                 {visionPhrases.map((phrase, index) => (
                   <motion.div
                     key={index}
@@ -117,7 +113,7 @@ function AnimatedVisionText() {
             </div>
             
             {/* Second part of the heading - same size as first part */}
-            <h1 className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
+            <h1 className="text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto">
               <motion.span 
                 className="inline-block"
                 initial={{ opacity: 0 }}
@@ -131,7 +127,7 @@ function AnimatedVisionText() {
         </motion.div>
     </div>
   );
-}
+});
 
 export default function AgapeChurch() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -455,7 +451,7 @@ export default function AgapeChurch() {
                     <Button 
                       size="lg" 
                       onClick={() => scrollToSection('contact')}
-                      className="flex-1 bg-gold-500 hover:bg-gold-600 text-black font-semibold transition-all duration-200 shadow-lg hover:shadow-xl"
+                      className="flex-1 bg-gold-500 hover:bg-gold-600 text-black font-semibold transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto"
                     >
                       Visit This Sunday
                       <Calendar className="h-5 w-5 ml-2" />
@@ -464,7 +460,7 @@ export default function AgapeChurch() {
                       variant="outline" 
                       size="lg" 
                       onClick={() => scrollToSection('about')}
-                      className="flex-1 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-semibold"
+                      className="flex-1 border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-200 font-semibold w-full sm:w-auto"
                     >
                       Read More
                       <ChevronRight className="h-5 w-5 ml-2" />
@@ -706,21 +702,21 @@ export default function AgapeChurch() {
             ))}
           </div>
 
-          <div className="text-center space-y-12">
-            <div className="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto">
-                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-4 shadow-md hover:shadow-lg" asChild>
+          <div className="text-center space-y-6 sm:space-y-12">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-3 shadow-md hover:shadow-lg" asChild>
                   <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
                     <Youtube className="h-5 w-5 mr-2 text-red-500" />
                   YouTube
                 </a>
               </Button>
-                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-4 shadow-md hover:shadow-lg" asChild>
+                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-3 shadow-md hover:shadow-lg" asChild>
                   <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer" aria-label="Podcasts">
                   <span className="mr-2 text-lg">🎧</span>
                   Podcasts
                 </a>
               </Button>
-                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-4 shadow-md hover:shadow-lg" asChild>
+                <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-3 shadow-md hover:shadow-lg" asChild>
                   <a href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener noreferrer" aria-label="Spotify">
                   <span className="mr-2 text-lg">🎵</span>
                   Spotify

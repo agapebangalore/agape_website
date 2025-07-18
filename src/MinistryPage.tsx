@@ -94,7 +94,7 @@ const MinistryPage = () => {
         Skip to main content
       </a>
       {/* Header Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border" aria-label="Main Navigation">
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/#ministry">
@@ -130,7 +130,7 @@ const MinistryPage = () => {
         <section className="py-16 bg-gradient-to-br from-primary/20 to-white">
         <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-2xl md:text-hero font-bold mb-6 text-gray-900">Transforming Lives Through Christ's Love</h1>
+            <h1 className="text-hero text-gray-900 mb-6">Transforming Lives Through Christ's Love</h1>
               <p className="text-section-title text-gray-800 mb-8">
               Mission Work Among Street Children & Church Planting Across India
             </p>
@@ -159,7 +159,7 @@ const MinistryPage = () => {
         <section id="missions" className="py-16 bg-white border border-gray-200">
         <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-              <h2 className="text-gray-900 text-3xl font-semibold mb-6">Mission Work in India</h2>
+              <h2 className="text-section-title text-gray-900 mb-6">Mission Work in India</h2>
               <p className="text-large text-gray-700 max-w-3xl mx-auto">
               Our primary calling as a Church is to share the Gospel within our own communities. We send out native missionaries, 
               supporting them through prayer and financial aid.
@@ -168,7 +168,7 @@ const MinistryPage = () => {
 
           <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
             <div className="space-y-6">
-                <h3 className="text-gray-900 text-2xl font-semibold">Sending Native Missionaries</h3>
+                <h3 className="text-subsection-title text-gray-900">Sending Native Missionaries</h3>
                 <p className="text-lg text-gray-900 leading-relaxed">
                 Over the years, we've commissioned hundreds of missionaries to plant churches across India. 
                 We continue to stand by them—especially when illness or emergencies strike.
@@ -218,7 +218,7 @@ const MinistryPage = () => {
         <section id="planting" className="py-16 bg-background">
         <div className="container-wide mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
-              <h2 className="text-foreground text-3xl font-semibold mb-6">Church Planting Movement</h2>
+              <h2 className="text-section-title text-foreground mb-6">Church Planting Movement</h2>
               <p className="text-large text-foreground max-w-3xl mx-auto">
               From humble beginnings with 3 families in 1990, we've grown into a movement planting churches 
               across Karnataka and training leaders for sustainable ministry.

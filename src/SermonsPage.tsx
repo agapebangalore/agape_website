@@ -227,7 +227,7 @@ const SermonsPage: React.FC = () => {
         Skip to main content
       </a>
       {/* Fixed Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border/50" aria-label="Main Navigation">
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}

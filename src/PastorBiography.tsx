@@ -162,7 +162,7 @@ const PastorBiography = () => {
         Skip to main content
       </a>
       {/* Header Navigation */}
-      <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 border-b border-border" aria-label="Main Navigation">
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide mx-auto px-6 py-4">
           <div className="flex items-center justify-between">
             <Link to="/">
