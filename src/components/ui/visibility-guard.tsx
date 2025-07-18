@@ -6,86 +6,58 @@ interface VisibilityGuardProps {
 
 export const VisibilityGuard: React.FC<VisibilityGuardProps> = ({ children }) => {
   useEffect(() => {
-    // Prevent dark mode from being accidentally activated
-    const preventDarkMode = () => {
-      const html = document.documentElement;
-      const body = document.body;
-      
-      // Remove any dark mode classes that might be added
-      html.classList.remove('dark');
-      body.classList.remove('dark');
-      
-      // Force light mode
-      html.classList.add('light');
-      body.classList.add('light');
-      
-      // Set explicit styles to ensure visibility
-      html.style.backgroundColor = 'white';
-      body.style.backgroundColor = 'white';
-      body.style.color = 'rgb(31, 41, 55)'; // text-gray-800 equivalent
-    };
-
-    // Fix white text on white backgrounds
-    const fixWhiteTextIssues = () => {
-      const whiteTextElements = document.querySelectorAll('.text-white');
-      
-      whiteTextElements.forEach((element) => {
-        const parent = element.parentElement;
-        if (parent) {
-          const parentStyles = window.getComputedStyle(parent);
-          const parentBg = parentStyles.backgroundColor;
-          
-          // Check if parent has light background
-          if (parentBg === 'rgb(255, 255, 255)' || 
-              parentBg === 'rgba(255, 255, 255, 1)' ||
-              parentBg === 'transparent' ||
-              parentBg === 'rgba(0, 0, 0, 0)') {
-            
-            // Only apply dark text if not on intentionally dark background
+    // Only run in browser environment
+    if (typeof window === 'undefined') return;
+    
+    // Simple visibility protection without complex DOM manipulation
+    const ensureVisibility = () => {
+      try {
+        // Prevent dark mode from being accidentally activated
+        const html = document.documentElement;
+        const body = document.body;
+        
+        // Remove dark mode classes if they exist
+        if (html.classList.contains('dark')) {
+          html.classList.remove('dark');
+        }
+        if (body.classList.contains('dark')) {
+          body.classList.remove('dark');
+        }
+        
+        // Ensure light mode
+        html.classList.add('light');
+        
+        // Set basic visibility styles
+        body.style.backgroundColor = 'white';
+        body.style.color = 'rgb(31, 41, 55)';
+        
+        // Fix any white text on white backgrounds (simple approach)
+        const whiteTextElements = document.querySelectorAll('.text-white');
+        whiteTextElements.forEach((element) => {
+          const parent = element.parentElement;
+          if (parent) {
             const hasBlackBg = parent.classList.contains('bg-black') ||
                               parent.classList.contains('bg-gray-900') ||
                               parent.classList.contains('bg-primary');
             
             if (!hasBlackBg) {
               (element as HTMLElement).style.color = 'rgb(31, 41, 55)';
-              element.classList.add('text-visibility-fixed');
             }
           }
-        }
-      });
+        });
+      } catch (error) {
+        // Silently handle any errors to prevent breaking the app
+        console.warn('VisibilityGuard error:', error);
+      }
     };
 
-    // Monitor for dynamic changes
-    const observer = new MutationObserver((mutations) => {
-      mutations.forEach((mutation) => {
-        if (mutation.type === 'attributes' && 
-            (mutation.attributeName === 'class' || mutation.attributeName === 'style')) {
-          preventDarkMode();
-          setTimeout(fixWhiteTextIssues, 10);
-        }
-      });
-    });
-
-    // Initial fixes
-    preventDarkMode();
-    fixWhiteTextIssues();
-
-    // Start observing
-    observer.observe(document.documentElement, {
-      attributes: true,
-      childList: true,
-      subtree: true,
-      attributeFilter: ['class', 'style']
-    });
-
-    // Periodic check every 5 seconds
-    const intervalId = setInterval(() => {
-      preventDarkMode();
-      fixWhiteTextIssues();
-    }, 5000);
-
+    // Run once on mount
+    ensureVisibility();
+    
+    // Run periodically but less frequently
+    const intervalId = setInterval(ensureVisibility, 10000); // Every 10 seconds
+    
     return () => {
-      observer.disconnect();
       clearInterval(intervalId);
     };
   }, []);
@@ -93,27 +65,22 @@ export const VisibilityGuard: React.FC<VisibilityGuardProps> = ({ children }) =>
   return <>{children}</>;
 };
 
-// Hook for components to ensure visibility
+// Simplified hook for components
 export const useVisibilityGuard = () => {
   useEffect(() => {
-    const ensureVisibility = (element: HTMLElement) => {
-      const styles = window.getComputedStyle(element);
-      const color = styles.color;
-      const backgroundColor = styles.backgroundColor;
-      
-      // Check for white text on white/light backgrounds
-      if (color === 'rgb(255, 255, 255)' && 
-          (backgroundColor === 'rgb(255, 255, 255)' || 
-           backgroundColor === 'rgba(255, 255, 255, 1)' ||
-           backgroundColor === 'transparent')) {
-        element.style.color = 'rgb(31, 41, 55)';
-        element.classList.add('visibility-guard-applied');
+    if (typeof window === 'undefined') return;
+    
+    try {
+      // Simple visibility check
+      const body = document.body;
+      if (body.style.backgroundColor !== 'white') {
+        body.style.backgroundColor = 'white';
+        body.style.color = 'rgb(31, 41, 55)';
       }
-    };
-
-    // Check all text elements
-    const textElements = document.querySelectorAll('h1, h2, h3, h4, h5, h6, p, span, div, a, button');
-    textElements.forEach((el) => ensureVisibility(el as HTMLElement));
+    } catch (error) {
+      // Silently handle errors
+      console.warn('useVisibilityGuard error:', error);
+    }
   }, []);
 };
 
