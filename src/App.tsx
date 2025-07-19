@@ -10,12 +10,11 @@ import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { Typewriter } from "@/components/ui/typewriter-text";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
-import { LoadingState, SkeletonGrid } from "@/components/ui/loading-states";
-import { AnimatedCounter, StatCard } from "@/components/ui/animated-counter";
-import { ParallaxBackground, FloatingElement, BackgroundParticles } from "@/components/ui/parallax-elements";
-import { TiltCard, MorphingCard, SlideInCard } from "@/components/ui/advanced-cards";
-import { TextReveal, PulsingGlow, MagneticHover } from "@/components/ui/micro-interactions";
-import { ScrollRevealSection, StaggerContainer, StaggerItem, ScrollCounter, AnimatedDivider } from "@/components/ui/scroll-orchestration";
+import { StatCard } from "@/components/ui/animated-counter";
+import { ParallaxBackground, FloatingElement } from "@/components/ui/parallax-elements";
+import { MorphingCard } from "@/components/ui/advanced-cards";
+import { TextReveal } from "@/components/ui/micro-interactions";
+import { ScrollRevealSection, StaggerContainer, StaggerItem, AnimatedDivider } from "@/components/ui/scroll-orchestration";
 import {
   Heart,
   MapPin,
@@ -31,12 +30,9 @@ import {
   ChevronRight,
   ArrowDown,
   ArrowRight,
-  Facebook,
-  Instagram,
-  Twitter,
-  Youtube,
   Church,
-  TrendingUp
+  TrendingUp,
+  ExternalLink
 } from "lucide-react";
 
 const AnimatedVisionText = React.memo(() => {
@@ -212,19 +208,19 @@ export default function AgapeChurch() {
       <ScrollProgress />
       
       {/* Announcement Bar */}
-      <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium" style={{letterSpacing: '0.01em'}}>
-        <Typewriter 
-          text="For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you."
-          speed={40}
-          cursor="|"
-          loop={true}
-          className="whitespace-nowrap"
-        />
+      <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-2 px-4 shadow-md text-sm font-medium overflow-hidden" style={{letterSpacing: '0.01em'}}>
+        <div className="container-wide flex justify-center">
+          <Typewriter 
+            text="For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you."
+            speed={40}
+            cursor="|"
+            loop={true}
+            className="text-center max-w-full text-xs sm:text-sm"
+          />
+        </div>
       </div>
-      {/* Spacer for announcement bar (height: 40px) */}
-      <div className="h-10" />
       {/* Sticky Navigation */}
-      <nav className="sticky top-10 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -233,8 +229,7 @@ export default function AgapeChurch() {
               className="flex items-center space-x-3 font-sans text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
             >
               <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
-              <span className="hidden sm:block">AGAPE BIBLE CHURCH</span>
-              <span className="sm:hidden">AGAPE</span>
+              <span className="text-sm sm:text-base lg:text-xl">AGAPE BIBLE CHURCH</span>
             </button>
 
             {/* Desktop Navigation */}
@@ -292,12 +287,10 @@ export default function AgapeChurch() {
           )}
         </div>
       </nav>
-      {/* Spacer for nav (height: 80px) */}
-      <div className="h-20" />
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen pt-20 flex items-center justify-center relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden mt-10">
         {/* Enhanced Background with Parallax */}
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
@@ -325,10 +318,9 @@ export default function AgapeChurch() {
             loading="eager"
             className="w-full h-full object-cover object-center"
           />
-          {/* Sophisticated overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/85 to-white/75" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/90 via-transparent to-white/80" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/20 to-white/60" />
+          {/* Optimized overlay for better text readability and alignment */}
+          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/50" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/40 to-white/60" />
         </div>
         
         {/* Content - Centered Overlay */}
@@ -371,7 +363,7 @@ export default function AgapeChurch() {
             >
               <PrimaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold text-white" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold text-white"
                 onClick={() => scrollToSection('about')}
                 animationType="lift"
                 intensity="medium"
@@ -382,7 +374,7 @@ export default function AgapeChurch() {
               
               <SecondaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold" 
+                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold"
                 onClick={() => scrollToSection('contact')}
                 animationType="bounce"
                 intensity="medium"
@@ -392,26 +384,6 @@ export default function AgapeChurch() {
               </SecondaryAnimatedButton>
             </motion.div>
             
-            {/* Quick Info */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 pt-4 text-gray-600"
-            >
-              <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-base font-medium">Bangalore, India</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-primary" />
-                <span className="text-base font-medium">Multi-Ethnic Community</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Heart className="h-4 w-4 text-primary" />
-                <span className="text-base font-medium">Tamil Heritage</span>
-              </div>
-            </motion.div>
           </div>
         </div>
         
@@ -433,7 +405,7 @@ export default function AgapeChurch() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider type="line" className="my-8" />
+      <AnimatedDivider type="line" className="my-4 sm:my-6" />
 
       {/* Welcome & Vision Section */}
       <section id="vision" className="section-spacing bg-black text-white">
@@ -943,7 +915,7 @@ export default function AgapeChurch() {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
                 <Button variant="outline" size="lg" className="text-gray-700 border-2 border-gray-200 hover:border-primary hover:bg-primary hover:text-white transition-all duration-200 rounded-xl py-3 shadow-md hover:shadow-lg" asChild>
                   <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
-                    <Youtube className="h-5 w-5 mr-2 text-red-500" />
+                    <ExternalLink className="h-5 w-5 mr-2 text-red-500" />
                   YouTube
                 </a>
               </Button>
@@ -969,7 +941,7 @@ export default function AgapeChurch() {
                   src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
                   width="100%" 
                   height="352" 
-                  frameBorder="0" 
+                  style={{ border: 0 }} 
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                   loading="lazy"
@@ -1198,25 +1170,25 @@ export default function AgapeChurch() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-blue-500 hover:bg-blue-50 hover:text-blue-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
                         <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="flex items-center gap-2">
-                          <Facebook className="h-4 w-4 text-blue-600" />
+                          <ExternalLink className="h-4 w-4 text-blue-600" />
                           <span className="text-xs font-medium">Facebook</span>
                         </a>
                       </Button>
                       <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-pink-500 hover:bg-pink-50 hover:text-pink-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
                         <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="flex items-center gap-2">
-                          <Instagram className="h-4 w-4 text-pink-600" />
+                          <ExternalLink className="h-4 w-4 text-pink-600" />
                           <span className="text-xs font-medium">Instagram</span>
                         </a>
                       </Button>
                       <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-sky-500 hover:bg-sky-50 hover:text-sky-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
                         <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="flex items-center gap-2">
-                          <Twitter className="h-4 w-4 text-sky-600" />
+                          <ExternalLink className="h-4 w-4 text-sky-600" />
                           <span className="text-xs font-medium">Twitter</span>
                         </a>
                       </Button>
                       <Button variant="outline" size="sm" className="text-gray-700 border-2 border-gray-200 hover:border-red-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200 rounded-xl p-3 shadow-sm hover:shadow-md" asChild>
                         <a href="https://www.youtube.com/agapebangalore" target="_blank" rel="noopener noreferrer" aria-label="YouTube" className="flex items-center gap-2">
-                          <Youtube className="h-4 w-4 text-red-600" />
+                          <ExternalLink className="h-4 w-4 text-red-600" />
                           <span className="text-xs font-medium">YouTube</span>
                         </a>
                       </Button>

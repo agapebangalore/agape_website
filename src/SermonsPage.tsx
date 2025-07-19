@@ -3,33 +3,15 @@ import { motion } from 'framer-motion';
 import { Button } from './components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './components/ui/card';
 import { Input } from './components/ui/input';
-import { AnimatedGradientText } from './components/ui/animated-gradient-text';
-import { ScrollRevealSection, StaggerContainer, StaggerItem, AnimatedDivider } from './components/ui/scroll-orchestration';
-import { TiltCard, MorphingCard } from './components/ui/advanced-cards';
-import { TextReveal, PulsingGlow, MagneticHover } from './components/ui/micro-interactions';
-import { ParallaxBackground, FloatingElement } from './components/ui/parallax-elements';
-import { PrimaryAnimatedButton, AnimatedButton } from './components/ui/animated-button';
 import { Link } from 'react-router-dom';
 import { 
   ArrowLeft, 
   Play, 
   Calendar, 
-  Clock, 
   Youtube, 
-  Search, 
-  Filter,
-  Menu,
-  X,
-  Heart,
+  Search,
   Users,
-  Book,
-  Star,
-  Bookmark,
-  Share2,
-  Download,
-  Headphones,
-  Video,
-  Sparkles
+  Heart
 } from 'lucide-react';
 
 // Enhanced Sermon data structure
@@ -110,7 +92,6 @@ const categories = ["All", "Church Life & Unity", "Gospel & Healing", "Bible Stu
 const SermonsPage: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Filter sermons based on search and category
   const filteredSermons = sermonData.filter(sermon => {
@@ -148,7 +129,7 @@ const SermonsPage: React.FC = () => {
               <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
                 <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
-                                 <span className="font-display text-xl font-semibold text-gray-900">AGAPE BIBLE CHURCH</span>
+                <span className="font-display text-sm sm:text-base lg:text-xl font-semibold text-gray-900">AGAPE BIBLE CHURCH</span>
               </Button>
             </Link>
             
@@ -399,7 +380,7 @@ const SermonsPage: React.FC = () => {
                   src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
                   width="100%" 
                   height="400" 
-                  frameBorder="0" 
+                  style={{ border: 0 }} 
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
                   loading="lazy"

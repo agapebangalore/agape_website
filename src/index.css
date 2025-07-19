@@ -33,9 +33,27 @@
 
   @keyframes gradient {
     to {
-      backgroundPosition: var(--bg-size) 0;
+      background-position: var(--bg-size) 0;
     }
   }
+}
+
+/* Prevent horizontal overflow on mobile */
+body, html {
+  overflow-x: hidden;
+  max-width: 100vw;
+}
+
+/* Ensure text and media elements respect viewport width */
+img, video, iframe, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Container and wrapper constraints */
+.container-wide {
+  max-width: 100vw;
+  overflow-x: hidden;
 }
 
 :root {

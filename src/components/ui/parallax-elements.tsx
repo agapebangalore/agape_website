@@ -17,18 +17,24 @@ export const ParallaxElement: React.FC<ParallaxElementProps> = ({
 }) => {
   const { scrollY } = useScroll();
   
+  // Fix: Move useTransform calls to top level of component
+  const upTransform = useTransform(scrollY, [0, 1000], [0, -speed * 1000]);
+  const downTransform = useTransform(scrollY, [0, 1000], [0, speed * 1000]);
+  const leftTransform = useTransform(scrollY, [0, 1000], [0, -speed * 1000]);
+  const rightTransform = useTransform(scrollY, [0, 1000], [0, speed * 1000]);
+  
   const getTransform = () => {
     switch (direction) {
       case 'up':
-        return useTransform(scrollY, [0, 1000], [0, -speed * 1000]);
+        return upTransform;
       case 'down':
-        return useTransform(scrollY, [0, 1000], [0, speed * 1000]);
+        return downTransform;
       case 'left':
-        return useTransform(scrollY, [0, 1000], [0, -speed * 1000]);
+        return leftTransform;
       case 'right':
-        return useTransform(scrollY, [0, 1000], [0, speed * 1000]);
+        return rightTransform;
       default:
-        return useTransform(scrollY, [0, 1000], [0, -speed * 1000]);
+        return upTransform;
     }
   };
 
