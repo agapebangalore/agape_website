@@ -281,7 +281,7 @@ export default function AgapeChurch() {
               
               <SecondaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg px-8 py-4 rounded-full font-semibold"
+                className="text-base sm:text-lg px-8 py-4 rounded-full font-semibold text-white border-white hover:bg-white hover:text-gray-900"
                 onClick={() => scrollToSection('contact')}
                 animationType="bounce"
                 intensity="medium"
