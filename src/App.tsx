@@ -35,6 +35,8 @@ import {
   TrendingUp,
   ExternalLink
 } from "lucide-react";
+import { useScroll } from "./hooks/use-scroll";
+import { cn } from "@/lib/utils";
 
 const AnimatedVisionText = React.memo(() => {
   const [visionIndex, setVisionIndex] = useState(0);
@@ -96,6 +98,7 @@ const AnimatedVisionText = React.memo(() => {
 
 export default function AgapeChurch() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const scrolled = useScroll(50);
 
   const churchInfo = {
     name: "AGAPE BIBLE CHURCH",
@@ -159,7 +162,15 @@ export default function AgapeChurch() {
       <ScrollProgress />
       
       {/* Announcement Bar */}
-      <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-3 px-4 shadow-md font-medium overflow-hidden" style={{letterSpacing: '0.01em'}}>
+      <div
+        className={cn(
+          "w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-3 px-4 shadow-md font-medium overflow-hidden transition-transform duration-300",
+          {
+            "-translate-y-full": scrolled,
+          }
+        )}
+        style={{ letterSpacing: "0.01em" }}
+      >
         <div className="container-wide flex justify-center">
           <Marquee className="[--gap:2rem]">
             <span className="text-sm sm:text-base whitespace-nowrap">
@@ -169,7 +180,15 @@ export default function AgapeChurch() {
         </div>
       </div>
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+      <nav
+        className={cn(
+          "sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg transition-transform duration-300",
+          {
+            "mt-12": !scrolled,
+          }
+        )}
+        aria-label="Main Navigation"
+      >
         <div className="container-wide">
           <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
@@ -251,8 +270,8 @@ export default function AgapeChurch() {
             loading="eager"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent sm:from-black/70 sm:via-black/50 sm:to-transparent" />
-          <div className="absolute inset-0 bg-black/30 sm:bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 sm:from-black/70 sm:via-black/50 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/20 sm:bg-black/30" />
         </div>
         
         <div className="w-full relative z-10 text-center px-4 sm:px-6">
