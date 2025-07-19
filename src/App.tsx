@@ -55,8 +55,16 @@ const AnimatedVisionText = React.memo(() => {
   }, [visionPhrases.length]);
 
   return (
-    <div className="w-full text-center">
-      <div className="relative h-24 sm:h-32 md:h-40 lg:h-48 flex items-center justify-center overflow-hidden">
+    <div className="w-full text-center space-y-4 sm:space-y-6">
+      <motion.h1
+        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-extrabold leading-tight tracking-tight text-white drop-shadow-lg"
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+      >
+        WELCOME TO AGAPE BIBLE CHURCH
+      </motion.h1>
+      <div className="relative h-20 sm:h-24 md:h-32 lg:h-40 flex items-center justify-center overflow-hidden">
         <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-none tracking-tight">
           {visionPhrases.map((phrase, index) => (
             <motion.div
