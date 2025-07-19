@@ -257,7 +257,7 @@ export default function AgapeChurch() {
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gray-900">
         
         <div className="absolute inset-0">
           <img 
@@ -267,10 +267,10 @@ export default function AgapeChurch() {
             height="1500"
             fetchPriority="high"
             loading="eager"
-            className="w-full h-full object-cover object-center"
+            className="w-full h-full object-cover object-center min-h-screen"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent sm:from-black/70 sm:via-black/50 sm:to-transparent" />
-          <div className="absolute inset-0 bg-black/10 sm:bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         
         <div className="w-full relative z-10 text-center px-4 sm:px-6">
