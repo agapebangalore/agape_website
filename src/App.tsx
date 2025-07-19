@@ -222,27 +222,27 @@ export default function AgapeChurch() {
       {/* Sticky Navigation */}
       <nav className="sticky top-10 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
-          <div className="flex items-center justify-between h-20">
+          <div className="flex items-center justify-between h-24">
             {/* Logo */}
             <button
               onClick={() => scrollToSection('hero')}
               className="flex items-center space-x-3 font-sans text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
             >
-              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 sm:h-10 sm:w-10 object-contain" />
-              <span className="text-sm sm:text-base lg:text-xl">AGAPE BIBLE CHURCH</span>
+              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-10 w-10 sm:h-12 sm:w-12 object-contain" />
+              <span className="text-base sm:text-lg lg:text-2xl font-bold">AGAPE BIBLE CHURCH</span>
             </button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              <button onClick={() => scrollToSection('about')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">About</button>
-              <button onClick={() => scrollToSection('vision')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Vision</button>
-              <button onClick={() => scrollToSection('pastor')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Pastor</button>
-              <Link to="/sermons" className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
-              <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
-              <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-sm font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
+              <button onClick={() => scrollToSection('about')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">About</button>
+              <button onClick={() => scrollToSection('vision')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Vision</button>
+              <button onClick={() => scrollToSection('pastor')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Pastor</button>
+              <Link to="/sermons" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
+              <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
+              <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
               <AnimatedButton 
                 size="sm" 
-                className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-2 rounded-full font-medium shadow-md hover:shadow-lg"
+                className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold text-base shadow-md hover:shadow-lg"
                 onClick={() => scrollToSection('contact')}
                 animationType="scale"
                 intensity="subtle"
@@ -265,16 +265,16 @@ export default function AgapeChurch() {
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-gray-200 py-6 bg-white/98 backdrop-blur-md">
               <div className="space-y-2 px-2">
-                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">About</button>
-                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Vision</button>
-                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Pastor</button>
-                <Link to="/sermons" className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Sermons</Link>
-                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
-                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-base font-medium transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
+                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">About</button>
+                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Vision</button>
+                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Pastor</button>
+                <Link to="/sermons" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Sermons</Link>
+                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
+                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
                 <div className="pt-6 border-t border-gray-200 mt-6 px-2">
                   <AnimatedButton 
                     size="lg" 
-                    className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-base rounded-full font-medium shadow-md min-h-[44px]"
+                    className="w-full bg-primary hover:bg-primary/90 text-white py-4 text-lg rounded-full font-semibold shadow-md min-h-[44px]"
                     onClick={() => scrollToSection('contact')}
                     animationType="scale"
                     intensity="subtle"
@@ -334,7 +334,7 @@ export default function AgapeChurch() {
               className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 shadow-lg"
             >
               <Calendar className="h-5 w-5 text-primary" />
-              <span className="text-sm font-semibold text-gray-700 tracking-wide">ESTABLISHED {churchInfo.established}</span>
+              <span className="text-base sm:text-lg font-bold text-gray-700 tracking-wide">ESTABLISHED {churchInfo.established}</span>
             </motion.div>
             
             {/* Animated Church Vision - Full Width */}
@@ -349,7 +349,7 @@ export default function AgapeChurch() {
               transition={{ duration: 0.6, delay: 0.8 }}
               className="inline-flex items-center justify-center"
             >
-              <AnimatedGradientText className="text-base font-medium text-center leading-relaxed">
+              <AnimatedGradientText className="text-lg sm:text-xl font-semibold text-center leading-relaxed">
                 {churchInfo.type}
               </AnimatedGradientText>
             </motion.div>
@@ -363,23 +363,23 @@ export default function AgapeChurch() {
             >
               <PrimaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold text-white"
+                className="text-lg sm:text-xl md:text-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-7 rounded-full font-bold text-white"
                 onClick={() => scrollToSection('about')}
                 animationType="lift"
                 intensity="medium"
               >
                 Discover Our Story
-                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2" />
+                <ChevronRight className="h-5 w-5 sm:h-6 sm:w-6 ml-2" />
               </PrimaryAnimatedButton>
               
               <SecondaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl px-6 sm:px-8 md:px-10 py-4 sm:py-5 md:py-6 rounded-full font-semibold"
+                className="text-lg sm:text-xl md:text-2xl px-8 sm:px-10 md:px-12 py-5 sm:py-6 md:py-7 rounded-full font-bold"
                 onClick={() => scrollToSection('contact')}
                 animationType="bounce"
                 intensity="medium"
               >
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
+                <MapPin className="h-5 w-5 sm:h-6 sm:w-6 mr-2" />
                 Visit This Sunday
               </SecondaryAnimatedButton>
             </motion.div>
