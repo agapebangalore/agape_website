@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { Typewriter } from "@/components/ui/typewriter-text";
+import Marquee from "@/components/ui/Marquee";
 import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
 import { StatCard } from "@/components/ui/animated-counter";
@@ -160,17 +161,15 @@ export default function AgapeChurch() {
       {/* Announcement Bar */}
       <div className="w-full fixed top-0 left-0 z-[100] bg-primary text-white flex items-center justify-center py-3 px-4 shadow-md font-medium overflow-hidden" style={{letterSpacing: '0.01em'}}>
         <div className="container-wide flex justify-center">
-          <Typewriter 
-            text="For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you."
-            speed={40}
-            cursor="|"
-            loop={true}
-            className="text-center max-w-full text-sm sm:text-base"
-          />
+          <Marquee className="[--gap:2rem]">
+            <span className="text-sm sm:text-base whitespace-nowrap">
+              For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you.
+            </span>
+          </Marquee>
         </div>
       </div>
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg mt-12 sm:mt-10" aria-label="Main Navigation">
+      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20 sm:h-24">
             {/* Logo */}
@@ -252,8 +251,8 @@ export default function AgapeChurch() {
             loading="eager"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
-          <div className="absolute inset-0 bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent sm:from-black/70 sm:via-black/50 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/30 sm:bg-black/30" />
         </div>
         
         <div className="w-full relative z-10 text-center px-4 sm:px-6">
