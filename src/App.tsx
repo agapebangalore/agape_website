@@ -241,6 +241,7 @@ export default function AgapeChurch() {
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
+        
         <div className="absolute inset-0">
           <img 
             src="/1.jpg"
@@ -255,8 +256,8 @@ export default function AgapeChurch() {
           <div className="absolute inset-0 bg-black/30" />
         </div>
         
-        <div className="w-full relative z-10 text-center px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
-          <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
+        <div className="w-full relative z-10 text-center px-4 sm:px-6">
+          <div className="max-w-6xl mx-auto">
             <div className="w-full">
               <AnimatedVisionText />
             </div>
@@ -265,7 +266,7 @@ export default function AgapeChurch() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center mt-8 sm:mt-12"
             >
               <PrimaryAnimatedButton 
                 size="lg" 
