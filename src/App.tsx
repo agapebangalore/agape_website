@@ -171,20 +171,19 @@ export default function AgapeChurch() {
         )}
         style={{ letterSpacing: "0.01em" }}
       >
-        <div className="container-wide flex justify-center">
-          <Marquee className="[--gap:2rem]">
-            <span className="text-sm sm:text-base whitespace-nowrap">
-              For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you.
-            </span>
-          </Marquee>
-        </div>
+        <Marquee className="[--gap:2rem]">
+          <span className="text-sm sm:text-base whitespace-nowrap">
+            For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you.
+          </span>
+        </Marquee>
       </div>
       {/* Sticky Navigation */}
       <nav
         className={cn(
-          "sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg transition-transform duration-300",
+          "sticky z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg transition-all duration-300",
           {
-            "mt-12": !scrolled,
+            "top-0": scrolled,
+            "top-12": !scrolled,
           }
         )}
         aria-label="Main Navigation"
@@ -270,8 +269,8 @@ export default function AgapeChurch() {
             loading="eager"
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/40 to-black/20 sm:from-black/70 sm:via-black/50 sm:to-transparent" />
-          <div className="absolute inset-0 bg-black/20 sm:bg-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/30 to-transparent sm:from-black/70 sm:via-black/50 sm:to-transparent" />
+          <div className="absolute inset-0 bg-black/10 sm:bg-black/30" />
         </div>
         
         <div className="w-full relative z-10 text-center px-4 sm:px-6">
