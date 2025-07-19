@@ -220,7 +220,7 @@ export default function AgapeChurch() {
         </div>
       </div>
       {/* Sticky Navigation */}
-      <nav className="sticky top-0 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
+      <nav className="sticky top-10 z-50 bg-white/98 backdrop-blur-md border-b border-gray-200 shadow-lg" aria-label="Main Navigation">
         <div className="container-wide">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
@@ -290,7 +290,7 @@ export default function AgapeChurch() {
       {/* Main Content */}
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
-      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden mt-10">
+      <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
         {/* Enhanced Background with Parallax */}
         <ParallaxBackground className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
