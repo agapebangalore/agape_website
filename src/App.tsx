@@ -40,9 +40,9 @@ const AnimatedVisionText = React.memo(() => {
   
   const visionPhrases = useMemo(
     () => [
-      { text: "Reaching the unreached", color: "text-primary", bgColor: "bg-primary/10" },
-      { text: "Teaching the reached", color: "text-gold-600", bgColor: "bg-gold-500/10" },
-      { text: "Touching the untouched", color: "text-burgundy-600", bgColor: "bg-burgundy-500/10" }
+      { text: "Reaching the unreached", color: "text-white" },
+      { text: "Teaching the reached", color: "text-white" },
+      { text: "Touching the untouched", color: "text-white" }
     ],
     []
   );
@@ -55,90 +55,32 @@ const AnimatedVisionText = React.memo(() => {
   }, [visionPhrases.length]);
 
   return (
-    <div className="w-full text-center space-y-2 sm:space-y-3">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, type: "spring" }}
-          className="space-y-2 sm:space-y-3"
-        >
-          <div className="space-y-2 sm:space-y-3">
-            {/* First part of the heading */}
-            <h1 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto px-4">
-              <motion.span 
-                className="inline-block mr-1 sm:mr-2"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-              >
-                An independent,
-              </motion.span>
-              <motion.span 
-                className="inline-block mr-1 sm:mr-2"
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-              >
-                non-denominational
-              </motion.span>
-              <motion.span 
-                className="inline-block text-primary mr-1 sm:mr-2"
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-              >
-                Tamil church
-              </motion.span>
-              <motion.span 
-                className="inline-block"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8, duration: 0.8 }}
-              >
-                dedicated to
-              </motion.span>
-            </h1>
-            
-            {/* Animated vision text */}
-            <div className="relative h-12 sm:h-14 md:h-16 lg:h-20 xl:h-24 flex items-center justify-center overflow-hidden my-2 sm:my-3">
-              <div className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-display font-black leading-none">
-                {visionPhrases.map((phrase, index) => (
-                  <motion.div
-                    key={`${index}-${phrase.text}`}
-                    className={`absolute inset-0 flex items-center justify-center ${phrase.color}`}
-                    initial={{ opacity: 0, y: 50, scale: 0.9 }}
-                    animate={
-                      visionIndex === index
-                        ? { opacity: 1, y: 0, scale: 1 }
-                        : { opacity: 0, y: visionIndex > index ? -50 : 50, scale: 0.9 }
-                    }
-                    transition={{ 
-                      duration: 0.6, 
-                      ease: [0.25, 0.46, 0.45, 0.94],
-                      opacity: { duration: 0.4 }
-                    }}
-                  >
-                    <span className="text-center leading-none tracking-tight drop-shadow-lg">
-                      {phrase.text}
-                    </span>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Second part of the heading - same size as first part */}
-            <h1 className="text-sm sm:text-base md:text-lg lg:text-xl xl:text-2xl font-display font-bold text-gray-900 leading-tight tracking-tight max-w-4xl mx-auto px-4">
-              <motion.span 
-                className="inline-block"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1.2, duration: 1 }}
-              >
-                with the Gospel of Jesus Christ.
-              </motion.span>
-            </h1>
-          </div>
-        </motion.div>
+    <div className="w-full text-center">
+      <div className="relative h-24 sm:h-32 md:h-40 lg:h-48 flex items-center justify-center overflow-hidden">
+        <div className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-extrabold leading-none tracking-tight">
+          {visionPhrases.map((phrase, index) => (
+            <motion.div
+              key={`${index}-${phrase.text}`}
+              className={`absolute inset-0 flex items-center justify-center ${phrase.color}`}
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              animate={
+                visionIndex === index
+                  ? { opacity: 1, y: 0, scale: 1 }
+                  : { opacity: 0, y: visionIndex > index ? -60 : 60, scale: 0.9 }
+              }
+              transition={{ 
+                duration: 0.8, 
+                ease: [0.22, 1, 0.36, 1],
+                opacity: { duration: 0.5 }
+              }}
+            >
+              <span className="text-center leading-none tracking-tighter drop-shadow-2xl">
+                {phrase.text}
+              </span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 });
@@ -291,23 +233,6 @@ export default function AgapeChurch() {
       <main id="main-content" tabIndex={-1} aria-label="Main Content">
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden">
-        {/* Enhanced Background with Parallax */}
-        <ParallaxBackground className="absolute inset-0">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.1),transparent_70%)]" />
-        </ParallaxBackground>
-        
-        {/* Floating Elements */}
-        <FloatingElement delay={0} duration={6} className="top-1/4 left-1/4 opacity-20">
-          <Heart className="h-16 w-16 text-primary" />
-        </FloatingElement>
-        <FloatingElement delay={2} duration={8} className="top-1/3 right-1/4 opacity-15">
-          <Users className="h-12 w-12 text-secondary" />
-        </FloatingElement>
-        <FloatingElement delay={4} duration={5} className="bottom-1/3 left-1/6 opacity-10">
-          <Book className="h-14 w-14 text-accent" />
-        </FloatingElement>
-        
-        {/* Founding Father Background Image */}
         <div className="absolute inset-0">
           <img 
             src="/1.jpg"
@@ -318,68 +243,41 @@ export default function AgapeChurch() {
             loading="eager"
             className="w-full h-full object-cover object-center"
           />
-          {/* Optimized overlay for better text readability and alignment */}
-          <div className="absolute inset-0 bg-gradient-to-r from-white/90 via-white/70 to-white/50" />
-          <div className="absolute inset-0 bg-gradient-to-t from-white/80 via-white/40 to-white/60" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-black/30" />
         </div>
         
-        {/* Content - Centered Overlay */}
         <div className="w-full relative z-10 text-center px-4 sm:px-6 py-6 sm:py-8 lg:py-12">
-          <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6 lg:space-y-8">
-            {/* Established Badge */}
-            <motion.div 
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-flex items-center gap-3 px-6 py-3 bg-white/90 backdrop-blur-sm rounded-full border border-gray-200 shadow-lg"
-            >
-              <Calendar className="h-5 w-5 text-primary" />
-              <span className="text-sm sm:text-base lg:text-lg font-bold text-gray-700 tracking-wide">ESTABLISHED {churchInfo.established}</span>
-            </motion.div>
-            
-            {/* Animated Church Vision - Full Width */}
+          <div className="max-w-6xl mx-auto space-y-8 sm:space-y-12">
             <div className="w-full">
               <AnimatedVisionText />
             </div>
             
-            {/* Church Type Badge */}
-            <motion.div 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="inline-flex items-center justify-center"
-            >
-              <AnimatedGradientText className="text-base sm:text-lg lg:text-xl font-semibold text-center leading-relaxed px-4">
-                {churchInfo.type}
-              </AnimatedGradientText>
-            </motion.div>
-            
-            {/* Call to Action Buttons */}
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-2"
+              transition={{ duration: 0.8, delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center"
             >
               <PrimaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl lg:text-2xl px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 lg:py-7 rounded-full font-bold text-white"
+                className="text-base sm:text-lg px-8 py-4 rounded-full font-semibold"
                 onClick={() => scrollToSection('about')}
                 animationType="lift"
                 intensity="medium"
               >
                 Discover Our Story
-                <ChevronRight className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 ml-2" />
+                <ChevronRight className="h-5 w-5 ml-2" />
               </PrimaryAnimatedButton>
               
               <SecondaryAnimatedButton 
                 size="lg" 
-                className="text-base sm:text-lg md:text-xl lg:text-2xl px-6 sm:px-8 md:px-10 lg:px-12 py-4 sm:py-5 md:py-6 lg:py-7 rounded-full font-bold"
+                className="text-base sm:text-lg px-8 py-4 rounded-full font-semibold"
                 onClick={() => scrollToSection('contact')}
                 animationType="bounce"
                 intensity="medium"
               >
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 lg:h-6 lg:w-6 mr-2" />
+                <MapPin className="h-5 w-5 mr-2" />
                 Visit This Sunday
               </SecondaryAnimatedButton>
             </motion.div>
@@ -387,7 +285,6 @@ export default function AgapeChurch() {
           </div>
         </div>
         
-        {/* Scroll Down Indicator */}
         <motion.div 
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
