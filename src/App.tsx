@@ -110,7 +110,7 @@ export default function AgapeChurch() {
     website: "agapebangalore.org",
     established: "August 5th, 1990",
     type: "Independent, Indigenous, Evangelical, and Charismatic Church",
-    description: "An independent, non-denominational Tamil church dedicated to Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ.",
+    description: "An independent, non-denominational Tamil church in Bangalore dedicated to Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ. Serving the Bangalore Christian community since 1990.",
     mission: "Our mission encompasses sending Church Planters throughout the state of Karnataka for the purpose of evangelism, Bible training, and supporting native missionaries. We extend love especially to marginalized individuals such as orphans, street children, rag pickers, eunuchs, and others who have been abandoned by society.",
     churches: "Currently, Agape directly oversees the operation of six churches, and many others receive guidance and support through discreet direction."
   };
@@ -171,7 +171,7 @@ export default function AgapeChurch() {
         )}
         style={{ letterSpacing: "0.01em" }}
       >
-        <Marquee className="[--gap:2rem]">
+        <Marquee className="[--gap:2rem]" pauseOnHover={true}>
           <span className="text-sm sm:text-base whitespace-nowrap">
             For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you.
           </span>
@@ -195,7 +195,7 @@ export default function AgapeChurch() {
               onClick={() => scrollToSection('hero')}
               className="flex items-center space-x-3 font-sans text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
             >
-              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain" />
+              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Bangalore Logo - Tamil Christian Church" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain" />
               <span className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold">AGAPE BIBLE CHURCH</span>
             </button>
 
@@ -262,7 +262,7 @@ export default function AgapeChurch() {
         <div className="absolute inset-0">
           <img 
             src="/1.jpg"
-            alt="Founding Father of Agape Bible Church"
+            alt="Agape Bible Church Bangalore - Tamil Christian Church Service with Archbishop Dr. Reuben M. Sathiyaraj"
             width="2251"
             height="1500"
             fetchPriority="high"
@@ -341,7 +341,7 @@ export default function AgapeChurch() {
               <h2 className="text-section-title font-display font-bold text-white mb-6">Welcoming You Home</h2>
             <div className="max-w-4xl mx-auto space-y-6">
                 <TextReveal 
-                  text="Agape Bible Church is an independent, non-denominational Tamil Church located in the heart of Bangalore city proclaiming the gospel of Christ Jesus by all means, at any cost, without anymore delay!"
+                  text="Agape Bible Church is an independent, non-denominational Tamil Church located in the heart of Bangalore city, Karnataka, proclaiming the gospel of Christ Jesus by all means, at any cost, without anymore delay! As one of Bangalore's leading Tamil churches, we serve the diverse Christian community across the city."
                   className="text-xl text-gray-200 leading-relaxed"
                 />
                 <TextReveal 
@@ -456,7 +456,7 @@ export default function AgapeChurch() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
             >
-              Our journey commenced on <span className="font-semibold text-primary">{churchInfo.established}</span>. We are an {churchInfo.type} located in Bangalore, India, committed to spreading God's love through action.
+              Our journey commenced on <span className="font-semibold text-primary">{churchInfo.established}</span> in Bangalore, Karnataka. We are an {churchInfo.type} located in the heart of Bangalore, India, committed to spreading God's love through action across the Bangalore metropolitan area.
             </motion.p>
           </ScrollRevealSection>
 
@@ -504,7 +504,7 @@ export default function AgapeChurch() {
                       <div className="relative group overflow-hidden rounded-lg">
                         <img 
                           src="/original-church-photo.jpg" 
-                          alt="Original Church Building - 1990" 
+                          alt="Agape Bible Church Bangalore Original Building 1990 - Tamil Christian Church History" 
                           className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -535,7 +535,7 @@ export default function AgapeChurch() {
                       <div className="relative group overflow-hidden rounded-lg">
                         <img 
                           src="/authentic-church-worship.png" 
-                          alt="Modern Church Worship - Growing Community" 
+                          alt="Agape Bible Church Bangalore Modern Worship Service - Tamil Christian Community Fellowship" 
                           className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -561,7 +561,7 @@ export default function AgapeChurch() {
                         Growing in Grace
                       </h3>
                       <p className="text-lg text-gray-600 leading-relaxed">
-                        Today, we serve over 1000 believers and 250 children across 6 churches. Our ministry extends beyond our walls through rehabilitation homes for street children, training programs for pastors, and community outreach initiatives throughout Bangalore.
+                        Today, we serve over 1000 believers and 250 children across 6 churches in the Bangalore region. Our ministry extends beyond our walls through rehabilitation homes for street children, training programs for pastors, and community outreach initiatives throughout Bangalore, Karnataka. We are proud to be one of the fastest-growing Tamil churches in Bangalore.
                       </p>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div className="bg-primary/5 p-4 rounded-lg text-center">
@@ -718,7 +718,7 @@ export default function AgapeChurch() {
                     <div className="relative">
                       <img 
                         src="/pastor.png" 
-                        alt="Archbishop Dr. Reuben M. Sathiyaraj - Founding Pastor" 
+                        alt="Archbishop Dr. Reuben M. Sathiyaraj - Senior Pastor of Agape Bible Church Bangalore Tamil Christian Church" 
                         className="w-56 h-56 object-cover rounded-full shadow-2xl border-4 border-gold-500"
                       />
                       <div className="absolute inset-0 rounded-full bg-gradient-to-t from-black/20 to-transparent" />
@@ -891,7 +891,7 @@ export default function AgapeChurch() {
               </div>
               <h2 className="text-section-title text-white mb-6">Heart for the Marginalized</h2>
               <p className="text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed">
-              Our heart breaks for the 70,000 rag pickers and 65,000 street children in Bangalore. Through the Agape Children Centre, we provide hope, shelter, and Christ's love.
+              Our heart breaks for the 70,000 rag pickers and 65,000 street children across Bangalore's 750 slum areas. Through the Agape Children Centre, we provide hope, shelter, and Christ's love to Bangalore's most vulnerable communities.
             </p>
           </div>
 
@@ -1179,7 +1179,7 @@ export default function AgapeChurch() {
                 <span className="font-display text-2xl font-bold">AGAPE BIBLE CHURCH</span>
               </div>
               <p className="text-gray-300 leading-relaxed">
-                An {churchInfo.type} located in Bangalore, India. Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ since {churchInfo.established}.
+                An {churchInfo.type} located in Bangalore, Karnataka, India. The premier Tamil Christian church serving Bangalore since {churchInfo.established}. Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ across Bangalore and Karnataka.
               </p>
             </div>
             

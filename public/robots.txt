@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# XML Sitemap
+Sitemap: https://agapebangalore.org/sitemap.xml
+
+# Disallow any admin or private directories (if any exist in future)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Allow all images
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.png
+Allow: *.webp
+Allow: *.gif
+Allow: *.svg
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

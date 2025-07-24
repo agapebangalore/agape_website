@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage -->
+  <url>
+    <loc>https://agapebangalore.org/</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://agapebangalore.org/authentic-church-worship.png</image:loc>
+      <image:title>Agape Bible Church Bangalore - Worship Service</image:title>
+      <image:caption>Tamil church community worship in Bangalore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://agapebangalore.org/agape-bible-church-logo.png</image:loc>
+      <image:title>Agape Bible Church Logo</image:title>
+      <image:caption>Official logo of Agape Bible Church Bangalore</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Sermons Page -->
+  <url>
+    <loc>https://agapebangalore.org/sermons</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://agapebangalore.org/jesus-heals-leper.jpg</image:loc>
+      <image:title>Jesus Heals the Leper - Gospel Sermon</image:title>
+      <image:caption>Biblical sermon from Agape Bible Church Bangalore</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Pastor Biography -->
+  <url>
+    <loc>https://agapebangalore.org/pastor-biography</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://agapebangalore.org/pastor.png</image:loc>
+      <image:title>Archbishop Dr. Reuben M. Sathiyaraj</image:title>
+      <image:caption>Founding Pastor of Agape Bible Church Bangalore</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Ministry Page -->
+  <url>
+    <loc>https://agapebangalore.org/ministry</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://agapebangalore.org/street-children-outreach.jpg</image:loc>
+      <image:title>Street Children Ministry Bangalore</image:title>
+      <image:caption>Agape Bible Church ministry to street children in Bangalore</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://agapebangalore.org/community-outreach.jpg</image:loc>
+      <image:title>Community Outreach Programs</image:title>
+      <image:caption>Church community service in Bangalore</image:caption>
+    </image:image>
+  </url>
+
+  <!-- FAQ Page -->
+  <url>
+    <loc>https://agapebangalore.org/faq-seo.html</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Key Images -->
+  <url>
+    <loc>https://agapebangalore.org/authentic-church-worship.png</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://agapebangalore.org/children-ministry-authentic.png</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://agapebangalore.org/community-fellowship.png</loc>
+    <lastmod>2025-01-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+</urlset>
