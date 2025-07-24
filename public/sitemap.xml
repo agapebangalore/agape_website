@@ -63,6 +63,14 @@
     </image:image>
   </url>
 
+  <!-- Prayer Page -->
+  <url>
+    <loc>https://agapebangalore.org/prayer</loc>
+    <lastmod>2025-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- FAQ Page -->
   <url>
     <loc>https://agapebangalore.org/faq-seo.html</loc>

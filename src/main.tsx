@@ -6,6 +6,7 @@ import App from './App.tsx'
 import PastorBiography from './PastorBiography.tsx'
 import MinistryPage from './MinistryPage.tsx'
 import SermonsPage from './SermonsPage.tsx'
+import PrayerPage from './PrayerPage.tsx'
 import { RouteTransition } from './components/ui/page-transition'
 import { initializeTheme, detectCSSLoading } from './utils/theme-init'
 import { initializeTextVisibilityProtection } from './utils/text-visibility-fix'
@@ -71,6 +72,7 @@ createRoot(document.getElementById('root')!).render(
           <Route path="/sermons" element={<SermonsPage />} />
           <Route path="/pastor-biography" element={<PastorBiography />} />
           <Route path="/ministry" element={<MinistryPage />} />
+          <Route path="/prayer" element={<PrayerPage />} />
         </Routes>
       </RouteTransition>
     </Router>

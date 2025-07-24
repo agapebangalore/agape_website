@@ -403,7 +403,7 @@ h4, .text-lg, .text-large {
 }
 
 .section-spacing {
-  padding-top: clamp(4rem, 10vw, 8rem);
+  padding-top: clamp(1rem, 2vw, 1.5rem);
   padding-bottom: clamp(4rem, 10vw, 8rem);
 }
 
@@ -855,4 +855,20 @@ nav .bg-primary:hover * {
   color: #ffffff !important;
 }
 
-/* Duplicate @layer base block removed - already exists at line 164 */
+/* Hide scrollbar across the entire website */
+body::-webkit-scrollbar {
+  display: none;
+}
+body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
+}
+
+/* Fallback for Marquee animation if Tailwind utility is missing */
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}

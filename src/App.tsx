@@ -9,13 +9,13 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { AnimatedGradientText } from "@/components/ui/animated-gradient-text";
 import { Typewriter } from "@/components/ui/typewriter-text";
 import Marquee from "@/components/ui/Marquee";
-import { ScrollProgress } from "@/components/ui/scroll-progress";
 import { AnimatedButton, PrimaryAnimatedButton, SecondaryAnimatedButton } from "@/components/ui/animated-button";
 import { StatCard } from "@/components/ui/animated-counter";
 import { ParallaxBackground, FloatingElement } from "@/components/ui/parallax-elements";
 import { MorphingCard } from "@/components/ui/advanced-cards";
 import { TextReveal } from "@/components/ui/micro-interactions";
 import { ScrollRevealSection, StaggerContainer, StaggerItem, AnimatedDivider } from "@/components/ui/scroll-orchestration";
+import SocialShareButtons from "@/components/SocialShareButtons";
 import {
   Heart,
   MapPin,
@@ -157,9 +157,7 @@ export default function AgapeChurch() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      {/* Scroll Progress Indicator */}
-      <ScrollProgress />
+    <div className="min-h-screen bg-background homepage">
       
       {/* Announcement Bar */}
       <div
@@ -171,7 +169,7 @@ export default function AgapeChurch() {
         )}
         style={{ letterSpacing: "0.01em" }}
       >
-        <Marquee className="[--gap:2rem]" pauseOnHover={true}>
+        <Marquee className="[--gap:8rem]" pauseOnHover={true}>
           <span className="text-sm sm:text-base whitespace-nowrap">
             For prayer requests or assistance, reach out to us at +91 9901613901 or abcabfindia@gmail.com. Agape Bible Church cares for you.
           </span>
@@ -206,6 +204,7 @@ export default function AgapeChurch() {
               <button onClick={() => scrollToSection('pastor')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Pastor</button>
               <Link to="/sermons" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
               <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
+              <Link to="/prayer" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Prayer</Link>
               <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
               <AnimatedButton 
                 size="sm" 
@@ -237,6 +236,7 @@ export default function AgapeChurch() {
                 <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Pastor</button>
                 <Link to="/sermons" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Sermons</Link>
                 <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
+                <Link to="/prayer" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Prayer</Link>
                 <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
                 <div className="pt-6 border-t border-gray-200 mt-6 px-2">
                   <AnimatedButton 
@@ -328,7 +328,7 @@ export default function AgapeChurch() {
       </section>
 
       {/* Animated Divider */}
-      <AnimatedDivider type="line" className="my-4 sm:my-6" />
+      <AnimatedDivider type="line" className="my-2 sm:my-3" />
 
       {/* Welcome & Vision Section */}
       <section id="vision" className="section-spacing bg-black text-white">
@@ -824,10 +824,16 @@ export default function AgapeChurch() {
                 </CardHeader>
                 <CardContent className="px-6 pb-6">
                     <p className="text-gray-600 line-clamp-3 mb-4 leading-relaxed">{sermon.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-gray-500">
+                  <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
                     <Calendar className="h-4 w-4" />
                     {sermon.date}
                   </div>
+                  <SocialShareButtons 
+                    title={sermon.title}
+                    description={`${sermon.description} - A sermon by ${sermon.speaker} from Agape Bible Church Bangalore`}
+                    url={`https://agapebangalore.org/sermons#${sermon.videoId}`}
+                    className="pt-4 border-t border-gray-100"
+                  />
                 </CardContent>
               </Card>
                 </motion.div>
@@ -1005,7 +1011,7 @@ export default function AgapeChurch() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
                 <div className="flex items-center gap-2 text-gray-600">
                   <Clock className="h-5 w-5 text-primary" />
-                  <span className="font-medium">Sunday Services: 9:00 AM & 11:00 AM</span>
+                  <span className="font-medium">Sunday Services: 07:00 AM & 09:30 AM</span>
                 </div>
                 <div className="hidden sm:block text-gray-300">•</div>
                 <div className="flex items-center gap-2 text-gray-600">
@@ -1047,10 +1053,10 @@ export default function AgapeChurch() {
                     <div className="space-y-4">
                       <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-primary">
                         <p className="text-lg font-semibold text-gray-900">Sunday Worship</p>
-                        <p className="text-gray-600">9:00 AM & 11:00 AM</p>
+                        <p className="text-gray-600">07:00 AM & 09:30 AM</p>
                       </div>
                       <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-secondary">
-                        <p className="text-lg font-semibold text-gray-900">Wednesday Bible Study</p>
+                        <p className="text-lg font-semibold text-gray-900">Tuesday Bible Study</p>
                         <p className="text-gray-600">7:00 PM</p>
                       </div>
                       <div className="p-4 bg-gray-50 rounded-lg border-l-4 border-accent">

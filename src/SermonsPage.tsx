@@ -13,6 +13,7 @@ import {
   Users,
   Heart
 } from 'lucide-react';
+import SocialShareButtons from './components/SocialShareButtons';
 
 // Enhanced Sermon data structure
 interface Sermon {
@@ -325,6 +326,12 @@ const SermonsPage: React.FC = () => {
                             </a>
                           </Button>
                         </div>
+                        <SocialShareButtons 
+                          title={sermon.title}
+                          description={`${sermon.description} - A sermon by ${sermon.speaker} from Agape Bible Church Bangalore`}
+                          url={`https://agapebangalore.org/sermons#${sermon.videoId}`}
+                          className="pt-4 border-t border-gray-100"
+                        />
                       </CardContent>
                     </Card>
                   </motion.div>
