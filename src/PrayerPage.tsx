@@ -177,36 +177,32 @@ const PrayerPage: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      const subject = encodeURIComponent(`Prayer Request: ${prayerData.category ? prayerCategories.find(c => c.value === prayerData.category)?.label : 'General'} ${prayerData.urgency === 'urgent' ? '(Urgent)' : prayerData.urgency === 'emergency' ? '(EMERGENCY)' : ''}`);
-      
-      const body = encodeURIComponent(`
-PRAYER REQUEST SUBMISSION
-========================
+      const formData = new FormData();
+      formData.append('subject', `Prayer Request: ${prayerData.category ? prayerCategories.find(c => c.value === prayerData.category)?.label : 'General'} ${prayerData.urgency === 'urgent' ? '(Urgent)' : prayerData.urgency === 'emergency' ? '(EMERGENCY)' : ''}`);
+      formData.append('name', prayerData.isAnonymous ? 'Anonymous' : (prayerData.name || 'Not provided'));
+      formData.append('email', prayerData.isAnonymous ? 'anonymous@agapebangalore.org' : (prayerData.email || 'Not provided'));
+      formData.append('phone', prayerData.isAnonymous ? 'Not provided' : (prayerData.phone || 'Not provided'));
+      formData.append('category', prayerCategories.find(c => c.value === prayerData.category)?.label || 'Not specified');
+      formData.append('urgency', urgencyLevels.find(u => u.value === prayerData.urgency)?.label || 'Normal');
+      formData.append('follow_up', prayerData.allowFollowUp ? 'Yes' : 'No');
+      formData.append('follow_up_method', prayerData.allowFollowUp ? prayerData.followUpMethod : 'Not applicable');
+      formData.append('message', prayerData.message);
+      formData.append('is_anonymous', prayerData.isAnonymous ? 'Yes' : 'No');
+      formData.append('submission_date', new Date().toLocaleString());
 
-${prayerData.isAnonymous ? 'ANONYMOUS REQUEST' : 'Contact Information:'}
-${!prayerData.isAnonymous ? `Name: ${prayerData.name || 'Not provided'}` : ''}
-${!prayerData.isAnonymous ? `Email: ${prayerData.email || 'Not provided'}` : ''}
-${!prayerData.isAnonymous ? `Phone: ${prayerData.phone || 'Not provided'}` : ''}
+      const response = await fetch(`https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_FORM_ID}`, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
 
-Prayer Category: ${prayerCategories.find(c => c.value === prayerData.category)?.label || 'Not specified'}
-Urgency Level: ${urgencyLevels.find(u => u.value === prayerData.urgency)?.label}
-
-Follow-up Requested: ${prayerData.allowFollowUp ? 'Yes' : 'No'}
-${prayerData.allowFollowUp ? `Preferred Contact Method: ${prayerData.followUpMethod}` : ''}
-
-PRAYER REQUEST:
-${prayerData.message}
-
----
-Submitted from Agape Bible Church Prayer Page
-Date: ${new Date().toLocaleString()}
-      `.trim());
-
-      window.location.href = `mailto:jim@agapebangalore.org?subject=${subject}&body=${body}`;
-      
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      setShowSuccess(true);
+      if (response.ok) {
+        setShowSuccess(true);
+      } else {
+        throw new Error('Failed to submit form');
+      }
       
       // Reset form
       setPrayerData({
@@ -810,22 +806,28 @@ Date: ${new Date().toLocaleString()}
 
       {/* Success Dialog */}
       <AlertDialog open={showSuccess} onOpenChange={setShowSuccess}>
-        <AlertDialogContent>
+        <AlertDialogContent className="bg-gradient-to-br from-blue-50 to-purple-50 border-2 border-blue-200">
           <AlertDialogHeader>
-            <AlertDialogTitle className="flex items-center gap-2">
-              <Heart className="h-6 w-6 text-primary" />
+            <AlertDialogTitle className="flex items-center gap-2 text-black font-black text-2xl md:text-3xl bg-blue-600 text-white p-4 rounded-lg shadow-lg">
+              <Heart className="h-6 w-6 text-yellow-300" />
               {activeTab === 'prayer' ? 'Prayer Request Received' : 'Testimony Shared Successfully'}
             </AlertDialogTitle>
-            <AlertDialogDescription>
+            <AlertDialogDescription className="bg-white p-6 rounded-lg shadow-inner border-l-4 border-blue-500">
               {activeTab === 'prayer' ? (
-                <>
-                  Thank you for sharing your prayer request with us. Our pastoral team has been notified and will begin praying for you immediately.
-                  {prayerData.allowFollowUp && !prayerData.isAnonymous && (
-                    <> We will follow up with you as requested within 24-48 hours.</>
-                  )}
-                  <br /><br />
-                  "And the prayer offered in faith will make the sick person well; the Lord will raise them up." - James 5:15
-                </>
+                <div className="space-y-4">
+                  <p className="text-gray-800 font-semibold text-lg leading-relaxed">
+                    Thank you for sharing your prayer request with us. Our pastoral team has been notified and will begin praying for you immediately.
+                    {prayerData.allowFollowUp && !prayerData.isAnonymous && (
+                      <span className="text-blue-700 font-bold"> We will follow up with you as requested within 24-48 hours.</span>
+                    )}
+                  </p>
+                  <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                    <p className="text-gray-900 font-bold italic text-center text-lg">
+                      "And the prayer offered in faith will make the sick person well; the Lord will raise them up." 
+                      <span className="block text-blue-800 font-semibold mt-2">- James 5:15</span>
+                    </p>
+                  </div>
+                </div>
               ) : (
                 <>
                   Thank you for sharing your testimony! Your story of God's faithfulness can be a tremendous blessing and encouragement to others in our church family.
