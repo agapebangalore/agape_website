@@ -194,7 +194,7 @@ export default function AgapeChurch() {
               className="flex items-center space-x-3 font-sans text-xl font-semibold text-black hover:text-primary transition-colors duration-200"
             >
               <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Bangalore Logo - Tamil Christian Church" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain" />
-              <span className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold text-black">AGAPE BIBLE CHURCH</span>
+              <span className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold" style={{color: '#000000'}}>AGAPE BIBLE CHURCH</span>
             </button>
 
             {/* Desktop Navigation */}
