@@ -191,21 +191,21 @@ export default function AgapeChurch() {
             {/* Logo */}
             <button
               onClick={() => scrollToSection('hero')}
-              className="flex items-center space-x-3 font-sans text-xl font-semibold text-navy-950 hover:text-primary transition-colors duration-200"
+              className="flex items-center space-x-3 font-sans text-xl font-semibold text-black hover:text-primary transition-colors duration-200"
             >
               <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Bangalore Logo - Tamil Christian Church" className="h-8 w-8 sm:h-10 sm:w-10 lg:h-12 lg:w-12 object-contain" />
-              <span className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold">AGAPE BIBLE CHURCH</span>
+              <span className="text-sm sm:text-base lg:text-lg xl:text-2xl font-bold text-black">AGAPE BIBLE CHURCH</span>
             </button>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              <button onClick={() => scrollToSection('about')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">About</button>
-              <button onClick={() => scrollToSection('vision')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Vision</button>
-              <button onClick={() => scrollToSection('pastor')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Pastor</button>
-              <Link to="/sermons" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Sermons</Link>
-              <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Ministry</button>
-              <Link to="/prayer" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Prayer</Link>
-              <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700">Contact</button>
+              <button onClick={() => scrollToSection('about')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">About</button>
+              <button onClick={() => scrollToSection('vision')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Vision</button>
+              <button onClick={() => scrollToSection('pastor')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Pastor</button>
+              <Link to="/sermons" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Sermons</Link>
+              <button onClick={() => scrollToSection('ministry')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Ministry</button>
+              <Link to="/prayer" className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Prayer</Link>
+              <button onClick={() => scrollToSection('contact')} className="px-4 py-2 text-base font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black">Contact</button>
               <AnimatedButton 
                 size="sm" 
                 className="ml-4 bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-full font-semibold text-base shadow-md hover:shadow-lg"
@@ -231,13 +231,13 @@ export default function AgapeChurch() {
           {mobileMenuOpen && (
             <div className="md:hidden border-t border-gray-200 py-6 bg-white/98 backdrop-blur-md">
               <div className="space-y-2 px-2">
-                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">About</button>
-                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Vision</button>
-                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Pastor</button>
-                <Link to="/sermons" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Sermons</Link>
-                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Ministry</button>
-                <Link to="/prayer" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Prayer</Link>
-                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-gray-700 min-h-[44px]">Contact</button>
+                <button onClick={() => scrollToSection('about')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">About</button>
+                <button onClick={() => scrollToSection('vision')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Vision</button>
+                <button onClick={() => scrollToSection('pastor')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Pastor</button>
+                <Link to="/sermons" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Sermons</Link>
+                <button onClick={() => scrollToSection('ministry')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Ministry</button>
+                <Link to="/prayer" className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Prayer</Link>
+                <button onClick={() => scrollToSection('contact')} className="block w-full text-left px-4 py-4 text-lg font-semibold transition-all duration-200 hover:text-primary hover:bg-primary/5 rounded-md text-black min-h-[44px]">Contact</button>
                 <div className="pt-6 border-t border-gray-200 mt-6 px-2">
                   <AnimatedButton 
                     size="lg" 
@@ -1139,7 +1139,7 @@ export default function AgapeChurch() {
                 <div className="w-full max-w-5xl aspect-[3/2] rounded-2xl overflow-hidden border border-gray-200 shadow-lg">
                   <iframe
                     title="Agape Bible Church Location Map"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.241964073964!2d77.620333!3d13.0132357!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16e2a094bf89%3A0xa0896909de2109f4!2sAgape%20Bible%20Church!5e0!3m2!1sen!2sin!4v1718030000000!5m2!1sen!2sin"
+                    src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Agape%20Bible%20Church%20Venkateshpura%20Kadugondanahalli%20Road%20Bangalore+(Agape%20Bible%20Church)&amp;t=&amp;z=15&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                     width="100%"
                     height="100%"
                     style={{ border: 0 }}
