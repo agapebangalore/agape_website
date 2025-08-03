@@ -129,15 +129,15 @@ const SermonsPage: React.FC = () => {
             <Link to="/" className="flex items-center gap-3">
               <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
-                <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
-                <span className="font-display text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold" style={{color: '#000000'}}>AGAPE BIBLE CHURCH</span>
+              <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
+                <span className="font-display text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-black" style={{color: '#000000'}}>AGAPE BIBLE CHURCH</span>
               </Button>
             </Link>
             
             <div className="hidden md:flex items-center space-x-6">
               <h1 className="text-xl font-bold text-gray-900">Sermons & Messages</h1>
             </div>
-            
+
             <Button onClick={scrollToTop} variant="outline" size="sm" aria-label="Scroll to Top">
               Top
             </Button>
@@ -152,9 +152,9 @@ const SermonsPage: React.FC = () => {
         <section className="py-16 bg-gradient-to-br from-primary/10 via-white to-secondary/10">
           <div className="container-wide mx-auto px-6">
             <div className="text-center max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+          <motion.div 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8 }}
               >
                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
@@ -175,7 +175,7 @@ const SermonsPage: React.FC = () => {
                   <Button size="lg" className="bg-primary hover:bg-primary/90 text-white px-8 py-4 rounded-full font-semibold shadow-lg hover:shadow-xl transition-all duration-300" asChild>
                     <a href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener noreferrer">
                       <Youtube className="h-5 w-5 mr-2" />
-                      Visit YouTube Channel
+              Visit YouTube Channel
                     </a>
                   </Button>
                   
@@ -186,26 +186,26 @@ const SermonsPage: React.FC = () => {
                     </a>
                   </Button>
                 </div>
-              </motion.div>
+          </motion.div>
             </div>
-          </div>
-        </section>
+        </div>
+      </section>
 
         {/* Search and Filter Section */}
         <section className="py-12 bg-gray-50">
           <div className="container-wide mx-auto px-6">
             <div className="max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
                 className="flex flex-col md:flex-row gap-4 mb-8"
-              >
+        >
                 {/* Search Input */}
                 <div className="flex-1 relative">
                   <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-                  <Input
-                    type="text"
+          <Input
+            type="text"
                     placeholder="Search sermons by title, speaker, or topic..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -231,12 +231,12 @@ const SermonsPage: React.FC = () => {
                     </Button>
                   ))}
                 </div>
-              </motion.div>
+        </motion.div>
               
               {/* Results count */}
               <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.4 }}
                 className="text-gray-600 mb-6"
               >
@@ -250,7 +250,7 @@ const SermonsPage: React.FC = () => {
         <section className="py-16">
           <div className="container-wide mx-auto px-6">
             {filteredSermons.length === 0 ? (
-              <motion.div
+            <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center py-16"
@@ -260,15 +260,15 @@ const SermonsPage: React.FC = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">No sermons found</h3>
                 <p className="text-gray-600">Try adjusting your search terms or category filter.</p>
-              </motion.div>
+          </motion.div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 {filteredSermons.map((sermon, index) => (
-                  <motion.div
+          <motion.div 
                     key={sermon.id}
-                    initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
                     className="group"
                   >
@@ -318,8 +318,8 @@ const SermonsPage: React.FC = () => {
                           >
                             <a 
                               href={`https://www.youtube.com/watch?v=${sermon.videoId}`} 
-                              target="_blank" 
-                              rel="noopener noreferrer"
+                          target="_blank"
+                          rel="noopener noreferrer"
                             >
                               <Play className="h-4 w-4 mr-1" />
                               Watch
@@ -333,12 +333,12 @@ const SermonsPage: React.FC = () => {
                           className="pt-4 border-t border-gray-100"
                         />
                       </CardContent>
-                    </Card>
+                        </Card>
                   </motion.div>
                 ))}
-              </div>
-            )}
-          </div>
+                      </div>
+                    )}
+                  </div>
         </section>
 
         {/* Podcast Section */}
@@ -364,9 +364,9 @@ const SermonsPage: React.FC = () => {
               </p>
             </motion.div>
             
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              <motion.div 
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="max-w-4xl mx-auto"
             >
@@ -383,16 +383,16 @@ const SermonsPage: React.FC = () => {
                   </div>
                 </div>
                 
-                <iframe 
-                  src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
-                  width="100%" 
+              <iframe 
+                src="https://open.spotify.com/embed/show/45oJua9cpBUCHKeh2WoZMH?utm_source=generator&theme=0" 
+                width="100%" 
                   height="400" 
                   style={{ border: 0 }} 
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-                  loading="lazy"
+                allowFullScreen
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy"
                   className="rounded-lg mb-6"
-                  title="Agape Bible Church Podcast on Spotify"
+                title="Agape Bible Church Podcast on Spotify"
                 />
                 
                 <div className="text-center">
@@ -408,8 +408,8 @@ const SermonsPage: React.FC = () => {
                   </Button>
                 </div>
               </div>
-            </motion.div>
-          </div>
+              </motion.div>
+            </div>
         </section>
 
         {/* Call to Action */}
