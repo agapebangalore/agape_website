@@ -311,7 +311,7 @@ Date: ${new Date().toLocaleString()}
               <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
                 <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
-                <span className="font-display text-sm sm:text-base lg:text-xl font-semibold text-gray-900">AGAPE BIBLE CHURCH</span>
+                <span className="font-display text-sm sm:text-base lg:text-xl font-semibold text-black">AGAPE BIBLE CHURCH</span>
               </Button>
             </Link>
             
@@ -829,11 +829,17 @@ Date: ${new Date().toLocaleString()}
                   </div>
                 </div>
               ) : (
-                <>
-                  Thank you for sharing your testimony! Your story of God's faithfulness can be a tremendous blessing and encouragement to others in our church family.
-                  <br /><br />
-                  "Let the redeemed of the Lord tell their story—those he redeemed from the hand of the foe." - Psalm 107:2
-                </>
+                <div className="space-y-4">
+                  <p className="text-gray-800 font-semibold text-lg leading-relaxed">
+                    Thank you for sharing your testimony! Your story of God's faithfulness can be a tremendous blessing and encouragement to others in our church family. Our pastoral team will review your testimony and may reach out to you for additional details.
+                  </p>
+                  <div className="bg-yellow-100 border-l-4 border-yellow-500 p-4 rounded-r-lg">
+                    <p className="text-gray-900 font-bold italic text-center text-lg">
+                      "Let the redeemed of the Lord tell their story—those he redeemed from the hand of the foe." 
+                      <span className="block text-blue-800 font-semibold mt-2">- Psalm 107:2</span>
+                    </p>
+                  </div>
+                </div>
               )}
             </AlertDialogDescription>
           </AlertDialogHeader>
