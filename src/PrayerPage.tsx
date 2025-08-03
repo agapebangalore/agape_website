@@ -311,7 +311,7 @@ Date: ${new Date().toLocaleString()}
               <Button variant="ghost" className="flex items-center gap-2" aria-label="Back to Main Site">
                 <ArrowLeft className="w-4 h-4" />
                 <img src="/agape-bible-church-logo.png" alt="Agape Bible Church Logo" className="h-8 w-8 object-contain" />
-                <span className="font-display text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold" style={{color: '#000000'}}>AGAPE BIBLE CHURCH</span>
+                <span className="font-display text-lg sm:text-xl lg:text-2xl xl:text-3xl font-semibold" style={{color: '#000000'}}>AGAPE BIBLE CHURCH</span>
               </Button>
             </Link>
             
