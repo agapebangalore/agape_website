@@ -1,135 +1,33 @@
-# Vite Template
+# Agape Bible Church — Website (agapebangalore.org)
 
-This is a [Vite](https://vite.dev) project bootstrapped with React + TypeScript and configured with TailwindCSS v4 and ShadCN UI.
+Static multi-page site. No build step, no dependencies. Total ~3 MB.
 
-## Getting Started
+## Deploy to Vercel (same domain as current site)
 
-First, run the development server:
+1. `cd agape-website && npx vercel --prod` (or drag the folder into vercel.com/new)
+2. Point the existing `agapebangalore.org` domain at the new project (Project → Settings → Domains).
+3. Done. Folder routing means /sermons/, /ministry/, /pastor-biography/, /prayer/ all resolve directly — this fixes the 404-on-deep-link bug of the old SPA. `vercel.json` adds redirects from the old non-slash URLs plus long-cache headers for images.
 
-```bash
-bun dev
-```
+## Preview locally
 
-Open [http://localhost:5173](http://localhost:5173) with your browser to see the result.
+`cd agape-website && python3 -m http.server 8742` → http://localhost:8742/
 
-You can start editing the page by modifying `src/App.tsx`. The page auto-updates as you edit the file.
+## Structure
 
-## Project Configuration
+- `index.html` + `sermons/` `ministry/` `pastor-biography/` `prayer/` (folder = URL)
+- `assets/css/main.css` — design system ("Cathedral": parchment/ink/gold, Fraunces + Inter)
+- `assets/js/main.js` — nav, reveal animations, counters, sermon filters, prayer form (mailto/WhatsApp handoff, no backend), copy buttons
+- `images/` — optimized WebP from the original repo + church YouTube channel
+- `sitemap.xml`, `robots.txt`, `manifest.json`, `404.html`, icons
 
-### Package Management
+## Before go-live checklist
 
-This project uses [Bun](https://bun.sh/) as the package manager:
+- [ ] **Verify bank details on /ministry/#give** — currently A/C 1234567890, IFSC ABCD0123456, UPI agapebible@upi (as confirmed; they pattern-match placeholders, so check once more).
+- [ ] Confirm titles: site uses "Rev. Dr." for Jim Reuben Elliot in leadership copy and "Bishop Dr." on the June 2026 sermon credits (matching the church's own posters). Standardize if desired.
+- [ ] Prayer requests go to jim@agapebangalore.org (email) / +91 99016 13901 (WhatsApp).
 
-- Install dependencies: `bun add <package-name>`
-- Run scripts: `bun <script-name>`
-- Manage dev dependencies: `bun add -d <package-name>`
+## Content notes
 
-### Theme Customization
-
-The project uses Tailwind CSS V4 with a theme defined in:
-
-- `src/index.css` - For CSS variables including colors in OKLCH format and custom theming
-- Tailwind V4 uses the new `@theme` directive for configuration
-
-### ShadCN UI Components
-
-This project uses [ShadCN UI](https://ui.shadcn.com) for styled components. The components are incorporated directly into the codebase (not as dependencies), making them fully customizable. All components have been installed:
-
-- accordion
-- alert-dialog
-- alert
-- aspect-ratio
-- avatar
-- badge
-- breadcrumb
-- button
-- calendar
-- card
-- carousel
-- chart
-- checkbox
-- collapsible
-- command
-- context-menu
-- dialog
-- drawer
-- dropdown-menu
-- form
-- hover-card
-- input-otp
-- input
-- label
-- menubar
-- navigation-menu
-- pagination
-- popover
-- progress
-- radio-group
-- scroll-area
-- select
-- separator
-- sheet
-- skeleton
-- slider
-- sonner
-- switch
-- table
-- tabs
-- textarea
-- toast
-- toggle-group
-- toggle
-
-### Icon Library
-
-[Lucide React](https://lucide.dev/) is the preferred icon library for this project, as specified in components.json. Always use Lucide icons to maintain consistency:
-
-```tsx
-import { ArrowRight } from "lucide-react";
-
-// Use in components
-<Button>
-  <span>Click me</span>
-  <ArrowRight />
-</Button>;
-```
-
-### Font Configuration
-
-This project uses Google Fonts with:
-
-- Inter (sans-serif)
-- Playfair Display (serif)
-
-The font is imported via Google Fonts CDN in `src/index.css` and configured in the Tailwind theme:
-
-```css
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-
-@theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
-  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
-}
-```
-
-To change or update fonts:
-
-1. Update the Google Fonts import in `src/index.css`
-2. Modify the `--font-sans` variable in the `@theme` directive
-
-## Build and Deploy
-
-Build the project:
-
-```bash
-bun run build
-```
-
-Preview the production build:
-
-```bash
-bun run preview
-```
-
-The built files will be in the `dist` directory, ready for deployment to any static hosting service.
+- All text preserved from the old site; new additions (Jim Reuben Elliot, 50 Years of Mission Life, June 2026 sermons) are sourced from the church's own YouTube channel and sermon posters.
+- Two watermarked stock photos from the old repo (iStock/Dreamstime) were deliberately excluded.
+- Sermon links point to the church's YouTube videos; podcast embed is the church's Spotify show.

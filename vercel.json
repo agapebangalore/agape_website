@@ -1,0 +1,23 @@
+{
+  "framework": null,
+  "buildCommand": null,
+  "outputDirectory": ".",
+  "installCommand": null,
+  "trailingSlash": true,
+  "redirects": [
+    { "source": "/sermons", "destination": "/sermons/", "permanent": true },
+    { "source": "/pastor-biography", "destination": "/pastor-biography/", "permanent": true },
+    { "source": "/ministry", "destination": "/ministry/", "permanent": true },
+    { "source": "/prayer", "destination": "/prayer/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/assets/(.*)",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }]
+    }
+  ]
+}
