@@ -69,108 +69,112 @@
     </div>
   </section>
 
-  <section class="section-alt">
+  <section class="section-alt" style="padding-bottom:clamp(3rem,6vw,4.5rem);">
     <div class="container">
-      <div class="grid" style="grid-template-columns: 1.5fr 1fr;">
-        <div class="form-card reveal">
-          <h2 style="font-size:1.7rem;">Submit your prayer request</h2>
-          <p class="form-note">Share your prayer needs or testimony with us — our pastoral team will pray for you and, if you'd like, follow up to support you during this time. Submitting opens your email or WhatsApp app with the message ready to send, so nothing is stored on this website.</p>
-          <form id="prayer-form" class="mt-2">
-            <div class="form-grid">
-              <div class="form-field form-field--full">
-                <label>I'm sharing a…</label>
-                <div class="btn-row" role="radiogroup" aria-label="Request type">
-                  <label class="form-check" style="margin-right:1.2rem;"><input type="radio" name="pf-type" id="pf-type-request" checked> Prayer request</label>
-                  <label class="form-check"><input type="radio" name="pf-type" id="pf-type-testimony"> Testimony</label>
-                </div>
-              </div>
-              <div class="form-field form-field--full">
-                <label class="form-check"><input type="checkbox" id="pf-anon"> Submit anonymously <span class="form-note">(your name and contact details won't be included)</span></label>
-              </div>
-              <div class="form-field form-field--full" id="pf-contact-fields">
-                <div class="form-grid">
-                  <div class="form-field">
-                    <label for="pf-name">Name <span class="req">*</span></label>
-                    <input type="text" id="pf-name" data-req="1" required autocomplete="name">
-                  </div>
-                  <div class="form-field">
-                    <label for="pf-email">Email</label>
-                    <input type="email" id="pf-email" autocomplete="email">
-                  </div>
-                  <div class="form-field">
-                    <label for="pf-phone">Phone <span class="form-note">(optional)</span></label>
-                    <input type="tel" id="pf-phone" autocomplete="tel">
-                  </div>
-                  <div class="form-field" style="align-self:end;">
-                    <label class="form-check"><input type="checkbox" id="pf-followup"> I'd like the pastoral team to follow up with me</label>
-                  </div>
-                </div>
-              </div>
-              <div class="form-field">
-                <label for="pf-category">Prayer category</label>
-                <select id="pf-category">
-                  <option>General Prayer</option>
-                  <option>Health &amp; Healing</option>
-                  <option>Family &amp; Relationships</option>
-                  <option>Financial Needs</option>
-                  <option>Spiritual Growth</option>
-                  <option>Ministry &amp; Service</option>
-                  <option>Guidance &amp; Decisions</option>
-                  <option>Salvation of Loved Ones</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="form-field">
-                <label for="pf-urgency">Urgency level</label>
-                <select id="pf-urgency">
-                  <option>Normal</option>
-                  <option>Urgent</option>
-                  <option>Emergency</option>
-                </select>
-              </div>
-              <div class="form-field form-field--full">
-                <label for="pf-request">Your prayer request <span class="req">*</span></label>
-                <textarea id="pf-request" required placeholder="Share what's on your heart…"></textarea>
-              </div>
-              <div class="form-field form-field--full btn-row">
-                <button class="btn btn--primary" type="submit" data-via="email">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
-                  Send via Email
-                </button>
-                <button class="btn btn--outline" type="submit" data-via="whatsapp">
-                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6a13.1 13.1 0 0 1-5-4.4c-.5-.8-.9-1.7-.9-2.6 0-1.2.6-1.8.9-2.1.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.4-.1.7.5.9 1.2 1.7 2 2.3.6.5 1.3.9 2 1.2.3.1.5.1.7-.1l.7-.8c.2-.3.4-.3.7-.2l1.9.9c.3.1.5.2.5.4.1.1.1.4 0 .7z"/></svg>
-                  Send via WhatsApp
-                </button>
-              </div>
-              <p class="form-note form-field--full" id="pf-sent-note" hidden>Your message has been prepared in your email/WhatsApp app — just press send there, and our pastoral team will receive it.</p>
-            </div>
-          </form>
+      <div class="section-head section-head--center reveal" style="margin-bottom:clamp(1.8rem,4vw,2.8rem);">
+        <span class="eyebrow">Prayer Support</span>
+        <h2 style="font-size:clamp(1.7rem,3.5vw,2.4rem);">Our commitment to you</h2>
+      </div>
+      <div class="grid grid--3">
+        <div class="feature reveal">
+          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 4.5 13.5H11l-1 8.5L18.5 10H12l1-8z"/></svg></div>
+          <div><h4>Immediate Prayer</h4><p>Your requests are prayed over immediately by our pastoral team when received.</p></div>
         </div>
+        <div class="feature reveal reveal-d1">
+          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
+          <div><h4>Complete Confidentiality</h4><p>All prayer requests are kept strictly confidential within our pastoral team.</p></div>
+        </div>
+        <div class="feature reveal reveal-d2">
+          <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7.5-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg></div>
+          <div><h4>Ongoing Support</h4><p>We continue praying for your needs and offer pastoral care as requested.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <section>
+    <div class="container container--narrow">
+      <div class="form-card reveal">
+        <h2 style="font-size:clamp(1.6rem,3vw,2rem);">Submit your prayer request</h2>
+        <p class="form-note" style="max-width:60ch;">Our pastoral team will pray for you and, if you'd like, follow up to support you during this time. Submitting opens your email or WhatsApp app with the message ready to send — nothing is stored on this website.</p>
+        <form id="prayer-form" class="mt-2">
+          <div class="form-grid">
+            <div class="form-field form-field--full">
+              <label>I'm sharing a…</label>
+              <div class="choice-row" role="radiogroup" aria-label="Request type">
+                <label class="choice-pill"><input type="radio" name="pf-type" id="pf-type-request" checked><span>🙏 Prayer request</span></label>
+                <label class="choice-pill"><input type="radio" name="pf-type" id="pf-type-testimony"><span>✨ Testimony</span></label>
+              </div>
+            </div>
+            <div class="form-field form-field--full" id="pf-contact-fields">
+              <div class="form-grid">
+                <div class="form-field">
+                  <label for="pf-name">Name <span class="req">*</span></label>
+                  <input type="text" id="pf-name" data-req="1" required autocomplete="name">
+                </div>
+                <div class="form-field">
+                  <label for="pf-email">Email</label>
+                  <input type="email" id="pf-email" autocomplete="email">
+                </div>
+                <div class="form-field form-field--full">
+                  <label for="pf-phone">Phone <span style="text-transform:none; letter-spacing:0; font-weight:450; color:var(--muted);">(optional)</span></label>
+                  <input type="tel" id="pf-phone" autocomplete="tel">
+                </div>
+              </div>
+            </div>
+            <div class="form-field">
+              <label for="pf-category">Prayer category</label>
+              <select id="pf-category">
+                <option>General Prayer</option>
+                <option>Health &amp; Healing</option>
+                <option>Family &amp; Relationships</option>
+                <option>Financial Needs</option>
+                <option>Spiritual Growth</option>
+                <option>Ministry &amp; Service</option>
+                <option>Guidance &amp; Decisions</option>
+                <option>Salvation of Loved Ones</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="form-field">
+              <label for="pf-urgency">Urgency level</label>
+              <select id="pf-urgency">
+                <option>Normal</option>
+                <option>Urgent</option>
+                <option>Emergency</option>
+              </select>
+            </div>
+            <div class="form-field form-field--full">
+              <label for="pf-request">Your prayer request <span class="req">*</span></label>
+              <textarea id="pf-request" required placeholder="Share what's on your heart…"></textarea>
+            </div>
+            <div class="form-field form-field--full" style="display:grid; gap:.7rem; padding:1.1rem 1.2rem; background:var(--bg); border:1px solid var(--line-soft); border-radius:10px;">
+              <label class="form-check"><input type="checkbox" id="pf-anon"> <span><b>Submit anonymously</b> — your name and contact details won't be included</span></label>
+              <label class="form-check"><input type="checkbox" id="pf-followup"> <span><b>Follow up with me</b> — I'd like someone from the pastoral team to reach out</span></label>
+            </div>
+            <div class="form-field form-field--full btn-row">
+              <button class="btn btn--primary" type="submit" data-via="email">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                Send via Email
+              </button>
+              <button class="btn btn--outline" type="submit" data-via="whatsapp">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.7-1.3 1.3-1.9 1.4-.5.1-1.1.1-1.8-.1-.4-.1-1-.3-1.7-.6a13.1 13.1 0 0 1-5-4.4c-.5-.8-.9-1.7-.9-2.6 0-1.2.6-1.8.9-2.1.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.4l.8 2c.1.2.1.4 0 .6l-.4.6c-.1.2-.3.4-.1.7.5.9 1.2 1.7 2 2.3.6.5 1.3.9 2 1.2.3.1.5.1.7-.1l.7-.8c.2-.3.4-.3.7-.2l1.9.9c.3.1.5.2.5.4.1.1.1.4 0 .7z"/></svg>
+                Send via WhatsApp
+              </button>
+            </div>
+            <p class="form-note form-field--full" id="pf-sent-note" hidden>Your message has been prepared in your email/WhatsApp app — just press send there, and our pastoral team will receive it.</p>
+          </div>
+        </form>
+      </div>
+
+      <div class="support-strip reveal">
         <div>
-          <div class="section-head reveal">
-            <span class="eyebrow">Prayer Support</span>
-            <h2 style="font-size:1.7rem;">Our commitment to you</h2>
-          </div>
-          <div class="grid" style="gap:1.1rem;">
-            <div class="feature reveal">
-              <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2 4.5 13.5H11l-1 8.5L18.5 10H12l1-8z"/></svg></div>
-              <div><h4>Immediate Prayer</h4><p>Your requests are prayed over immediately by our pastoral team when received.</p></div>
-            </div>
-            <div class="feature reveal reveal-d1">
-              <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></div>
-              <div><h4>Complete Confidentiality</h4><p>All prayer requests are kept strictly confidential within our pastoral team.</p></div>
-            </div>
-            <div class="feature reveal reveal-d2">
-              <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7.5-4.6-9.5-9A5.5 5.5 0 0 1 12 6.5 5.5 5.5 0 0 1 21.5 12c-2 4.4-9.5 9-9.5 9z"/></svg></div>
-              <div><h4>Ongoing Support</h4><p>We continue praying for your needs and offer pastoral care as requested.</p></div>
-            </div>
-          </div>
-          <div class="info-tile mt-2 reveal reveal-d2" style="background:var(--wine-soft); border-color:transparent;">
-            <h4 style="color:var(--wine)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="color:var(--wine)"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Need immediate prayer?</h4>
-            <p>For urgent prayer needs, don't hesitate to call us directly. We're here for you.</p>
-            <p class="mb-0"><a href="tel:+919901613901"><strong>+91 99016 13901</strong></a><br><a href="mailto:jim@agapebangalore.org">jim@agapebangalore.org</a></p>
-          </div>
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Need immediate prayer?</h4>
+          <p>For urgent needs, don't wait for the form — call us directly. We're here for you.</p>
+        </div>
+        <div class="btn-row">
+          <a class="btn btn--wine" href="tel:+919901613901">Call +91 99016 13901</a>
+          <a class="btn btn--outline" href="mailto:jim@agapebangalore.org">Email Us</a>
         </div>
       </div>
     </div>
