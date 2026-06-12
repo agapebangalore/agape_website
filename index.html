@@ -1,176 +1,443 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    
-    <!-- PWA Primary Meta Tags -->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Agape Church" />
-    <meta name="format-detection" content="telephone=no" />
-    <meta name="msapplication-TileColor" content="#3b82f6" />
-    <meta name="msapplication-config" content="/browserconfig.xml" />
-    <meta name="theme-color" content="#3b82f6" />
-    
-    <title>Agape Bible Church Bangalore | Tamil Christian Church | Churches in Bangalore</title>
-    <meta name="description" content="Agape Bible Church - Premier Tamil Christian church in Bangalore since 1990. Join our vibrant community for Sunday worship, Bible study, and fellowship. Serving Bangalore with 1000+ believers across 6 churches. Visit us in Pillanna Garden!" />
-    
-    <!-- PWA Icons and Manifest -->
-    <link rel="icon" type="image/png" sizes="32x32" href="/agape-bible-church-logo.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/agape-bible-church-logo.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/agape-bible-church-logo.png" />
-    <link rel="mask-icon" href="/agape-bible-church-logo.png" color="#3b82f6" />
-    <link rel="manifest" href="/manifest.json" />
-    
-    <!-- Preload critical resources for performance -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
-    <link rel="preload" href="/1.jpg" as="image" type="image/jpeg">
-    <link rel="preload" href="/agape-bible-church-logo.png" as="image" type="image/png">
-    
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Agape Bible Church Bangalore | Tamil Christian Church | Churches in Bangalore" />
-    <meta property="og:description" content="Premier Tamil Christian church in Bangalore since 1990. Join our vibrant community for Sunday worship, Bible study, and fellowship. Serving Bangalore with 1000+ believers across 6 churches." />
-    <meta property="og:image" content="/authentic-church-worship.png" />
-    <meta property="og:url" content="https://agapebangalore.org/" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Agape Bible Church Bangalore" />
-    <meta property="og:locale" content="en_IN" />
-    
-    <!-- Twitter Card Meta Tags -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Agape Bible Church Bangalore | Tamil Christian Church" />
-    <meta name="twitter:description" content="Premier Tamil Christian church in Bangalore since 1990. Join our Sunday worship, Bible study, and fellowship. 1000+ believers across 6 churches in Bangalore." />
-    <meta name="twitter:image" content="/authentic-church-worship.png" />
-    <meta name="twitter:site" content="@agapebangalore" />
-    
-    <!-- SEO and Performance -->
-    <link rel="canonical" href="https://agapebangalore.org/" />
-    <meta name="robots" content="index, follow" />
-    <meta name="googlebot" content="index, follow" />
-    <meta name="keywords" content="church bangalore, tamil church bangalore, christian church bangalore, churches in bangalore, agape bible church, karnataka church, bengaluru church, tamil christian fellowship, evangelical church bangalore, bible church bangalore, pillanna garden church, sunday worship bangalore, christian community bangalore" />
-    <meta name="author" content="Agape Bible Church Bangalore" />
-    <meta name="geo.region" content="IN-KA" />
-    <meta name="geo.placename" content="Bangalore, Karnataka, India" />
-    <meta name="geo.position" content="13.0132357;77.620333" />
-    <meta name="ICBM" content="13.0132357, 77.620333" />
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="/authentic-church-worship.webp" as="image" type="image/webp" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    
-    <!-- Schema.org Structured Data for Church -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Church",
-      "name": "Agape Bible Church",
-      "alternateName": "Agape Bible Fellowship",
-      "description": "An independent, non-denominational Tamil church in Bangalore dedicated to Reaching the unreached, Teaching the reached, and Touching the untouched with the Gospel of Jesus Christ.",
-      "url": "https://agapebangalore.org",
-      "logo": "https://agapebangalore.org/agape-bible-church-logo.png",
-      "image": [
-        "https://agapebangalore.org/authentic-church-worship.png",
-        "https://agapebangalore.org/community-fellowship.png",
-        "https://agapebangalore.org/children-ministry-authentic.png"
-      ],
-      "telephone": "+91 9901613901",
-      "email": "abcabfindia@gmail.com",
-      "foundingDate": "1990-08-05",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "12 B Cross, Sonnappa Block, Pillanna Garden 3rd Stage",
-        "addressLocality": "Bangalore",
-        "addressRegion": "Karnataka",
-        "postalCode": "560045",
-        "addressCountry": "IN"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 13.0132357,
-        "longitude": 77.620333
-      },
-      "areaServed": {
-        "@type": "City",
-        "name": "Bangalore",
-        "alternateName": "Bengaluru"
-      },
-      "openingHours": [
-        "Su 09:00-12:00",
-        "Su 11:00-13:00",
-        "We 19:00-21:00",
-        "Sa 18:00-20:00"
-      ],
-      "potentialAction": {
-        "@type": "ReserveAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://agapebangalore.org/#contact"
-        },
-        "result": {
-          "@type": "Reservation",
-          "name": "Sunday Service"
-        }
-      },
-      "founder": {
-        "@type": "Person",
-        "name": "Dr. Reuben M. Sathiyaraj",
-        "jobTitle": "Archbishop and Senior Pastor",
-        "description": "Founding pastor who established Agape Bible Church in 1990"
-      },
-      "member": {
-        "@type": "QuantitativeValue",
-        "value": 1000,
-        "unitText": "members"
-      },
-      "events": [
-        {
-          "@type": "Event",
-          "name": "Sunday Worship Service",
-          "startTime": "09:00",
-          "endTime": "12:00",
-          "dayOfWeek": "Sunday",
-          "location": {
-            "@type": "Place",
-            "name": "Agape Bible Church",
-            "address": {
-              "@type": "PostalAddress",
-              "streetAddress": "12 B Cross, Sonnappa Block, Pillanna Garden 3rd Stage",
-              "addressLocality": "Bangalore",
-              "addressRegion": "Karnataka",
-              "postalCode": "560045",
-              "addressCountry": "IN"
-            }
-          }
-        }
-      ],
-      "sameAs": [
-        "https://facebook.com/agapebangalore",
-        "https://instagram.com/agapebangalore",
-        "https://twitter.com/abcabfindia",
-        "https://www.youtube.com/agapebangalore"
-      ],
-      "keywords": "church bangalore, tamil church bangalore, christian church bangalore, bible church, evangelical church, agape church, churches in bangalore, bangalore christian fellowship, karnataka church"
-    }
-    </script>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Agape Bible Church Bangalore | Tamil Christian Church in Bangalore</title>
+  <meta name="description" content="Agape Bible Church — an independent Tamil Christian church in Bangalore since 1990. Join us for Sunday worship at 7:00 AM & 9:30 AM in Pillanna Garden. 1000+ believers, 6 churches. All are welcome.">
+  <link rel="canonical" href="https://agapebangalore.org/">
+  <meta name="author" content="Agape Bible Church Bangalore">
+  <meta name="geo.region" content="IN-KA">
+  <meta name="geo.placename" content="Bangalore, Karnataka, India">
+  <meta name="geo.position" content="13.0132357;77.620333">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Agape Bible Church Bangalore">
+  <meta property="og:title" content="Agape Bible Church Bangalore | Tamil Christian Church">
+  <meta property="og:description" content="Reaching the unreached, teaching the reached, touching the untouched. Join us this Sunday — 7:00 AM & 9:30 AM, Pillanna Garden, Bangalore.">
+  <meta property="og:url" content="https://agapebangalore.org/">
+  <meta property="og:image" content="https://agapebangalore.org/images/worship-hero.webp">
+  <meta property="og:locale" content="en_IN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@abcabfindia">
+  <meta name="theme-color" content="#241D17">
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Church",
+    "name": "Agape Bible Church",
+    "alternateName": "Agape Bible Church Bangalore",
+    "url": "https://agapebangalore.org/",
+    "logo": "https://agapebangalore.org/images/logo.png",
+    "image": "https://agapebangalore.org/images/worship-hero.webp",
+    "foundingDate": "1990-08-05",
+    "telephone": "+91 9901613901",
+    "email": "abcabfindia@gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "12 B Cross, Sonnappa Block, Pillanna Garden 3rd Stage",
+      "addressLocality": "Bangalore",
+      "addressRegion": "Karnataka",
+      "postalCode": "560045",
+      "addressCountry": "IN"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": 13.0132357, "longitude": 77.620333 },
+    "sameAs": [
+      "https://www.youtube.com/@AgapeBangalore",
+      "https://facebook.com/agapebangalore",
+      "https://instagram.com/agapebangalore",
+      "https://twitter.com/abcabfindia",
+      "https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH"
+    ]
+  }
+  </script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to main content</a>
 
-    <!-- CRITICAL: Emergency text visibility CSS - Minimal targeted fixes -->
-    <style id="critical-text-visibility">
-      /* Only fix critical white text on white background issues */
-      .text-white.bg-white,
-      .text-white[class*="bg-white/"] {
-        color: #1a1a1a !important;
-      }
-      
-      /* Ensure minimum font loading */
-      body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    </style>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a class="brand" href="/">
+      <img src="/images/logo.png" alt="Agape Bible Church logo" width="46" height="46">
+      <span class="brand__name">Agape Bible Church<span class="brand__tag">Bangalore · Since 1990</span></span>
+    </a>
+    <nav class="nav-main" id="nav-main" aria-label="Main navigation">
+      <a href="/" aria-current="page">Home</a>
+      <a href="/sermons/">Sermons</a>
+      <a href="/pastor-biography/">Our Pastor</a>
+      <a href="/ministry/">Ministries</a>
+      <a href="/prayer/">Prayer</a>
+      <a class="btn btn--primary nav-cta" href="#visit">Plan Your Visit</a>
+    </nav>
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav-main" aria-label="Open menu">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Welcome">
+    <div class="hero__bg">
+      <img src="/images/worship-hero.webp" alt="The Agape Bible Church congregation worshipping together in Bangalore" fetchpriority="high">
+    </div>
+    <div class="hero__content">
+      <div class="container">
+        <span class="hero__kicker">Agape Bible Church · Bangalore · Est. 1990</span>
+        <h1>Reaching the <em>unreached</em>. Teaching the <em>reached</em>. Touching the <em>untouched</em>.</h1>
+        <p class="lead">You are welcomed home, just as you are. A Tamil church family in the heart of Bangalore — proclaiming the Gospel of Christ Jesus by all means, at any cost, without any more delay.</p>
+        <div class="btn-row mt-2">
+          <a class="btn btn--primary" href="#visit">Visit This Sunday</a>
+          <a class="btn btn--ghost-light" href="#story">Discover Our Story</a>
+        </div>
+        <div class="hero__meta">
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Sundays · 7:00 AM &amp; 9:30 AM</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Pillanna Garden, Bangalore</span>
+          <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 0-8 8"/><path d="M16 19l2 2 4-4"/></svg>All are welcome</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WELCOME / VISION -->
+  <section id="story">
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">Our Vision &amp; Mission</span>
+        <h2>The unconditional love of Christ — and we live by it.</h2>
+        <p>Agape Bible Church is an independent, non-denominational Tamil church located in the heart of Bangalore city, Karnataka — proclaiming the gospel of Christ Jesus by all means, at any cost, without any more delay. We are a community-based, multi-ethnic church serving the diverse Christian community across the city.</p>
+        <p>We are committed to teaching the Word of God, training disciples, sending missionaries, and planting churches in the remotest parts of Southern India. You are welcomed to join us, share in our vision, and run with us toward the goal Christ Jesus has called us to.</p>
+        <div class="btn-row mt-2">
+          <a class="btn btn--primary" href="/ministry/">Join Our Mission</a>
+          <a class="btn btn--outline" href="/pastor-biography/">Read Our Story</a>
+        </div>
+      </div>
+      <figure class="photo-frame reveal reveal-d1">
+        <img src="/images/pastor-preaching.webp" alt="Archbishop Dr. Reuben M. Sathiyaraj teaching at Agape Bible Church" loading="lazy" width="1600" height="1067">
+        <figcaption>Teaching the Word, Sunday by Sunday, since August 5th, 1990.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section aria-label="Church at a glance" style="padding-top:0;">
+    <div class="container">
+      <div class="stats reveal">
+        <div class="stat"><div class="stat__num">1990</div><div class="stat__label">Established</div></div>
+        <div class="stat"><div class="stat__num" data-count="1000" data-suffix="+">1000+</div><div class="stat__label">Believers</div></div>
+        <div class="stat"><div class="stat__num" data-count="6">6</div><div class="stat__label">Churches</div></div>
+        <div class="stat"><div class="stat__num" data-count="250" data-suffix="+">250+</div><div class="stat__label">Children</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VERSE -->
+  <div class="verse-band">
+    <div class="container">
+      <blockquote>Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God.</blockquote>
+      <cite>1 John 4:7 — the agape we are named for</cite>
+    </div>
+  </div>
+
+  <!-- JOURNEY -->
+  <section>
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Since 1990</span>
+        <h2>Our journey of faith</h2>
+        <p class="lead">Our journey commenced on August 5th, 1990 in Bangalore, Karnataka. We are an independent, indigenous, evangelical, and charismatic church committed to spreading God's love through action across the Bangalore metropolitan area.</p>
+      </div>
+      <div class="grid grid--2">
+        <article class="card reveal">
+          <div class="card__media"><img src="/images/congregation-bw.webp" alt="Agape Bible Church congregation in its early years" loading="lazy"></div>
+          <div class="card__body">
+            <span class="badge">1990 · Humble Beginnings</span>
+            <h3 class="mt-1">Founded with just 3 families</h3>
+            <p>Archbishop Dr. Reuben Sathiyaraj planted the seeds of what would become a thriving church community in Bangalore. From the very beginning, our mission was clear: to reach the unreached, teach the reached, and touch the untouched.</p>
+          </div>
+        </article>
+        <article class="card reveal reveal-d1">
+          <div class="card__media"><img src="/images/worship-card.webp" alt="A full sanctuary worshipping at Agape Bible Church today" loading="lazy"></div>
+          <div class="card__body">
+            <span class="badge badge--wine">Today · Growing in Grace</span>
+            <h3 class="mt-1">A thriving family of 1000+</h3>
+            <p>Today we serve over 1000 believers and 250 children across 6 churches in the Bangalore region — with rehabilitation homes for street children, training programs for pastors, and community outreach across Karnataka.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMMUNITY IN ACTION -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Our Community in Action</span>
+        <h2>See how God is working through our church family</h2>
+        <p class="lead">Love is most meaningful when it's put into action. We help others discover Jesus through practical demonstrations of His love — across Bangalore and beyond.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card reveal">
+          <div class="card__media"><img src="/images/worship-card.webp" alt="Fellowship and worship at Agape Bible Church" loading="lazy"></div>
+          <div class="card__body"><h3>Fellowship</h3><p>Building lasting relationships through worship, Bible study, and life shared together as one family.</p></div>
+        </article>
+        <article class="card reveal reveal-d1">
+          <div class="card__media"><img src="/images/children-outreach-card.webp" alt="Children supported by Agape's children's ministry smiling together" loading="lazy"></div>
+          <div class="card__body"><h3>Children's Ministry</h3><p>Nurturing young hearts — including a safe, loving home for Bangalore's most vulnerable children.</p></div>
+        </article>
+        <article class="card reveal reveal-d2">
+          <div class="card__media"><img src="/images/children-joy.webp" alt="Community outreach bringing joy to children in Bangalore" loading="lazy"></div>
+          <div class="card__body"><h3>Outreach</h3><p>Serving our community in the streets and slums of Bangalore with practical care and the love of Christ.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PASTOR -->
+  <section class="section-dark">
+    <div class="container split">
+      <figure class="photo-frame photo-frame--plain reveal text-center">
+        <img src="/images/pastor-portrait.png" alt="Archbishop Dr. Reuben M. Sathiyaraj, Founding Senior Pastor" loading="lazy" width="420" height="420" style="margin:0 auto; max-width:340px; border-radius:50%;">
+      </figure>
+      <div class="reveal reveal-d1">
+        <span class="eyebrow">Leadership</span>
+        <h2>From rebellion to redemption</h2>
+        <p><strong style="color:var(--on-dark)">Archbishop Dr. Reuben M. Sathiyaraj</strong> — Founding Senior Pastor, Agape Bible Fellowship, 1990.</p>
+        <p>Born into poverty in Tamil Nadu, his journey began with rebellion against his mother's dedication of him to God's ministry. Robbed and left destitute in Chennai, contemplating suicide, he heard God's call on a beach during a Gospel meeting. At just 16, he began pioneering missionary work in the Andaman &amp; Nicobar Islands, reaching tribal groups including the Onge and Jarawa — planting churches that continue expanding today.</p>
+        <div class="scripture" style="padding:1.5rem 0; text-align:left; max-width:none;">
+          <blockquote style="font-size:1.2rem;">For though I preach the gospel, I have nothing to glory of: for necessity is laid upon me; yea, woe is unto me, if I preach not the gospel!</blockquote>
+          <cite>1 Corinthians 9:16 — his life verse</cite>
+        </div>
+        <a class="btn btn--light" href="/pastor-biography/">Read the Complete Biography</a>
+      </div>
+    </div>
+
+    <!-- 50 YEARS JUBILEE -->
+    <div class="container" style="margin-top:clamp(3.5rem,7vw,5.5rem); padding-top:clamp(2.5rem,5vw,4rem); border-top:1px solid var(--hairline-dark);">
+      <div class="jubilee__inner">
+        <div class="jubilee__num reveal">50<span>Years of Mission Life</span></div>
+        <div class="reveal reveal-d1">
+          <h3 style="font-size:clamp(1.5rem,3vw,2.1rem);">Half a century of "woe is unto me, if I preach not the gospel."</h3>
+          <p>In 2026, Archbishop Dr. Reuben M. Sathiyaraj marks the completion of 50 years in ministry — from the Andaman Islands to the streets of Bangalore. In the <em>50 Voices</em> series on our YouTube channel, pastors, missionaries, and believers across India share what God has done through this one surrendered life.</p>
+          <a class="btn btn--ghost-light mt-1" href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener">Watch the 50 Voices Series</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECOND GENERATION -->
+  <section>
+    <div class="container split">
+      <div class="reveal">
+        <span class="eyebrow">The Ministry Continues</span>
+        <h2>Into the second generation</h2>
+        <p><strong>Rev. Dr. Jim Reuben Elliot</strong> — named after the missionary Jim Elliot — serves alongside his father in the pastoral leadership of Agape, carrying the same calling into a new generation.</p>
+        <p>Week by week he opens the Scriptures at Agape — Sunday services, the Tuesday Bible study, and open-air Gospel meetings across Bangalore — with the same conviction that founded this church: the Word of God, taught without compromise, in the language of the people.</p>
+        <div class="btn-row mt-2">
+          <a class="btn btn--primary" href="/sermons/">Hear Him Preach</a>
+          <a class="btn btn--outline" href="/#visit">Meet Us Sunday</a>
+        </div>
+      </div>
+      <figure class="photo-frame reveal reveal-d1">
+        <img src="/images/jim-portrait.webp" alt="Rev. Dr. Jim Reuben Elliot seated with an open Bible" loading="lazy" width="680" height="1088" style="max-height:560px; width:auto; margin:0 auto;">
+        <figcaption>Rev. Dr. Jim Reuben Elliot</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- SERMONS -->
+  <section>
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Recent Sermons</span>
+        <h2>Life-changing messages</h2>
+        <p class="lead">Biblical messages that transform hearts and renew minds — on YouTube and all major podcast platforms.</p>
+      </div>
+      <div class="grid grid--3">
+        <article class="card sermon-card reveal">
+          <a class="card__media" href="https://www.youtube.com/watch?v=mv4TOFkyHNU" target="_blank" rel="noopener" aria-label="Watch: A Foretaste of the Eternal Feast">
+            <img src="/images/sermon-feast.webp" alt="Sermon: A Foretaste of the Eternal Feast — Communion Sunday" loading="lazy">
+            <span class="sermon-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+          <div class="card__body">
+            <div class="sermon-card__meta"><span class="badge">Communion Sunday</span></div>
+            <h3>A Foretaste of the Eternal Feast</h3>
+            <p class="sermon-card__speaker">Archbishop Dr. Reuben M. Sathiyaraj</p>
+            <p>The Lord's Supper, and the expectation of glory.</p>
+            <p class="sermon-card__date mt-1 mb-0">June 7, 2026 · Second Service</p>
+          </div>
+        </article>
+        <article class="card sermon-card reveal reveal-d1">
+          <a class="card__media" href="https://www.youtube.com/watch?v=Q3d3FVPAhdI" target="_blank" rel="noopener" aria-label="Watch: The Cup That Reveals the Heart">
+            <img src="/images/sermon-cup.webp" alt="Sermon: The Cup That Reveals the Heart" loading="lazy">
+            <span class="sermon-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+          <div class="card__body">
+            <div class="sermon-card__meta"><span class="badge">Communion Sunday</span></div>
+            <h3>The Cup That Reveals the Heart</h3>
+            <p class="sermon-card__speaker">Bishop Dr. Jim Reuben Elliot</p>
+            <p>What the table of the Lord uncovers in us.</p>
+            <p class="sermon-card__date mt-1 mb-0">June 7, 2026 · First Service</p>
+          </div>
+        </article>
+        <article class="card sermon-card reveal reveal-d2">
+          <a class="card__media" href="https://www.youtube.com/watch?v=05Idi9v-HjI" target="_blank" rel="noopener" aria-label="Watch: Faith That Perseveres Through Trials">
+            <img src="/images/sermon-faith-action.webp" alt="Sermon: Faith That Perseveres Through Trials — Faith in Action series" loading="lazy">
+            <span class="sermon-card__play"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+          </a>
+          <div class="card__body">
+            <div class="sermon-card__meta"><span class="badge badge--wine">Bible Study · Faith in Action</span></div>
+            <h3>Faith That Perseveres Through Trials</h3>
+            <p class="sermon-card__speaker">Bishop Dr. Jim Reuben Elliot</p>
+            <p>Lesson 2 of the Tuesday study series <em>Faith in Action</em>.</p>
+            <p class="sermon-card__date mt-1 mb-0">June 9, 2026 · Tuesday Bible Study</p>
+          </div>
+        </article>
+      </div>
+      <div class="btn-row mt-3" style="justify-content:center;">
+        <a class="btn btn--primary" href="/sermons/">All Sermons</a>
+        <a class="btn btn--outline" href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener">YouTube Channel</a>
+        <a class="btn btn--outline" href="https://open.spotify.com/show/45oJua9cpBUCHKeh2WoZMH" target="_blank" rel="noopener">Listen on Spotify</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MINISTRY HIGHLIGHT -->
+  <section class="section-dark">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">Our Ministry</span>
+        <h2>A heart for the marginalized</h2>
+        <p class="lead" style="color:var(--on-dark-muted)">Our heart breaks for the 70,000 rag pickers and 65,000 street children across Bangalore's 750 slum areas. Through the Agape Children Centre, we provide hope, shelter, and Christ's love to the city's most vulnerable.</p>
+      </div>
+      <div class="stats stats--dark reveal">
+        <div class="stat"><div class="stat__num" data-count="70000">70,000</div><div class="stat__label">Rag Pickers in Bangalore</div></div>
+        <div class="stat"><div class="stat__num" data-count="65000">65,000</div><div class="stat__label">Street Children</div></div>
+        <div class="stat"><div class="stat__num" data-count="750">750</div><div class="stat__label">Slum Areas</div></div>
+        <div class="stat"><div class="stat__num" data-count="250" data-suffix="+">250+</div><div class="stat__label">Children Helped</div></div>
+      </div>
+      <div class="split mt-3">
+        <div class="reveal">
+          <h3>Agape Children Centre</h3>
+          <p>A safe haven for abandoned children aged 5–12 — offering shelter, hygiene facilities, nutritious meals, and most importantly, unconditional love and protection from exploitation.</p>
+          <h3 class="mt-2">Our mission work</h3>
+          <p>Since we believe the main task of the Church is evangelizing its own community, we send native missionaries and support them through prayer and financial provision. Hundreds of missionaries have been sent to plant churches across Karnataka; Agape directly oversees six churches today.</p>
+          <a class="btn btn--light mt-1" href="/ministry/">Learn More About Our Ministries</a>
+        </div>
+        <figure class="photo-frame photo-frame--plain reveal reveal-d1">
+          <img src="/images/children-outreach.webp" alt="Children served by the Agape Children Centre smiling and holding fruit" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit">
+    <div class="container">
+      <div class="section-head section-head--center reveal">
+        <span class="eyebrow">Join Our Community</span>
+        <h2>Visit us this Sunday</h2>
+        <p class="lead">Experience authentic worship, meaningful fellowship, and biblical teaching in a warm, welcoming environment. Whether you're exploring faith or looking for a church home, you'll find a place at Agape.</p>
+      </div>
+      <div class="grid grid--3">
+        <div class="info-tile reveal">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Location</h4>
+          <p><strong>Agape Bible Church</strong><br>12 B Cross, Sonnappa Block,<br>Pillanna Garden 3rd Stage,<br>Bangalore 560045, Karnataka, India</p>
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=13.0132357%2C77.620333" target="_blank" rel="noopener">Get directions →</a>
+        </div>
+        <div class="info-tile reveal reveal-d1">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Service Times</h4>
+          <ul class="schedule-list">
+            <li><span class="what">Sunday Worship</span><span class="when">7:00 AM &amp; 9:30 AM</span></li>
+            <li><span class="what">Tuesday Bible Study</span><span class="when">7:00 PM</span></li>
+            <li><span class="what">Saturday Youth Fellowship</span><span class="when">6:00 PM</span></li>
+          </ul>
+        </div>
+        <div class="info-tile reveal reveal-d2">
+          <h4><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Contact</h4>
+          <p><a href="tel:+919901613901">+91 99016 13901</a><br><span class="sub">Primary</span></p>
+          <p><a href="tel:+919900167714">+91 99001 67714</a><br><span class="sub">Alternative</span></p>
+          <p class="mb-0"><a href="mailto:abcabfindia@gmail.com">abcabfindia@gmail.com</a></p>
+        </div>
+      </div>
+      <div class="mt-3 reveal" style="border-radius:var(--radius-lg); overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line);">
+        <iframe title="Map — Agape Bible Church, Pillanna Garden, Bangalore" src="https://www.google.com/maps?q=13.0132357,77.620333&amp;z=16&amp;output=embed" width="100%" height="380" style="border:0; display:block;" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="section-dark cta-band">
+    <div class="container">
+      <span class="eyebrow" style="justify-content:center;">Ready to join us?</span>
+      <h2>Take the next step in your faith journey.</h2>
+      <p class="lead" style="color:var(--on-dark-muted)">We'd love to welcome you into our church family this Sunday.</p>
+      <div class="btn-row mt-2" style="justify-content:center;">
+        <a class="btn btn--primary" href="#visit">Plan Your Visit</a>
+        <a class="btn btn--ghost-light" href="https://www.google.com/maps/search/?api=1&amp;query=13.0132357%2C77.620333" target="_blank" rel="noopener">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="/images/logo.png" alt="" width="52" height="52">
+          <div><b>Agape Bible Church</b><small>Bangalore · Since 1990</small></div>
+        </div>
+        <p style="font-size:.94rem;">An independent, indigenous, evangelical, and charismatic church in Bangalore, Karnataka — serving the city since August 5th, 1990. Reaching the unreached, teaching the reached, and touching the untouched with the Gospel of Jesus Christ.</p>
+        <div class="social-row">
+          <a href="https://facebook.com/agapebangalore" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 21v-7h2.4l.4-3h-2.8V9.1c0-.9.3-1.5 1.6-1.5H16.5V5c-.3 0-1.2-.1-2.3-.1-2.3 0-3.8 1.4-3.8 3.9V11H8v3h2.4v7h3.1z"/></svg></a>
+          <a href="https://instagram.com/agapebangalore" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://twitter.com/abcabfindia" target="_blank" rel="noopener" aria-label="Twitter / X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.7 3h3l-6.6 7.6L22 21h-6.1l-4.8-6.3L5.6 21h-3l7.1-8.1L2 3h6.3l4.3 5.7L17.7 3zm-1 16.2h1.7L7.4 4.7H5.6l11.1 14.5z"/></svg></a>
+          <a href="https://www.youtube.com/@AgapeBangalore" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.6 7.2a2.5 2.5 0 0 0-1.8-1.8C18.3 5 12 5 12 5s-6.3 0-7.8.4A2.5 2.5 0 0 0 2.4 7.2 26.5 26.5 0 0 0 2 12c0 1.6.1 3.2.4 4.8a2.5 2.5 0 0 0 1.8 1.8c1.5.4 7.8.4 7.8.4s6.3 0 7.8-.4a2.5 2.5 0 0 0 1.8-1.8c.3-1.6.4-3.2.4-4.8 0-1.6-.1-3.2-.4-4.8zM10 15.2V8.8l5.5 3.2L10 15.2z"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/#story">About Us</a></li>
+          <li><a href="/pastor-biography/">Our Pastor</a></li>
+          <li><a href="/sermons/">Sermons</a></li>
+          <li><a href="/ministry/">Ministry Work</a></li>
+          <li><a href="/prayer/">Prayer Requests</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Service Times</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Sunday Worship<br>7:00 AM &amp; 9:30 AM</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 6v13h16V6M9 3v3M15 3v3"/></svg><span>Tuesday Bible Study · 7:00 PM<br>Saturday Youth · 6:00 PM</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>12 B Cross, Sonnappa Block, Pillanna Garden 3rd Stage, Bangalore 560045</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg><span><a href="tel:+919901613901">+91 99016 13901</a><br><a href="tel:+919900167714">+91 99001 67714</a></span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg><span><a href="mailto:abcabfindia@gmail.com">abcabfindia@gmail.com</a></span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-tagline">"Reaching the unreached, teaching the reached, touching the untouched" — since August 5th, 1990</div>
+    <div class="footer-bottom">
+      <p>© <span data-year>2026</span> Agape Bible Church Bangalore. All rights reserved.</p>
+      <p>Part of Agape Bible Fellowship — Registered Charitable Trust</p>
+    </div>
+  </div>
+</footer>
+
+<script src="/assets/js/main.js" defer></script>
+</body>
 </html>
